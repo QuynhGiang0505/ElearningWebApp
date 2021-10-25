@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GTEAMS - Class Web App - contact</title>
+    <link rel="stylesheet" href="{% static 'css/practice.css'%}">
+    <meta name='author' content="G-Team" />
+</head>
+
+<body>
+    <header id="header">
+        <div id="header1">
+            <div id="content-header1-left">
+                <div>
+                    <a href="#">
+                        <img src="{% static 'imgs/rm37.png'%}" id="logo" alt="logo">
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="header__navbar-icon-Link">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div id="content-header1-right">
+                <div id="cnt-hd1-r-search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div id="cnt-hd1-r-pen">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <button id="cnt-hd1-r-tk">Tài khoản<i class="fas fa-angle-down"></i></button>
+            </div>
+        </div>
+        <div id="container-header2">
+            <h1> PRACTICE </h1>
+        </div>
+    </header>
+    <main id="main-container">
+        <div id="Subject">
+            <h2>Chủ Đề: {{title}} </h2>
+        </div>
+        {% if question %} {%for q in question%}
+        <div class="block_query">
+
+            <br id="questions"> {{q.question}}
+            </br>
+        </div>
+
+        <input type="checkbox" id='AnswerA' value="A"> {{q.contentA}}<br></br>
+        <input type="checkbox" id='AnswerB' value="B"> {{q.contentB}}<br></br>
+        <input type="checkbox" id='AnswerC' value="C"> {{q.contentC}}<br></br>
+        <input type="checkbox" id='AnswerD' value="D"> {{q.contentD}}<br></br>
+        </div>
+        </div>
+        {% endfor %} {% endif %}
+
+    </main>
+</body>
+<footer id="footer">
+    <div id="contact">
+        <a href="#"><img src="{% static 'imgs/facebook.png'%}" alt="facebook-contact" width="40" /></a>
+        <a href="#"><img src="{% static 'imgs/github.png'%}" alt="github-contact" width="40" /></a>
+        <a href="#"><img src="{% static 'imgs/whatsapp.png'%}" alt="callUs" width="40" /></a>
+        <a href="#"><img src="{% static 'imgs/google-plus.png'%}" alt="mailUs" width="40" /></a>
+        <a href="#"><img src="{% static 'imgs/twitter.png'%}" alt="twiter" width="40" /></a>
+    </div>
+    <div class="footer2">
+        <div class="panel-body">
+            <p class="simplenav">
+                <a href="index.html">Trang chủ</a> |
+                <a href="about.html">Thông tin</a> |
+                <a href="courses.html">Khóa học</a> |
+                <a href="fees.html">Fees</a> |
+                <a href="contact.html">Liên hệ</a>
+            </p>
+        </div>
+        <p class="text-right">
+            G Team &copy; 2021. Made by <a href="#" rel="develop"> ....</a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

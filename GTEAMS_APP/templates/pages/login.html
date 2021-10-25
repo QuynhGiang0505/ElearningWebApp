@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="{% static 'css/login-style.css'%}">
+</head>
+
+<body>
+    <div class="center">
+        <h1>Logo here</h1>
+        <form method="post">
+            <div class="div-info">
+                <img src="{% static 'imgs/user.png'%}" />
+                <div class="txt_field">
+                    <input type="text" required>
+                    <span></span>
+                    <label>Tên đăng nhập</label>
+                </div>
+            </div>
+
+            <div class="div-info">
+                <img src="{% static 'imgs/lock.png'%}" />
+                <div class="txt_field">
+                    <input type="password" required>
+                    <span></span>
+                    <label>Mật khẩu</label>
+                </div>
+            </div>
+            <br>
+
+            <input type="submit" value="Đăng nhập">
+            <div class="signup_link">
+                Bạn mới biết đến GTeam? <a href="register.html">Đăng kí</a>
+            </div>
+            <div class="pass" style="text-align: center;">Quên mật khẩu</div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

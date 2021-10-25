@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GTEAMS - Class Web App - contact</title>
+    <link rel="stylesheet" href="{% static 'css/contact.css'%}">
+    <meta name='author' content="G-Team" />
+</head>
+
+<body>
+    <header id="header">
+        <div id="header1">
+            <div id="content-header1-left">
+                <div>
+                    <a href="#">
+                        <img src="{% static 'imgs/rm37.png'%}" id="logo" alt="logo">
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="header__navbar-icon-Link">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div id="content-header1-right">
+                <div id="cnt-hd1-r-search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div id="cnt-hd1-r-pen">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <button id="cnt-hd1-r-tk">Tài khoản<i class="fas fa-angle-down"></i></button>
+            </div>
+        </div>
+        <div id="container-header2">
+            <h1>Liên hệ - Góp ý</h1>
+            Góp ý hoặc liên hệ cho GTEAMS nếu có như cầu hay thắc mắc
+        </div>
+    </header>
+    <main id="main-container">
+
+        <div id="content">
+            <div class="block">
+                <div class=block_title>
+                    <h2>Gửi thông tin liên hệ - góp ý</h2>
+                </div>
+                <div class=block_content>
+                    <form action="" id="contactForm" method="post">
+                        {% csrf_token %} {{ form.as_p}}
+
+                        <input type="submit" value="Gửi" />
+
+                    </form>
+                    {% if form.is_valid %}
+                    <script>
+                        alert("Thank you for contacting us ")
+                    </script>
+                    {% endif %} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %} {% endif %}
+                </div>
+            </div>
+            <div class="block">
+                <div class=block_title>
+                    <h2>Thông tin liên hệ GTEAMS</h2>
+                </div>
+                <div class=block_content>
+                    <span>Mọi thông tin đóng góp ý kiến hoặc hỗ trợ có thể liên hệ trực tiếp qua các kênh sau</span>
+                    <ul id="ul_content">
+                        <li>
+                            <img src="{% static 'imgs/facebook.png'%}" alt="facebook-contact" width="40" />
+                            <a href="#">Facebook.com</a>
+                        </li>
+                        <li>
+                            <img src="{% static 'imgs/github.png'%}" alt="github-contact" width="40" /></a>
+                            <a href="#">Github</a>
+                        </li>
+                        <li>
+                            <img src="{% static 'imgs/whatsapp.png'%}" alt="callUs" width="40" /></a>
+                            <a href="#">whatsapp</a>
+                        </li>
+                        <li>
+                            <img src="{% static 'imgs/google-plus.png'%}" alt="mailUs" width="40" /></a>
+                            <a href="#">google-plus</a>
+                        </li>
+                        <li>
+                            <img src="{% static 'imgs/twitter.png'%}" alt="twiter" width="40" /></a>
+                            <a href="#">twitter</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <div id="contact">
+            <a href="#"><img src="{% static 'imgs/facebook.png'%}" alt="facebook-contact" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/github.png'%}" alt="github-contact" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/whatsapp.png'%}" alt="callUs" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/google-plus.png'%}" alt="mailUs" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/twitter.png'%}" alt="twiter" width="40" /></a>
+        </div>
+        <div class="footer2">
+            <div class="panel-body">
+                <p class="simplenav">
+                    <a href="index.html">Trang chủ</a> |
+                    <a href="about.html">Thông tin</a> |
+                    <a href="courses.html">Khóa học</a> |
+                    <a href="fees.html">Fees</a> |
+                    <a href="contact.html">Liên hệ</a>
+                </p>
+            </div>
+            <p class="text-right">
+                G Team &copy; 2021. Made by <a href="#" rel="develop"> ....</a>
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

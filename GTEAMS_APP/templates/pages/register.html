@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="{% static 'css/login-style.css'%}">
+</head>
+
+<body>
+
+
+    <div class="center">
+        <div class="left">
+
+            <div>
+                <h1 style="color: white;">Xin chào!</h1>
+            </div>
+            <div>
+                <p style="color: white; margin-left: 30px;">Nhập thông tin chi tiết và bắt đầu ngay với GTeam!</p>
+            </div>
+
+        </div>
+        <form method="post" class="right">
+            <div class="div-info" style="margin-top: 30px;">
+                <img src="{% static 'imgs/user.png'%}" />
+                <div class="txt_field">
+                    <input type="text" required>
+                    <span></span>
+                    <label>Tên đăng nhập</label>
+                </div>
+            </div>
+
+            <div class="div-info">
+                <img src="{% static 'imgs/lock.png'%}" />
+                <div class="txt_field">
+                    <input type="password" required>
+                    <span></span>
+                    <label>Mật khẩu</label>
+                </div>
+            </div>
+
+            <div class="div-info">
+                <img src="{% static 'imgs/lock.png'%}" />
+                <div class="txt_field">
+                    <input type="password" required>
+                    <span></span>
+                    <label>Nhập lại mật khẩu</label>
+                </div>
+            </div>
+            <br>
+
+            <input type="submit" value="Đăng kí">
+            <div class="signup_link">
+                Bạn đã có tài khoản? <a href="login.html">Đăng nhập</a>
+            </div>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
