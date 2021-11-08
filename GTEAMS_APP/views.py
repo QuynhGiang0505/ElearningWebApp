@@ -41,3 +41,5 @@ def ShowQuestionsID(request,title):
     
     context= {'title':title,'question':Content}
     return render(request,'pages/practice2.html',context)
+def error(request, exception):
+    return render(request,'pages/error.html')
