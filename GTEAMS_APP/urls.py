@@ -1,8 +1,6 @@
 from django.conf import urls
 from django.urls import path
-from django.conf.urls import url
 from GTEAMS_APP.models import *
-from django.conf.urls import url
 
 from . import views
 urlpatterns = [

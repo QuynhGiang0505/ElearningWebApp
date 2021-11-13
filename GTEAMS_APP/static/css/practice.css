@@ -156,7 +156,7 @@ a {
     text-align: center;
 }
 
-#btnSubmit button {
+#btnSubmit input {
     height: 40px;
     width: 160px;
 }
