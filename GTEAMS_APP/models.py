@@ -21,6 +21,7 @@ class Practice(models.Model):
     contentB=models.CharField(max_length=500)
     contentC=models.CharField(max_length=500)
     contentD=models.CharField(max_length=500)
+    correctAnswer=models.CharField(max_length=500,null=True)
     c=models.ManyToManyField
     def __str__(self):
             return self.question

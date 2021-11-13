@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>GTEAMS - Class Web App - contact</title>
-    <link rel="stylesheet" href="{% static 'css/practice2.css'%}">
+    <link rel="stylesheet" href="{% static 'css/practice.css'%}">
     <meta name='author' content="G-Team" />
 </head>
 
@@ -52,20 +52,21 @@
         </div>
         <div id="block_answer">
             <div class="radio">
-                <input id="optionA" type="radio" name="optradio"><label for="optionA">{{q.contentA}}</label>
+                <input id="optionA" type="radio" name="optradio" value="{{q.contentA}}"><label for="optionA">{{q.contentA}}</label>
             </div>
             <div class="radio">
-                <input id="optionB" type="radio" name="optradio"><label for="optionB">{{q.contentB}}</label>
+                <input id="optionB" type="radio" name="optradio" value="{{q.contentB}}"><label for="optionB">{{q.contentB}}</label>
             </div>
             <div class="radio disabled">
-                <input id="optionC" type="radio" name="optradio"><label for="optionC">{{q.contentC}}</label>
+                <input id="optionC" type="radio" name="optradio" value="{{q.contentC}}"><label for="optionC">{{q.contentC}}</label>
             </div>
             <div class="radio disabled">
-                <input id="optionD" type="radio" name="optradio"><label for="optionD">{{q.contentD}}</label>
+                <input id="optionD" type="radio" name="optradio" value="{{q.contentD}}"><label for="optionD">{{q.contentD}}</label>
             </div>
         </div>
         {% endfor %} {% endif %}
-        <div id="btnSubmit"><button type="button">Submit</button></div>
+        <div id="btnSubmit"><input type="submit" value="Submit" />
+        </div>
 
     </main>
 </body>
