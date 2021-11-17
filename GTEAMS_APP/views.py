@@ -3,7 +3,7 @@ from django.http.response import Http404, HttpResponseRedirect
 from django.shortcuts import redirect, render
 import datetime
 from django.http import HttpResponse
-from icecream import ic
+
 import GTEAMS_APP
 from GTEAMS_APP.models import *
 from GTEAMS_APP.form import *
@@ -14,12 +14,14 @@ def PageContact(request):
     return render(request,'pages/contact.html')
 def PagePractice(request):
     return render(request,'pages/practice.html')
-def PageBlog(request):
+def PageBlogs(request):
     return render(request,'pages/blogs.html')
 def PageLogin(request):
     return render(request,'pages/login.html')
 def PageRegister(request):
     return render(request,'pages/register.html')
+def PageCourses(request):
+    return render(request,'pages/courses.html')
 def create_contact(request):
     if request.method == 'GET':
         form=CreateNewContact()
@@ -43,3 +45,31 @@ def ShowQuestionsID(request,title):
     return render(request,'pages/practice2.html',context)
 def error(request, exception):
     return render(request,'pages/error.html')
+
+   #ham dua qua html
+
+def showCourses(request):
+    allCourses=Courses.objects.all()
+    return render(request,'pages/courses.html',{'allCourses': allCourses})
+
+def show_detail_course(request,title):
+    try:
+        Content=Courses.objects.filter(title=title)
+    except Courses.DoesNotExist:
+        raise Http404("Practice doesnot exist")
+    a=Courses.objects.all()
+    context= {'title':title,'question':Content,'a':a}
+    return render(request,'pages/courses1.html',context)
+
+def showcourses_detail_demo(request,subject):
+    a=Courses.objects.all()
+    context= {'subject':subject,'a':a}
+    return render(request,'pages/basecourses.html',context)
+
+def home(request):
+    allposts = Post.objects.all()
+    totalposts = Post.objects.all().order_by('-date')[:8]
+
+    #top_three_catg = .objects.filter(top_three_cat=True)[:3]
+    context = {'allposts':allposts, 'totalposts':totalposts}
+    return render(request, 'pages/HomePage.html', context)
