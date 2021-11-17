@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-l%-spqvz(ku%5^nzm1j1krkz-p-4!2ju@_dn=5_pz8l7p&9x=*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'GTEAMS_APP',
-    'embed_video',
+    'embed_video'
 ]
 
 MIDDLEWARE = [
