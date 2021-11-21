@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    background-color: #000000;
+    box-sizing: border-box;
 }
 
-html {
+/* html {
     background-color: black;
     display: block;
     font-size: 15px;
@@ -14,10 +18,9 @@ html {
 }
 
 body {
-    height: 1000px;
     box-sizing: border-box;
     display: block;
-}
+} */
 
 #header {
     margin: 0;
@@ -87,74 +90,11 @@ body {
 
 /*CONTENT*/
 
-#contentPage {
-    /* background: rgba(255, 0, 0, 0.171); */
-    height: 700px;
-    transition: 0.5s;
-}
+
 
 #container {
     background-color: #121212;
 }
-
-.DivContent {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5rem;
-    box-sizing: border-box;
-    padding: 1em;
-    height: 42rem;
-    background: #313131;
-    display: flex;
-    border-radius: 10px;
-}
-
-.ContentLeft {
-    user-select: none;
-    padding-top: 15%;
-    width: 40%;
-    line-height: 2rem;
-    float: left;
-    height: 420px;
-    color: rgb(255, 255, 255);
-}
-
-.ContentLeft #title {
-    padding: 8px;
-}
-
-.ContentLeft #title:hover {
-    transform: scale(1.05);
-    color: rgb(250, 14, 112);
-}
-
-#learnNow {
-    position: absolute;
-    margin-top: 1.5rem;
-    border: none;
-    border-radius: 5px;
-    width: 100px;
-    height: 30px;
-    font-weight: bold;
-    box-shadow: 5px 5px 5px rgb(187, 172, 172);
-    background-image: linear-gradient( to right, rgb(99, 203, 235), rgb(212, 138, 255))
-}
-
-#learnNow:hover {
-    transform: scale(1.2);
-}
-
-#learnNow:active {
-    transform: scale(1);
-}
-
-.ContentRight {
-    width: 60%;
-    height: 420px;
-    float: right;
-    transition: 1s;
-}
-
 #features {
     color: white;
     height: 20rem;
