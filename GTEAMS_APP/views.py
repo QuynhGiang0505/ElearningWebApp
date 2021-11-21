@@ -79,3 +79,16 @@ def home(request):
     #top_three_catg = .objects.filter(top_three_cat=True)[:3]
     context = {'allposts':allposts, 'totalposts':totalposts}
     return render(request, 'pages/HomePage.html', context)
+
+def showCoursesMainPage(request):
+    allCourses=Courses.objects.all()
+    return render(request,'pages/HomePage.html',{'allCourses': allCourses})
+
+def show_detail_MainPage(request,title):
+    try:
+        Content=Courses.objects.filter(title=title)
+    except Courses.DoesNotExist:
+        raise Http404("Practice doesnot exist")
+    a=Courses.objects.all()
+    context= {'title':title,'question':Content,'a':a}
+    return render(request,'pages/coursesVideo.html',context)
