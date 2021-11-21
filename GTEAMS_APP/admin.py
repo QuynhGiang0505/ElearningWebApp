@@ -10,3 +10,6 @@ class ContactAdmin(admin.ModelAdmin):
 admin.site.register(Practice)
 admin.site.register(Practice_title)
 admin.site.register(Contact)
+
+admin.site.register(Courses)
+admin.site.register(Post)

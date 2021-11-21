@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+import GTEAMS_APP
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'GTEAMS_APP',
-    'accounts'
+    'accounts',
+    'embed_video'
 ]
 
 MIDDLEWARE = [
@@ -71,7 +74,9 @@ TEMPLATES = [
         },
     },
 ]
-
+TEMPLATES_DIR = (
+    'GTEAMS_APP/templates',
+)
 WSGI_APPLICATION = 'GTEAMS.wsgi.application'
 
 
@@ -123,10 +128,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 STATIC_DIR = [
     os.path.join(BASE_DIR,"static"),
     '/GTEAMS/GTEAMS_APP/static',
 ]
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

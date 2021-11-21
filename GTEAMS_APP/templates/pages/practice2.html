@@ -50,14 +50,23 @@
             <br id="questions"> {{q.question}}
             </br>
         </div>
-
-        <input type="checkbox" id='AnswerA' value="A"> {{q.contentA}}<br></br>
-        <input type="checkbox" id='AnswerB' value="B"> {{q.contentB}}<br></br>
-        <input type="checkbox" id='AnswerC' value="C"> {{q.contentC}}<br></br>
-        <input type="checkbox" id='AnswerD' value="D"> {{q.contentD}}<br></br>
-        </div>
+        <div id="block_answer">
+            <div class="radio">
+                <input id="optionA" type="radio" name="optradio" value="{{q.contentA}}"><label for="optionA">{{q.contentA}}</label>
+            </div>
+            <div class="radio">
+                <input id="optionB" type="radio" name="optradio" value="{{q.contentB}}"><label for="optionB">{{q.contentB}}</label>
+            </div>
+            <div class="radio disabled">
+                <input id="optionC" type="radio" name="optradio" value="{{q.contentC}}"><label for="optionC">{{q.contentC}}</label>
+            </div>
+            <div class="radio disabled">
+                <input id="optionD" type="radio" name="optradio" value="{{q.contentD}}"><label for="optionD">{{q.contentD}}</label>
+            </div>
         </div>
         {% endfor %} {% endif %}
+        <div id="btnSubmit"><input type="submit" value="Submit" />
+        </div>
 
     </main>
 </body>

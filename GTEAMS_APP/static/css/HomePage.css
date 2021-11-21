@@ -1,10 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 html {
     background-color: black;
     display: block;
@@ -12,23 +12,27 @@ html {
     font-family: "Poppins", sans-serif;
     width: 100%;
 }
+
 body {
     height: 1000px;
     box-sizing: border-box;
     display: block;
 }
+
 #header {
     margin: 0;
     padding: 0;
     background-color: #121212;
     height: 80px;
 }
+
 #divMainmenu {
     padding-left: 2%;
     display: flex;
     height: 60px;
     margin: auto;
 }
+
 #divMainmenu #imgLogo {
     margin: auto;
     display: inline;
@@ -40,6 +44,7 @@ body {
     display: flex;
     margin: auto;
 }
+
 #divMainmenu #sign {
     margin: auto;
     float: right;
@@ -47,13 +52,13 @@ body {
     display: flex;
     justify-content: right;
 }
-.btn{
+
+.btn {
     appearance: button;
     -moz-appearance: button;
     -webkit-appearance: button;
     -ms-appearance: button;
     text-decoration: none;
-    
     padding-top: 25px;
     display: block;
     width: 110px;
@@ -62,58 +67,45 @@ body {
     text-align: center;
     transition: 0.5s;
     border-radius: 10px;
-
     overflow: hidden;
-    
 }
+
 .btn:hover {
     transform: scale(1.2);
     color: rgb(250, 14, 112);
     text-shadow: 1px 1px 1px rgb(61, 59, 59);
 }
-.btn::before {
-    /* position: absolute;
-    top: 5px;
-    appearance: button;
-    -moz-appearance: button;
-    -webkit-appearance: button;
-    -ms-appearance: button;
-    text-decoration: none;
 
-    text-align: center;
-    transition: 0.5s;
-
-    content: "";
-    width: 110px;
-    height: 70px;
-    background-color: rgba(255, 255, 255, 0.2);
-    transform:  skewX(45deg) translateX(100px); */
-   
-}
 .btn:active {
     transform: scale(1);
 }
+
 .btn:hover::before {
-    transform:  skewX(45deg) translateX(-100px);
+    transform: skewX(45deg) translateX(-100px);
 }
+
+
 /*CONTENT*/
+
 #contentPage {
     /* background: rgba(255, 0, 0, 0.171); */
     height: 700px;
     transition: 0.5s;
 }
+
 #container {
     height: 100rem;
     background-color: #121212;
 }
+
 .DivContent {
     margin-left: 10%;
-    margin-right: 10% ;
+    margin-right: 10%;
     margin-top: 5rem;
     box-sizing: border-box;
     padding: 1em;
     height: 42rem;
-    background:#313131;
+    background: #313131;
     display: flex;
     border-radius: 10px;
 }
@@ -125,16 +117,18 @@ body {
     line-height: 2rem;
     float: left;
     height: 420px;
-    color: rgb(255, 255, 255) ;
+    color: rgb(255, 255, 255);
 }
 
 .ContentLeft #title {
     padding: 8px;
 }
+
 .ContentLeft #title:hover {
     transform: scale(1.05);
     color: rgb(250, 14, 112);
 }
+
 #learnNow {
     position: absolute;
     margin-top: 1.5rem;
@@ -144,35 +138,41 @@ body {
     height: 30px;
     font-weight: bold;
     box-shadow: 5px 5px 5px rgb(187, 172, 172);
-    background-image:linear-gradient( to right,rgb(99, 203, 235),rgb(212, 138, 255))
+    background-image: linear-gradient( to right, rgb(99, 203, 235), rgb(212, 138, 255))
 }
-#learnNow:hover{
+
+#learnNow:hover {
     transform: scale(1.2);
 }
-#learnNow:active{
+
+#learnNow:active {
     transform: scale(1);
 }
+
 .ContentRight {
     width: 60%;
     height: 420px;
     float: right;
     transition: 1s;
 }
+
 #features {
     color: white;
     height: 20rem;
     margin-left: 10%;
-    margin-right: 10% ;
+    margin-right: 10%;
     margin-top: 5rem;
     background-color: #313131;
 }
+
 #example {
     background-color: #313131;
     height: 20rem;
     margin-left: 10%;
-    margin-right: 10% ;
+    margin-right: 10%;
     margin-top: 5rem;
 }
+
 #footer {
     display: block;
     background-color: #333333;
@@ -180,7 +180,8 @@ body {
     width: 100%;
     height: 130px;
 }
-#footer #contact{
+
+#footer #contact {
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -188,6 +189,7 @@ body {
     height: 60px;
     padding: 10px;
 }
+
 .footer2 {
     padding: 15px;
     padding-top: 20px;
@@ -198,12 +200,15 @@ body {
     height: 80px;
     background-color: #121212;
 }
-.simplenav{
+
+.simplenav {
     color: white;
 }
+
 .text-right {
     color: rgb(255, 255, 255);
 }
+
 a {
     text-decoration: none;
     color: white;

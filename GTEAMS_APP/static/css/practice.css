@@ -142,3 +142,21 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.radio label {
+    padding: 5px;
+    padding-left: 10px;
+}
+
+#block_answer {
+    margin: 20px;
+}
+
+#btnSubmit {
+    text-align: center;
+}
+
+#btnSubmit input {
+    height: 40px;
+    width: 160px;
+}

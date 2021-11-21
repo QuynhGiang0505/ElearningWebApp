@@ -15,7 +15,7 @@
         <div id="header1">
             <div id="content-header1-left">
                 <div>
-                    <a href="#">
+                    <a href="{% url 'home' %}">
                         <img src="{% static 'imgs/rm37.png'%}" id="logo" alt="logo">
                     </a>
                 </div>
@@ -51,7 +51,7 @@
                 {% if question %}
                 <ul id="questionUL" style='list-style-position: inside;'>
                     <span></span> {% for q in question %}
-                    <li><a href="{{q.title}}">{{q.title_Content}}</a></li>
+                    <li><a href="{% url 'practiceID' q.title %}">>{{q.title_Content}}</a></li>
 
                 </ul>
                 {% endfor %} {% endif %}
@@ -71,11 +71,11 @@
     <div class="footer2">
         <div class="panel-body">
             <p class="simplenav">
-                <a href="index.html">Trang chủ</a> |
+                <a href="{% url 'home' %}">Trang chủ</a> |
                 <a href="about.html">Thông tin</a> |
                 <a href="courses.html">Khóa học</a> |
                 <a href="fees.html">Fees</a> |
-                <a href="contact.html">Liên hệ</a>
+                <a href="{% url 'contact' %}">Liên hệ</a>
             </p>
         </div>
         <p class="text-right">

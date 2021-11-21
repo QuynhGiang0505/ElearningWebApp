@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GTEAMS - Class Web App</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
     <link rel="stylesheet" href="{% static 'css/HomePage.css'%}">
     <!-- tác giả nha -->
     <meta name='author' content="G-Team" />
@@ -23,13 +24,14 @@
             </div>
             <div id="linkHeader">
                 <a class="btn" href="#"> Giới thiệu </a>
-                <a class="btn" href="#"> Khóa học </a>
+                <a class="btn" href="{% url 'gteam:courses' %}"> Khóa học </a>
                 <a class="btn" href="#">Luyện tập</a>
                 <a class="btn" href="#">Hỏi đáp</a>
-                <a class="btn" href="#">Bài viết</a>
-                <a class="btn" href="contact">Liên hệ</a>
+                <a class="btn" href="{% url 'gteam:blogs' %}">Bài viết</a>
+                <a class="btn" href="{% url 'gteam:contact' %}">Liên hệ</a>
             </div>
             <div id="sign">
+
                 {% if user.is_authenticated %}
                      <a class="btn" href=""> Xin chào {{ user.username }} </a>
                     <a class="btn" href="../../../accounts/logout"> Đăng xuất </a>
@@ -37,6 +39,7 @@
                     <a class="btn" href="../../../accounts/login"> Đăng nhập </a>
                     <a class="btn" href="../../../accounts/register"> Đăng ký </a>
                 {% endif %}!
+
             </div>
         </div>
     </header>
@@ -55,8 +58,7 @@
                 </div>
             </div>
             <div id="example">
-                examle
-                <p>{{now}}</p>
+
             </div>
             <div id="features">
                 Tính năng
@@ -88,6 +90,10 @@
             </p>
         </div>
     </footer>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
