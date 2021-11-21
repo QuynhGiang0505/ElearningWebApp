@@ -9,12 +9,15 @@
     background-color: #000000;
     box-sizing: border-box;
 }
- html body{
+ h3{
     box-sizing: border-box;
     display: block;
+    font-size: 13px;
 }
-hover 
- .main-hover-div .hover_display{background:#000000;position:absolute;top:0;left:0;bottom:0;right:0;opacity:0; width: 300px;}
+.titleCourses{
+    font-size: 13px;
+}
+.main-hover-div .hover_display{background:#000000;position:absolute;top:0;left:0;bottom:0;right:0;opacity:0; width: 300px;}
 .main-hover-div:hover .hover_display{opacity:1}
 .hover_display {
     padding: 10px;
@@ -87,7 +90,7 @@ hover
     outline: 0;
     background: transparent;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #ae1f1f;
     font-size: 12px;
     font-weight: 600;
 }
