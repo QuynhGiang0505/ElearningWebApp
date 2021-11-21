@@ -1,7 +1,7 @@
-{% load static %}
-{% load embed_video_tags %}
+{% load static %} {% load embed_video_tags %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,92 +9,91 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-     <link rel="stylesheet" href="{% static 'css/courses1.css'%}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/courses1.css'%}">
     <title>BaseCourses</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-sm badge-blue navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="#">Logo</a>
-      
+
         <!-- Links -->
         <ul class="navbar-nav">
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
               HTML and CSS
             </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Link 1</a>
-              <a class="dropdown-item" href="#">Link 2</a>
-              <a class="dropdown-item" href="#">Link 3</a>
-            </div>
-          </li>
-
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Python
-            </a>
-            {% for i in allCourses %}
-        
-            <div class="dropdown-menu">
-                
-                <a class="dropdown-item" href="{% url 'gteam:coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
-              <a class="dropdown-item" href="{% url 'gteam:coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
-              <a class="dropdown-item" href="#">Bài tập luyện tập</a>
-            </div>
-            {% endfor %}
-          </li>
-
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              SQL
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Link 1</a>
-              <a class="dropdown-item" href="#">Link 2</a>
-              <a class="dropdown-item" href="#">Link 3</a>
-            </div>
-          </li>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li>
 
             <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Python
+            </a> {% for i in allCourses %}
+
+                <div class="dropdown-menu">
+
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
+                    <a class="dropdown-item" href="#">Bài tập luyện tập</a>
+                </div>
+                {% endfor %}
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              SQL
+            </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
               C C++
             </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Link 1</a>
-              <a class="dropdown-item" href="#">Link 2</a>
-              <a class="dropdown-item" href="#">Link 3</a>
-            </div>
-          </li>
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
               Java
             </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Link 1</a>
-              <a class="dropdown-item" href="#">Link 2</a>
-              <a class="dropdown-item" href="#">Link 3</a>
-            </div>
-          </li>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li>
         </ul>
-      </nav>
-      <div style="padding: 3rem;">
+    </nav>
+    <div style="padding: 3rem;">
         <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">{{subject}}</h2>
         <div class="portfolio-item row">
-        {% for item in a %}
-            {% if item.subject == subject %}
+            {% for item in a %} {% if item.subject == subject %}
             <div class="item col-lg-3 col-md-4 mt-4">
-                <a href="{% url 'gteam:123' item.title %}" style="color: white;">
+                <a href="{% url '123' item.title %}" style="color: white;">
                     <div class="main-hover-div">
                         <div class="user-profile-2">
                             <div class="">
-                              <img src="{% static 'imgs/Python.jpg'%}" alt="demo" style="width:255px; height:130px;">
+                                <img src="{% static 'imgs/Python.jpg'%}" alt="demo" style="width:255px; height:130px;">
                             </div>
                             <div class="user-main">
                                 <div class="user-data">
@@ -112,11 +111,11 @@
                         </div>
                     </div>
                 </a>
-    
+
             </div>
-            {% endif %}
-        {% endfor %}
+            {% endif %} {% endfor %}
+        </div>
     </div>
-      </div>
 </body>
+
 </html>

@@ -23,15 +23,14 @@
                 <img src="{% static 'imgs/back.png'%}" alt="Logo page" width="130" />
             </div>
             <div id="linkHeader">
-                <a class="btn" href="#"> Giới thiệu </a>
-                <a class="btn" href="{% url 'gteam:courses' %}"> Khóa học </a>
-                <a class="btn" href="#">Luyện tập</a>
+                <a class="btn" href="{% url 'home' %}"> Giới thiệu </a>
+                <a class="btn" href="{% url 'courses' %}"> Khóa học </a>
+                <a class="btn" href="{% url 'practice' %}">Luyện tập</a>
                 <a class="btn" href="#">Hỏi đáp</a>
-                <a class="btn" href="{% url 'gteam:blogs' %}">Bài viết</a>
-                <a class="btn" href="{% url 'gteam:contact' %}">Liên hệ</a>
+                <a class="btn" href="{% url 'blogs' %}">Bài viết</a>
+                <a class="btn" href="{% url 'contact' %}">Liên hệ</a>
             </div>
             <div id="sign">
-
                 {% if user.is_authenticated %}
                      <a class="btn" href=""> Xin chào {{ user.username }} </a>
                     <a class="btn" href="../../../accounts/logout"> Đăng xuất </a>
@@ -39,7 +38,6 @@
                     <a class="btn" href="../../../accounts/login"> Đăng nhập </a>
                     <a class="btn" href="../../../accounts/register"> Đăng ký </a>
                 {% endif %}!
-
             </div>
         </div>
     </header>
@@ -78,11 +76,11 @@
         <div class="footer2">
             <div class="panel-body">
                 <p class="simplenav">
-                    <a href="index.html">Trang chủ</a> |
-                    <a href="about.html">Thông tin</a> |
-                    <a href="courses.html">Khóa học</a> |
+                    <a href="{% url 'home' %}">Trang chủ</a> |
+                    <a href="#">Thông tin</a> |
+                    <a href="{% url 'courses' %}">Khóa học</a> |
                     <a href="fees.html">Fees</a> |
-                    <a href="contact.html">Liên hệ</a>
+                    <a href="{% url 'contact' %}">Liên hệ</a>
                 </p>
             </div>
             <p class="text-right">
@@ -92,8 +90,8 @@
     </footer>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
