@@ -65,7 +65,7 @@ def show_detail_course(request,title):
         raise Http404("Practice doesnot exist")
     a=Courses.objects.all()
     context= {'title':title,'question':Content,'a':a}
-    return render(request,'pages/courses1.html',context)
+    return render(request,'pages/coursesVideo.html',context)
 
 def showcourses_detail_demo(request,subject):
     a=Courses.objects.all()
