@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
-    <link rel="stylesheet" href="{% static 'css/courses.css'%}">
+    <link rel="stylesheet" href="{% static 'css/course.css'%}">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm badge-blue navbar-dark">
@@ -90,7 +90,7 @@
                 <div class="portfolio-item row">
                     {% for course in allCourses %}
                     <div class="item col-lg-3 col-md-4 mt-4">
-                        <a href="{% url '123' course.title %}" style="color: white;">
+                        <a href="{% url '123' course.title%}" style="color: white;">
                             <div class="main-hover-div" >
                                 <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
                                     <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
@@ -126,7 +126,9 @@
                         </a>
 
                     </div>
+                    
                     {% endfor %}
+                   
                 </div>
             </div>
         </div>

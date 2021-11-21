@@ -10,14 +10,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/courses.css'%}">
+    <link rel="stylesheet" href="{% static 'css/course.css'%}">
     <title>Courses</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-sm badge-blue navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
 
         <!-- Links -->
         <ul class="navbar-nav">
@@ -84,35 +84,105 @@
             </li>
         </ul>
     </nav>
-    <div style="padding: 3rem;">
-        <div style="display: flex;">
+    {{subject}}
+    {{title}}
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            {% for item in a %} {% if item.title == title %} {% video item.linkVideo '300x200' %} {% endif %} {% endfor %}
+          </div>
+          <div class="col">
             <div>
-                {% for item in a %} {% if item.title == title %} {% video item.linkVideo 'small' %} {% endif %} {% endfor %}
+                <h1 style="color: brown;font-size: 1.2rem;">
+                    {{title}}
+                </h1>
             </div>
-            <div style="padding-left: 3rem;">
-                <div>
-                    <h1 style="color: brown;font-size: 1.2rem;">
-                        {{title}}
-                    </h1>
-                </div>
-
-                {% for item in a %} {% if item.title == title %}
-                <div>
-                    {{item.author}}
-                </div>
-                <p>
-                    {{item.MieuTa}}
-                </p>
-                {% endif %} {% endfor %}
-
+            {% for item in a %} {% if item.title == title %}
+            {{item.costReal}}
+            <div>
+                {{item.author}}
             </div>
+            <p>
+                {{item.MieuTa}}
+            </p>
+             {% endif %} {% endfor %}
+          </div>
+          <div class="w-100"></div>
+          
         </div>
-    </div>
+        <hr>
+        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
+        <hr style="border-top: 2px solid #FFD700; width: 60px;">
 
+        <div class="portfolio-item row">
+            {% for course in allCourses %}
+            <div class="item col-lg-3 col-md-4 mt-4">
+                <a href="{% url '123' course.title %}" style="color: white;">
+                    <div class="main-hover-div" >
+                        <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
+                            <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
+                    
+                            <div class="user-data">
+                                <h3 class="titleCourses">{{course.title}}</h3>
+                            </div>
+                            <div>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>4.4 (5500)</span>
+                            </div>
+                             
+                        </div>
+                        <div class="hover_display">
+                            <span class="batchtxt">Next batch</span>
+                            <span class="nextbatch">
+                                <span class="value">Today</span>
+                            <span class="text">- 7th December</span>
+                            </span>
+                            <span class="learnlist">What will I learn?</span>
+                            <ul>
+                                <li>Introduction to AWS</li>
+                                <li>Security Management in AWS</li>
+                                <li>Object Storage Options</li>
+                            </ul>
+                            <span class="seemorebtn">View Details</span>
+                        </div>
+                    </div>
+                </a>
 
+            </div>
+            
+            {% endfor %}
+           
+        </div>
 
-    <footer id="footer">
-        FOOTER
+      </div>
+      
+
+      <footer id="footer">
+        <div id="contact">
+            <a href="#"><img src="{% static 'imgs/facebook.png'%}" alt="facebook-contact" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/github.png'%}" alt="github-contact" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/whatsapp.png'%}" alt="callUs" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/google-plus.png'%}" alt="mailUs" width="40" /></a>
+            <a href="#"><img src="{% static 'imgs/twitter.png'%}" alt="twiter" width="40" /></a>
+        </div>
+        <div class="footer2">
+            <div class="panel-body">
+                <p class="simplenav">
+                    <a href="{% url 'home' %}">Trang chủ</a> |
+                    <a href="#">Thông tin</a> |
+                    <a href="{% url 'courses' %}">Khóa học</a> |
+                    <a href="fees.html">Fees</a> |
+                    <a href="{% url 'contact' %}">Liên hệ</a>
+                </p>
+            </div>
+            <p class="text-right">
+                G Team &copy; 2021. Made by <a href="#" rel="develop"> ....</a>
+            </p>
+        </div>
     </footer>
 </body>
 

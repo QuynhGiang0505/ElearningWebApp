@@ -36,6 +36,8 @@ class Courses(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     MieuTa=models.TextField()
     subject = models.CharField(max_length=100)
+    cost = models.IntegerField(null=True, blank=True)
+    costReal = models.CharField(max_length=20, null=True, blank=True)
     #image = models.FileField(upload_to='images/', blank=True, null=True)
     def __str__(self):
         return self.title
@@ -54,7 +56,11 @@ class Post(models.Model):
     youtube = models.URLField(max_length=500, default='' )
     author = models.CharField(max_length=20, default="admin" )
     date = models.DateTimeField(auto_now_add=True)
+    cost = models.IntegerField()
+    
 
     def __str__(self):
        return self.title
+
+
 
