@@ -9,9 +9,6 @@ urlpatterns = [
     path('', views.PageHome),
     path('contact/', views.create_contact, name='NewContact'),
     path('blog/', views.PageBlog),
-    path('login/', views.PageLogin),
-    path('register/', views.PageRegister),
     path('Practice/',views.ShowQuestions, name='practice'),
     path('Practice/<title>',views.ShowQuestionsID, name='practiceID')
-    
 ]

@@ -7,7 +7,9 @@ from icecream import ic
 import GTEAMS_APP
 from GTEAMS_APP.models import *
 from GTEAMS_APP.form import *
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+
+
 def PageHome(request):
     return render(request, 'pages/HomePage.html',{'now':datetime.datetime.now()})
 def PageContact(request):
@@ -16,10 +18,7 @@ def PagePractice(request):
     return render(request,'pages/practice.html')
 def PageBlog(request):
     return render(request,'pages/blogs.html')
-def PageLogin(request):
-    return render(request,'pages/login.html')
-def PageRegister(request):
-    return render(request,'pages/register.html')
+@login_required(login_url='../../accounts/login')
 def create_contact(request):
     if request.method == 'GET':
         form=CreateNewContact()
