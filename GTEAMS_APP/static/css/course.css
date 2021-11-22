@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
-* {
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,12 +13,7 @@
 body{
     background-color: black;
 }
-<<<<<<< HEAD:GTEAMS_APP/static/css/courses1.css
-
-html body {
-=======
  h3{
->>>>>>> 2a8b70d09c39beea9b1c3250c57663e7ed55fa3b:GTEAMS_APP/static/css/course.css
     box-sizing: border-box;
     display: block;
     font-size: 13px;
@@ -25,38 +21,14 @@ html body {
 .titleCourses{
     font-size: 13px;
 }
-<<<<<<< HEAD:GTEAMS_APP/static/css/courses1.css
-
-
-/*hover */
-
-.main-hover-div .hover_display {
-    background: #000000;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0;
-    width: 300px;
-}
-
-.main-hover-div:hover .hover_display {
-    opacity: 1
-}
-
-=======
 .main-hover-div .hover_display{background:#000000;position:absolute;top:0;left:0;bottom:0;right:0;opacity:0; width: 300px;}
 .main-hover-div:hover .hover_display{opacity:1}
->>>>>>> 2a8b70d09c39beea9b1c3250c57663e7ed55fa3b:GTEAMS_APP/static/css/course.css
 .hover_display {
     padding: 10px;
 }
-
 .filter-starts .main-hover-div a {
     color: black;
 }
-
 .hover_display .batchtxt {
     font-size: 10px;
     font-weight: 400;
@@ -127,9 +99,6 @@ html body {
     font-weight: 600;
 }
 .navbar-dark .navbar-nav .nav-link {
-<<<<<<< HEAD:GTEAMS_APP/static/css/courses1.css
-    color: rgba(240, 65, 144, 0.578);
-=======
     color: rgb(250, 14, 112);
 } 
 #footer {
@@ -165,5 +134,4 @@ html body {
 a{
     text-decoration: none;
     color: white;
->>>>>>> 2a8b70d09c39beea9b1c3250c57663e7ed55fa3b:GTEAMS_APP/static/css/course.css
 }
