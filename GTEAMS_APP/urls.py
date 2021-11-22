@@ -11,13 +11,15 @@ from GTEAMS_APP.models import Practice
 
 
 urlpatterns = [
-    path('', views.PageHome, name='home'),
+    # path('', views.PageHome, name='home'),
+    path('', views.showCoursesMainPage, name='home'),
+    path('<str:title>', views.show_detail_MainPage, name='show_detail_MainPage'),
+
     path('contact/', views.create_contact, name='contact'),
+
     path('courses/', views.showCourses, name='courses'),
-   
     path('courses/<subject>', views.showcourses_detail_demo, name='coursesVideo'),
     path('courses/<subject>/<title>', views.showcourses_detail_demo),
-
     path('<str:title>', views.show_detail_course, name='123'),
 
     path('blog/', views.PageBlogs, name='blogs'),

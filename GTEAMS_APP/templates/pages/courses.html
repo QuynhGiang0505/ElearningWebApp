@@ -11,9 +11,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/courses1.css'%}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
+    <link rel="stylesheet" href="{% static 'css/course.css'%}">
 </head>
-
 <body>
     <nav class="navbar navbar-expand-sm badge-blue navbar-dark">
         <!-- Brand -->
@@ -84,52 +84,29 @@
             </li>
         </ul>
     </nav>
-    </div>
     <div id="container">
-        <div id="content-nav-container">
-            <i class="fas fa-home"></i>
-            <i class="fas fa-angle-right"></i> Bài viết
-        </div>
-        <div id="filter">
-            <u>Bài viết</u>
-            <div id="filter-right">
-                Sắp xếp
-                <div class="dropdown">
-                    <select name="" class="dropdown-list">
-                        <option  value="1">Mới nhất</option>
-                        <option  value="2">Hoạt động</option>
-                        <option value="3"> Lượt xem</option>
-                    </select>
-                </div>
-            </div>
-        </div>
         <div id="posts">
             <div id="posts1">
-
                 <div class="portfolio-item row">
-
                     {% for course in allCourses %}
                     <div class="item col-lg-3 col-md-4 mt-4">
-                        <a href="{% url '123' course.title %}" style="color: white;">
-                            <div class="main-hover-div">
-                                <div class="user-profile-2">
-                                    <div class="">
-                                        <img src="{% static 'imgs/Python.jpg'%}" alt="demo" style="width:255px; height:130px;">
+                        <a href="{% url '123' course.title%}" style="color: white;">
+                            <div class="main-hover-div" >
+                                <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
+                                    <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
+                            
+                                    <div class="user-data">
+                                        <h3 class="titleCourses">{{course.title}}</h3>
                                     </div>
-                                    <div class="user-main">
-                                        <div class="user-data">
-                                            <h3>{{course.title}}</h3>
-
-                                        </div>
-                                        <div class="star">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <span>4.4 (5500)</span>
-                                        </div>
+                                    <div>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <span>4.4 (5500)</span>
                                     </div>
+                                     
                                 </div>
                                 <div class="hover_display">
                                     <span class="batchtxt">Next batch</span>
@@ -149,11 +126,12 @@
                         </a>
 
                     </div>
+                    
                     {% endfor %}
+                   
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>
