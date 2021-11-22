@@ -1,28 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     background-color: #000000;
-    display: block;
     box-sizing: border-box;
 }
-html body{
+
+html body {
     box-sizing: border-box;
     display: block;
 }
+
+
 /*hover */
-.main-hover-div .hover_display{background:#000000;position:absolute;top:0;left:0;bottom:0;right:0;opacity:0; width: 300px;}
-.main-hover-div:hover .hover_display{opacity:1}
+
+.main-hover-div .hover_display {
+    background: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    width: 300px;
+}
+
+.main-hover-div:hover .hover_display {
+    opacity: 1
+}
+
 .hover_display {
     padding: 10px;
 }
+
 .filter-starts .main-hover-div a {
     color: black;
 }
+
 .hover_display .batchtxt {
     font-size: 10px;
     font-weight: 400;
