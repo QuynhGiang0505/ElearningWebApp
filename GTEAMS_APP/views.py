@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 
 def PageHome(request):
     return render(request, 'pages/HomePage.html',{'now':datetime.datetime.now()})
+def PageIntro(request):
+    return render(request,'pages/intro.html')
 def PageContact(request):
     return render(request,'pages/contact.html')
 def PagePractice(request):
