@@ -25,15 +25,25 @@
                 </div>
 
             </div>
-            <div id="content-header1-right">
-                <div id="cnt-hd1-r-search">
-                    <i class="fas fa-search"></i>
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" style="background-color: #121212;">
+                    <ul class="navbar-nav" style="background-color: #121212;">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                        </li>
+                        {% endif %}!
+                    </ul>
                 </div>
-                <div id="cnt-hd1-r-pen">
-                    <i class="fas fa-pencil-alt"></i>
-                </div>
-                <button id="cnt-hd1-r-tk">Tài khoản<i class="fas fa-angle-down"></i></button>
-            </div>
         </div>
         <div id="container-header2">
             <h1>Giới thiệu</h1>

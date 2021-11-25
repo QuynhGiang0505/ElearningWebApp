@@ -6,6 +6,6 @@ from django.conf.urls import url, handler404, handler500
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('GTEAMS/', include("GTEAMS_APP.urls")),
-    #path('accounts/',include("accounts.urls"))
+    path('accounts/',include("accounts.urls"))
 ]
 handler404 = 'GTEAMS_APP.views.error'

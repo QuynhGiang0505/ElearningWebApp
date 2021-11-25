@@ -27,7 +27,7 @@ def registerPage(request):
 
 def loginPage(request):
 	if request.user.is_authenticated:
-		return redirect('../../')
+		return redirect("../../GTEAMS")
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -37,7 +37,7 @@ def loginPage(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('../../')
+				return redirect('../../GTEAMS')
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 
@@ -46,4 +46,4 @@ def loginPage(request):
 
 def logoutUser(request):
 	logout(request)
-	return redirect('../../')
+	return redirect('../../GTEAMS')
