@@ -44,28 +44,64 @@
         <div id="Subject">
             <h2>Chủ Đề: {{title}} </h2>
         </div>
+
         {% if question %} {%for q in question%}
         <div class="block_query">
 
             <br id="questions"> {{q.question}}
             </br>
         </div>
+
         <div id="block_answer">
             <div class="radio">
-                <input id="optionA" type="radio" name="optradio" value="{{q.contentA}}"><label for="optionA">{{q.contentA}}</label>
+                <input id="optionA" type="radio" name="optradio{{q.id}}" value="{{q.contentA}}"><label for="optionA">{{q.contentA}}</label>
             </div>
             <div class="radio">
-                <input id="optionB" type="radio" name="optradio" value="{{q.contentB}}"><label for="optionB">{{q.contentB}}</label>
+                <input id="optionB" type="radio" name="optradio{{q.id}}" value="{{q.contentB}}"><label for="optionB">{{q.contentB}}</label>
             </div>
-            <div class="radio disabled">
-                <input id="optionC" type="radio" name="optradio" value="{{q.contentC}}"><label for="optionC">{{q.contentC}}</label>
+            <div class="radio">
+                <input id="optionC" type="radio" name="optradio{{q.id}}" value="{{q.contentC}}"><label for="optionC">{{q.contentC}}</label>
             </div>
-            <div class="radio disabled">
-                <input id="optionD" type="radio" name="optradio" value="{{q.contentD}}"><label for="optionD">{{q.contentD}}</label>
+            <div class="radio" id="d">
+                <input id="optionD" type="radio" name="optradio{{q.id}}" value="{{q.contentD}}"><label for="optionD">{{q.contentD}}</label>
             </div>
+            <input type="button" id="{{q.id}}" value="Hiển thị kết quả" />
+            <input type="button" id="buttonReset{{q.id}}" value="Làm lại" />
+            <script type="text/javascript">
+                document.getElementById("{{q.id}}").onclick = function() {
+                    var checkbox = document.getElementsByName("optradio{{q.id}}");
+                    for (var i = 0; i < checkbox.length; i++) {
+                        if (checkbox[i].checked) {
+                            var a = checkbox[i].parentElement;
+                            a.style.backgroundColor = "black";
+                            if (checkbox[i].value === "{{q.correctAnswer}}") {
+                                a.style.backgroundColor = "green";
+                            } else {
+                                a.style.backgroundColor = "red";
+                            }
+
+                        }
+                    }
+
+                };
+                document.getElementById("buttonReset{{q.id}}").onclick = function() {
+                    var checkbox = document.getElementsByName("optradio{{q.id}}");
+                    for (var i = 0; i < checkbox.length; i++) {
+                        if (checkbox[i].checked) {
+                            var a = checkbox[i].parentElement;
+                            a.style.backgroundColor = "black";
+
+
+                        }
+                    }
+
+                };
+            </script>
+
+
         </div>
         {% endfor %} {% endif %}
-        <div id="btnSubmit"><input type="submit" value="Submit" />
+
         </div>
 
     </main>
