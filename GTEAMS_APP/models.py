@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.base import Model
 
 class Contact(models.Model):
  
@@ -28,21 +29,35 @@ class Practice(models.Model):
 
 
 #Courses
+class typeCourse(models.Model):
+    Type=models.CharField(max_length=10)
+    def __str__(self):
+        return self.Type
+
+class subjects(models.Model):
+    subjectName = models.CharField(max_length=100)
+    def __str__(self):
+        return self.subjectName 
+
 from embed_video.fields import EmbedVideoField
 class Courses(models.Model):
     title=models.CharField(primary_key=True, max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
     author = models.CharField(max_length=50)
     linkVideo = EmbedVideoField()
     added = models.DateTimeField(auto_now_add=True)
     MieuTa=models.TextField()
-    subject = models.CharField(max_length=100)
-    cost = models.IntegerField(null=True, blank=True)
+    # subject = models.CharField(max_length=100)
+    subject = models.ForeignKey(subjects, on_delete=models.CASCADE)
+    Type=models.ForeignKey(typeCourse, on_delete=models.CASCADE)
     costReal = models.CharField(max_length=20, null=True, blank=True)
     #image = models.FileField(upload_to='images/', blank=True, null=True)
     def __str__(self):
         return self.title
     class Meta:
         ordering = ['-added']
+
+
 
 class Post(models.Model):
     title = models.CharField(max_length=500)

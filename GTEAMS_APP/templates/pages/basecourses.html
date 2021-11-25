@@ -1,4 +1,5 @@
 {% load static %} {% load embed_video_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,8 +88,11 @@
     <div style="padding: 3rem;">
         <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">{{subject}}</h2>
         <div class="portfolio-item row">
-            {% for item in a %} {% if item.subject == subject %}
-            <div class="item col-lg-3 col-md-4 mt-4">
+            {% for setSubject in allSubjects %}
+                
+                {% for item in setSubject.courses_set.all %}
+                {% if item.subject|slugify == subject|slugify %} 
+                <div class="item col-lg-3 col-md-4 mt-4">
                 <a href="{% url '123' item.title %}" style="color: white;">
                     <div class="main-hover-div">
                         <div class="user-profile-2">
@@ -112,7 +116,9 @@
                     </div>
                 </a>
             </div>
-            {% endif %} {% endfor %}
+            {% endif %}
+           {% endfor %}
+            {% endfor %}
         </div>
     </div>
 </body>

@@ -10,8 +10,6 @@ from GTEAMS_APP.form import *
 from django.contrib.auth.decorators import login_required
 
 
-def PageHome(request):
-    return render(request, 'pages/HomePage.html',{'now':datetime.datetime.now()})
 def PageContact(request):
     return render(request,'pages/contact.html')
 def PagePractice(request):
@@ -27,6 +25,23 @@ def PageRegister(request):
     return render(request,'pages/register.html')
 def PageCourses(request):
     return render(request,'pages/courses.html')
+
+# HOME
+def showCoursesMainPage(request):
+    allCourses=Courses.objects.all()
+    latest_post = Courses.objects.order_by('-date')[:4]
+    return render(request,'pages/HomePage.html',{'allCourses': allCourses})
+
+def show_detail_MainPage(request,title):
+    try:
+        Content=Courses.objects.filter(title=title)
+    except Courses.DoesNotExist:
+        raise Http404("Practice doesnot exist")
+    a=Courses.objects.all()
+    context= {'title':title,'question':Content,'a':a}
+    return render(request,'pages/coursesVideo.html',context)
+#-------------------------------------------------------------------------
+
 
 def create_contact(request):
     if request.method == 'GET':
@@ -53,10 +68,12 @@ def error(request, exception):
     return render(request,'pages/error.html')
 
    #ham dua qua html
-
+# COURSES
 def showCourses(request):
-    allCourses=Courses.objects.all()
-    return render(request,'pages/courses.html',{'allCourses': allCourses})
+    allCourses=Courses.objects.all().order_by("-date")
+    allSubjects=subjects.objects.all()
+    context = {'allCourses':allCourses, 'allSubjects':allSubjects}
+    return render(request,'pages/courses.html',context)
 
 def show_detail_course(request,title):
     try:
@@ -64,33 +81,22 @@ def show_detail_course(request,title):
     except Courses.DoesNotExist:
         raise Http404("Practice doesnot exist")
     a=Courses.objects.all()
-    
-    context= {'title':title,'question':Content,'a':a, 'subject':subject}
+    context= {'title':title,'question':Content,'a':a}
     return render(request,'pages/coursesVideo.html',context)
 
 def showcourses_detail_demo(request,subject):
-    a=Courses.objects.all()
-    context= {'subject':subject,'a':a}
+    allCourses=Courses.objects.all().order_by("-date")
+    allSubjects=subjects.objects.all()
+    context= {'subject':subject,'allCourses':allCourses, 'allSubjects':allSubjects}
+    
     return render(request,'pages/basecourses.html',context)
 
-def home(request):
-    allposts = Post.objects.all()
-    totalposts = Post.objects.all().order_by('-date')[:8]
+#------------------------------------------------------------------------------
+# def home(request):
+#     allposts = Post.objects.all()
+#     totalposts = Post.objects.all().order_by('-date')[:8]
+#     context = {'allposts':allposts, 'totalposts':totalposts}
+#     return render(request, 'pages/HomePage.html', context)
 
-    #top_three_catg = .objects.filter(top_three_cat=True)[:3]
-    context = {'allposts':allposts, 'totalposts':totalposts}
-    return render(request, 'pages/HomePage.html', context)
 
-def showCoursesMainPage(request):
-    allCourses=Courses.objects.all()
-    return render(request,'pages/HomePage.html',{'allCourses': allCourses})
-
-def show_detail_MainPage(request,title):
-    try:
-        Content=Courses.objects.filter(title=title)
-    except Courses.DoesNotExist:
-        raise Http404("Practice doesnot exist")
-    a=Courses.objects.all()
-    context= {'title':title,'question':Content,'a':a}
-    return render(request,'pages/coursesVideo.html',context)
 
