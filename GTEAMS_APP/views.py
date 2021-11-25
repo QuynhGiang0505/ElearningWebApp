@@ -15,7 +15,8 @@ def PagePractice(request):
     return render(request,'pages/practice.html')
 def PageBlogs(request):
     return render(request,'pages/blogs.html')
-
+def PageIntro(request):
+    return render(request,'pages/intro.html')
 @login_required(login_url='../../accounts/login')
 
 def PageLogin(request):
