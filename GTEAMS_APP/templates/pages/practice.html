@@ -51,7 +51,7 @@
                 {% if question %}
                 <ul id="questionUL" style='list-style-position: inside;'>
                     <span></span> {% for q in question %}
-                    <li><a href="{% url 'practiceID' q.title %}">>{{q.title_Content}}</a></li>
+                    <li><a href="{% url 'practiceID' q.title %}">{{q.title_Content}}</a></li>
 
                 </ul>
                 {% endfor %} {% endif %}

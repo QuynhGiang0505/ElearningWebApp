@@ -9,7 +9,6 @@ from GTEAMS_APP.models import *
 from GTEAMS_APP.form import *
 from django.contrib.auth.decorators import login_required
 
-
 def PageContact(request):
     return render(request,'pages/contact.html')
 def PagePractice(request):
