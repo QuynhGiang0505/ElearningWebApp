@@ -15,80 +15,85 @@
     <link rel="stylesheet" href="{% static 'css/course.css'%}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm badge-blue navbar-dark">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">Logo</a>
-
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  HTML and CSS
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  Python
-                </a> {% for i in allCourses %}
-
-                <div class="dropdown-menu">
-
-                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
-                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
-                    <a class="dropdown-item" href="#">Bài tập luyện tập</a>
-                </div>
-                {% endfor %}
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  SQL
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  C C++
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  Java
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <div id="container">
+    <header>
+        <nav class="navbar navbar-expand-sm badge-blue navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+    
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      HTML and CSS
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li>
+    
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Python
+                    </a> {% for i in allCourses %}
+    
+                    <div class="dropdown-menu">
+    
+                        <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
+                        <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
+                        <a class="dropdown-item" href="#">Bài tập luyện tập</a>
+                    </div>
+                    {% endfor %}
+                </li>
+    
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      SQL
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li>
+    
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      C C++
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Java
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
         <div id="posts">
             <div id="posts1">
+            {% for subject in allSubjects %}
+            <h2 style="color: #FFD700; font-size: 15px;">{{subject.subjectName}}</h2>
                 <div class="portfolio-item row">
-                    {% for course in allCourses %}
+                    {% for course in subject.courses_set.all %}
                     <div class="item col-lg-3 col-md-4 mt-4">
                         <a href="{% url '123' course.title%}" style="color: white;">
                             <div class="main-hover-div" >
@@ -106,9 +111,8 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <span>4.4 (5500)</span>
                                     </div>
-                                     
                                 </div>
-                                <div class="hover_display">
+                                <!-- <div class="hover_display">
                                     <span class="batchtxt">Next batch</span>
                                     <span class="nextbatch">
                                         <span class="value">Today</span>
@@ -121,17 +125,60 @@
                                         <li>Object Storage Options</li>
                                     </ul>
                                     <span class="seemorebtn">View Details</span>
-                                </div>
+                                </div> -->
                             </div>
                         </a>
 
                     </div>
-                    
+                   
                     {% endfor %}
                    
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+          <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+          
+          <div class="row text-center">
+            <div class="col-md-4 box">
+              <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+              </span>
+            </div>
+            <div class="col-md-4 box">
+              <ul class="list-inline social-buttons">
+                <li class="list-inline-item">
+                  <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4 box">
+              <ul class="list-inline quick-links">
+                <li class="list-inline-item">
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Terms of Use</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
 </body>
 </html>

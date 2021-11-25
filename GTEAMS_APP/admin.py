@@ -12,4 +12,6 @@ admin.site.register(Practice_title)
 admin.site.register(Contact)
 
 admin.site.register(Courses)
+admin.site.register(subjects)
+admin.site.register(typeCourse)
 admin.site.register(Post)
