@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,14 +65,14 @@
                     </div>
                 </div>
             </div>
-            <div class="social-media">
-                <a href="#" class="social-icon">
+             <div class="social-media">
+                    <a href="{% provider_login_url 'github' %}" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                      <a href="{% url "social:begin" "facebook" %}" class="social-icon">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="social-icon">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="social-icon">
+                    <a href="{% provider_login_url 'google' %}" class="social-icon">
                     <i class="fab fa-google"></i>
                 </a>
                 <a href="#" class="social-icon">
