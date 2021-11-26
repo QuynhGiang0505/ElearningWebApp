@@ -51,7 +51,7 @@ class Courses(models.Model):
     subject = models.ForeignKey(subjects, on_delete=models.CASCADE)
     Type=models.ForeignKey(typeCourse, on_delete=models.CASCADE)
     costReal = models.CharField(max_length=20, null=True, blank=True)
-    #image = models.FileField(upload_to='images/', blank=True, null=True)
+    image = models.FileField(upload_to='images/', blank=True, null=True)
     def __str__(self):
         return self.title
     class Meta:

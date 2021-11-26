@@ -77,6 +77,7 @@ def showCourses(request):
     context = {'allCourses':allCourses, 'allSubjects':allSubjects}
     return render(request,'pages/courses.html',context)
 
+# hiện thị video cho user
 def show_detail_course(request,title):
     try:
         Content=Courses.objects.filter(title=title)
@@ -86,12 +87,18 @@ def show_detail_course(request,title):
     context= {'title':title,'question':Content,'a':a}
     return render(request,'pages/coursesVideo.html',context)
 
+# trang hiện thi video cho từng khóa học
 def showcourses_detail_demo(request,subject):
     allCourses=Courses.objects.all().order_by("-date")
     allSubjects=subjects.objects.all()
     context= {'subject':subject,'allCourses':allCourses, 'allSubjects':allSubjects}
-    
     return render(request,'pages/basecourses.html',context)
+#trang mua 
+def seeCourse(request,title):
+    a=Courses.objects.all()
+    context= {'title':title,'a':a}
+    return render(request,'pages/seeCourse.html',context)
+
 
 #------------------------------------------------------------------------------
 # def home(request):

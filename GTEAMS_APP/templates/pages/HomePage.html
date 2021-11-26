@@ -61,7 +61,7 @@
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
+                <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
