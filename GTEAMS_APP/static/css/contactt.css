@@ -74,41 +74,93 @@ body {
 }
 
 #container-header2 {
-    display: block;
+    display: flex;
     position: relative;
     top: 0.67rem;
     height: 50px;
-    text-align: center;
     justify-content: space-between;
 }
 
+#container-header2 #content {
+    display: block;
+}
 
-/*``````````````````````````````````````````````*/
+
+
+ #container-header2 {
+    text-align: center;
+    display: block;
+}
 
 #main-container {
     background: black;
+    height: 42rem;
     padding-top: 20px;
-    padding-bottom: 20px;
     padding-left: 100px;
     padding-right: 100px;
     display: block;
-    position: relative;
 }
 
-.block_query {
-    display: flex;
-    background-color: #313131;
-    margin: 20px;
-    height: 120px;
+#content {
+    padding-top: 30px;
+    line-height: 1.5;
 }
 
+.block {
+    background-color: #292929;
+    float: left;
+    width: 45%;
+    height: 400px;
+    padding: 30px;
+    margin: 1.5%;
+    border: 1px dashed;
+}
 
-/*``````````````````````````````````````````````*/
+.block_title {
+    color: rgb(250, 14, 112);
+    text-align: center;
+}
+
+#contactForm label {
+    display: block;
+}
+
+#contactForm input {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.block_content {
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: white;
+}
 
 #footer {
     display: block;
     background-color: #333333;
-    top: 10px;
+    top: 500px;
     width: 100%;
     height: 130px;
 }
@@ -123,8 +175,11 @@ body {
 }
 
 .footer2 {
+    padding: 15px;
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
+    position: absolute;
     width: 100%;
     height: 80px;
     background-color: #121212;
@@ -141,22 +196,4 @@ body {
 a {
     text-decoration: none;
     color: white;
-}
-
-.radio label {
-    padding: 5px;
-    padding-left: 10px;
-}
-
-#block_answer {
-    margin: 20px;
-}
-
-#btnSubmit {
-    text-align: center;
-}
-
-#btnSubmit input {
-    height: 40px;
-    width: 160px;
-}
+} 

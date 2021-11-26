@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -8,14 +8,8 @@
     box-sizing: border-box;
     font-size: 13px;
     background-color: #121212;
-}
-
-#header {
-    margin: 0;
-    padding: 0;
-    height: 80px;
-}
-
+} */
+/* 
 #divMainmenu {
     padding-left: 2%;
     display: flex;
@@ -42,9 +36,6 @@
     display: flex;
     justify-content: right;
 }
-
-
-
 
 #footer {
     display: block;
@@ -161,4 +152,8 @@ a{
     color: #ae1f1f;
     font-size: 12px;
     font-weight: 600;
-}
+} */
+
+
+
+/*=====================*/
