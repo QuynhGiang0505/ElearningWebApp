@@ -61,9 +61,10 @@
                 {% if form.errors %} {% for field in form %} {% for error in field.errors %} {{ error|escape }} {% endfor %} {% endfor %} {% for error in form.non_field_errors %} {{ error|escape }} {% endfor %} {% endif %}
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links">
-
+                        Bạn đã có tài khoản? <a href="../login" class="ml-2">Đăng nhập </a>
                     </div>
                 </div>
+                <br>
             </div>
              <div class="social-media">
                     <a href="{% provider_login_url 'github' %}" class="social-icon">
@@ -110,5 +111,4 @@
     </script>
     {% endif %}
 </body>
-
 </html>
