@@ -1,0 +1,191 @@
+{% load static %}
+{% load embed_video_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
+    <link rel="stylesheet" href="{% static 'css/cours.css'%}">
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+          <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav" style="background-color: black">
+              <!-- Links -->
+          <ul class="navbar-nav">
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    HTML and CSS
+                  </a>
+                  <div class="dropdown-menu" >
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Python
+                  </a> {% for i in allCourses %}
+  
+                  <div class="dropdown-menu">
+  
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
+                      <a class="dropdown-item" href="#">Bài tập luyện tập</a>
+                  </div>
+                  {% endfor %}
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    SQL
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    C C++
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Java
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+          </ul>
+              <ul class="navbar-nav ml-auto" style="background-color: #121212;">
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                  </li>
+                  {% endif %}
+              </ul>
+              
+          </div>
+      </nav>
+      </header>
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm" style="text-align: center;">
+            <img src="../../static/upload/"/>
+          </div>
+          <div class="col-sm">
+            <div>
+                <h1 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">
+                    {{title}}
+                </h1>
+            </div>
+            {% for item in a %} {% if item.title == title %}
+            {{item.costReal}}
+            <div>
+                {{item.author}}
+            </div>
+            <p>
+                {{item.MieuTa}}
+            </p>
+             {% endif %} {% endfor %}
+          </div>
+          <div class="w-100"></div>
+          
+        </div>
+        
+        <hr>
+
+
+        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
+        <hr style="border-top: 2px solid #FFD700; width: 60px;">
+
+        
+
+      </div>
+
+      <footer>
+        <div class="container">
+          <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+          
+          <div class="row text-center">
+            <div class="col-md-4 box">
+              <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+              </span>
+            </div>
+            <div class="col-md-4 box">
+              <ul class="list-inline social-buttons">
+                <li class="list-inline-item">
+                  <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4 box">
+              <ul class="list-inline quick-links">
+                <li class="list-inline-item">
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Terms of Use</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+</body>
+</html>
