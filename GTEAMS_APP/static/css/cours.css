@@ -135,3 +135,11 @@ a{
     text-decoration: none;
     color: white;
 }
+/*NAV*/
+.dropdown-menu{
+    background-color: black;
+    color: white !important;
+}
+.dropdown-item{
+    color: white !important;
+}

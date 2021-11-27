@@ -9,15 +9,17 @@ from GTEAMS_APP.models import *
 from GTEAMS_APP.form import *
 from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='../../accounts/login')
 def PageContact(request):
     return render(request,'pages/contact.html')
+    
 def PagePractice(request):
     return render(request,'pages/practice.html')
 def PageBlogs(request):
     return render(request,'pages/blogs.html')
 def PageIntro(request):
     return render(request,'pages/intro.html')
-@login_required(login_url='../../accounts/login')
+
 
 def PageLogin(request):
     return render(request,'pages/login.html')
@@ -134,6 +136,7 @@ def showCourses(request):
     context = {'allCourses':allCourses, 'allSubjects':allSubjects}
     return render(request,'pages/courses.html',context)
 
+# hiện thị video cho user
 def show_detail_course(request,title):
     try:
         Content=Courses.objects.filter(title=title)
@@ -143,12 +146,18 @@ def show_detail_course(request,title):
     context= {'title':title,'question':Content,'a':a}
     return render(request,'pages/coursesVideo.html',context)
 
+# trang hiện thi video cho từng khóa học
 def showcourses_detail_demo(request,subject):
     allCourses=Courses.objects.all().order_by("-date")
     allSubjects=subjects.objects.all()
     context= {'subject':subject,'allCourses':allCourses, 'allSubjects':allSubjects}
-    
     return render(request,'pages/basecourses.html',context)
+#trang mua 
+def seeCourse(request,title):
+    a=Courses.objects.all()
+    context= {'title':title,'a':a}
+    return render(request,'pages/seeCourse.html',context)
+
 
 #------------------------------------------------------------------------------
 # def home(request):
