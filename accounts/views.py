@@ -20,6 +20,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 
 def registerPage(request):
 	if request.user.is_authenticated:
@@ -28,6 +29,17 @@ def registerPage(request):
 		form = CreateUserForm()
 		if request.method == 'POST':
 			form = CreateUserForm(request.POST)
+			# mail=request.POST.get('email')
+			# if User.objects.filter(email=mail).exists():
+			# 	# messages.add_message(request, messages.INFO, 'Email is already exists!')
+			# 	# messages.warning(request,'Email is already exists!')
+			# 	return render(
+			# 		request, 
+			# 		'accounts/register.html', 
+			# 		{
+			# 			'form':form
+			# 		}
+        	# 	)
 			if form.is_valid():
 				# save form in the memory not in database  
 				user = form.save(commit=False)  
