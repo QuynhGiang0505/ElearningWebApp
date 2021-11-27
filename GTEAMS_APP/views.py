@@ -1,9 +1,9 @@
 from django.db.models.query import QuerySet
-from django.http.response import Http404, HttpResponseRedirect
+from django.http.response import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 import datetime
-from django.http import HttpResponse
-
+from django.http import HttpResponse, JsonResponse
+from django.views.generic import ListView
 import GTEAMS_APP
 from GTEAMS_APP.models import *
 from GTEAMS_APP.form import *
@@ -41,7 +41,7 @@ def show_detail_MainPage(request,title):
     context= {'title':title,'question':Content,'a':a}
     return render(request,'pages/coursesVideo.html',context)
 #-------------------------------------------------------------------------
-
+# CONTACT
 
 def create_contact(request):
     if request.method == 'GET':
@@ -51,19 +51,78 @@ def create_contact(request):
         if form.is_valid():
             form.save()
     return render(request,'pages/contact.html',{'form':form})
-def ShowQuestions(request):
-    Question=Practice_title.objects.all()
+#--------------------------------------------------------------------------
+# PRACTICE
+
+def ShowListQuiz(request):
+    Question=Quiz.objects.all()
     context = {'question': Question}
     return render(request,'pages/practice.html',context)
+def ShowQuiz(request,topic):
+    Question=Quiz.objects.get(topic=topic)
+    context = {'question': Question}
+    return render(request,'pages/practiceQuiz.html',context)
+def ShowQuizID(request,topic):
+    quiz=Quiz.objects.get(topic=topic)
+    questions=[]
+    for q in quiz.get_questions():
+        answers=[]
+        for a in q.get_answers():
+            answers.append(a.text)
+        questions.append({str(q): answers})
+    return JsonResponse({
+        'data':questions,
+        'time':quiz.time,
+    })
+def save_quiz_view(request, topic):
+    if (request.is_ajax()):
+        questions = []
+        data = request.POST
+        data_ = dict(data.lists())
 
-def ShowQuestionsID(request,title):
-    try:
-        Content=Practice.objects.filter(title=title)
-    except Practice.DoesNotExist:
-        raise Http404("Practice doesnot exist")
-    
-    context= {'title':title,'question':Content}
-    return render(request,'pages/practice2.html',context)
+        data_.pop('csrfmiddlewaretoken')
+
+        for k in data_.keys():
+            print('key: ', k)
+            question = Question.objects.get(text=k)
+            questions.append(question)
+        print(questions)
+
+        user = request.user
+        quiz = Quiz.objects.get(topic=topic)
+
+        score = 0
+        multiplier = 100 / quiz.numberOfQuestions
+        results = []
+        correct_answer = None
+
+        for q in questions:
+            a_selected = request.POST.get(q.text)
+            if a_selected != "":
+                question_answers = Answer.objects.filter(question=q)
+                for a in question_answers:
+                    if a_selected == a.text:
+                        if a.correct:
+                            score += 1
+                            correct_answer = a.text
+                    else:
+                        if a.correct:
+                            correct_answer = a.text
+
+                results.append({str(q): {'correct_answer': correct_answer, 'answered': a_selected}})
+            else:
+                results.append({str(q): 'not answered'})
+            
+        score_ = score * multiplier
+        Result.objects.create(quiz=quiz, user=user, score=score_)
+
+        if score_ >= quiz.requiredScoreToPass:
+            return JsonResponse({'passed': True, 'score': score_, 'results': results})
+        else:
+            return JsonResponse({'passed': False, 'score': score_, 'results': results})
+
+ 
+#---------------------------------------------------------------------------------------------------------------
 def error(request, exception):
     return render(request,'pages/error.html')
 
