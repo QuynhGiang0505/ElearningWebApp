@@ -201,4 +201,11 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id,name'
 }
 
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_USER = 'gteamwebapp@gmail.com'  
+EMAIL_HOST_PASSWORD = '123456@@'  
+EMAIL_PORT = 587  
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
