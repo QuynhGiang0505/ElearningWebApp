@@ -1,6 +1,7 @@
+import django
 from django.db import models
 from django.db.models.base import Model
-
+from django.contrib.auth.models import User
 class Contact(models.Model):
  
     name = models.CharField(max_length=200)
@@ -10,23 +11,43 @@ class Contact(models.Model):
     content=models.CharField(max_length=1000)
     def __str__(self):
         return self.title
-class Practice_title(models.Model):
-    title=models.CharField(primary_key=True,max_length=50)
-    title_Content=models.CharField(max_length=200)
-    def __str__(self):
-        return self.title
-class Practice(models.Model):   
-    title=models.ForeignKey(Practice_title,on_delete=models.CASCADE)
-    question=models.CharField(max_length=200)
-    contentA=models.CharField(max_length=500)
-    contentB=models.CharField(max_length=500)
-    contentC=models.CharField(max_length=500)
-    contentD=models.CharField(max_length=500)
-    correctAnswer=models.CharField(max_length=500,null=True)
-    c=models.ManyToManyField
-    def __str__(self):
-            return self.question
 
+
+class Quiz(models.Model):
+    name=models.CharField(max_length=50)
+    topic=models.CharField(max_length=200)
+    numberOfQuestions=models.IntegerField()
+    time=models.IntegerField(help_text="thời gian làm bài tính bằng phút")
+    requiredScoreToPass=models.IntegerField(help_text="điểm số cần để hoàn thành bài kiểm tra")
+    def __str__(self):
+        return f"{self.name}-{self.topic}"
+    def get_questions(seft):
+        return seft.question_set.all()
+    class Meta:
+        verbose_name_plural='Quizes'
+    
+class Question(models.Model):   
+    quiz=models.ForeignKey(Quiz,on_delete=models.CASCADE,)
+    text=models.CharField(max_length=200)
+    created=models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.text)
+    def get_answers(seft):
+        return seft.answer_set.all()
+class Answer(models.Model):
+    text=models.CharField(max_length=200)
+    correct=models.BooleanField(default=False)
+    question=models.ForeignKey(Question,on_delete=models.CASCADE,)
+    created=models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"question: {self.question}, answer:{self.text},correct:{self.correct}"
+class Result(models.Model):
+    quiz=models.ForeignKey(Quiz, on_delete=models.CASCADE)        
+    """ user la foreinkey cuar class user """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    score=models.FloatField()
+    def __str__(self):
+        return str(self.pk)
 
 #Courses
 class typeCourse(models.Model):
