@@ -41,7 +41,7 @@ class subjects(models.Model):
 
 from embed_video.fields import EmbedVideoField
 class Courses(models.Model):
-    title=models.CharField(primary_key=True, max_length=100)
+    title=models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     author = models.CharField(max_length=50)
     linkVideo = EmbedVideoField()
@@ -55,8 +55,10 @@ class Courses(models.Model):
     def __str__(self):
         return self.title
     class Meta:
-        ordering = ['-added']
+        ordering = ['-added'] 
 
+
+    
 
 
 class Post(models.Model):

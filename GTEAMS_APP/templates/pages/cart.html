@@ -1,19 +1,18 @@
+
 {% load static %}
-{% load embed_video_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
     <link rel="stylesheet" href="{% static 'css/cours.css'%}">
-
-    <title>Document</title>
+    <title>Giỏ hàng của bạn</title>
 </head>
 <body>
     <header>
@@ -112,102 +111,51 @@
           </div>
       </nav>
     </header>
-
-      
-      <div class="container">
-        <div class="row" style="padding: 50px 0 50px 0;">
-          <div class="col-sm" style="text-align: center;">
-            <img src="{% static 'imgs/python.png'%}" width="450px"/>
-          </div>
-          <div class="col-sm" >
-            {% for item in a %} {% if item.title == title %}
-            <!-- thông tin: free? style? date? -->
-            <div>
-              <i class="fas fa-crown" style="color: #FFD700;"></i>
-              <span style="color: #FFD700; font-size: 1rem;">{{item.Type}}</span><i class="fas fa-circle" style="color: #FFD700; font-size: 3px; margin: 5px;"></i>
-              <span style="color: #b3b3b3; font-size: 0.9rem;">{{item.subject}}</span><i class="fas fa-circle" style="color: #b3b3b3; font-size: 3px; margin: 5px;"></i>
-              <span style="color: #b3b3b3; font-size: 0.9rem;">{{item.date|date:"d-m-Y"}}</span><i class="fas fa-circle" style="color: #b3b3b3; font-size: 3px; margin: 5px;"></i>
-            </div>
-            <div>
-                <h1 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">
-                    {{title}}
-                </h1>
-            </div>
-            {% ifequal item.Type|slugify 'Free'|slugify %}
-            
-            <a href="{% url '123' item.title %}">
-              <button type="button" class="btn btn-outline-warning" >Học ngay</button>
-            </a>
-            
-            {% else %}
-            <button type="button" class="btn btn-outline-warning" onclick="addCart('{{item.id}}')">Thêm vào giỏ hàng</button>
-            {% endifequal %}
-            
-             {% endif %} {% endfor %}
-          </div>
-          <div class="w-100"></div>
-        </div>
+    
+    <div class="container" style="text-align: center;">
         
-        <hr>
-
-
-        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
-        <hr style="border-top: 2px solid #FFD700; width: 60px;">
-        {% for item in a %} {% if item.title == title %}
-        
-          {% for subject in allSubjects %}
-          <div class="portfolio-item row">
-            {% ifequal subject|slugify item.subject|slugify %}
-              {% for course in subject.courses_set.all %}
-              
-              {% if forloop.counter <= 8 %}
-              
-              <div class="item col-lg-3 col-md-4 mt-4">
-                <a href="{% url 'seeCourse' course.title%}" style="color: white;">
-                    <div class="main-hover-div">
-                        <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
-                            <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
-                    
-                            <div class="user-data">
-                                <h3 class="titleCourses">{{course.title}}</h3>
-                            </div>
-                            <div>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span>4.4 (5500)</span>
-                            </div>
-                        </div>
-                        <!-- <div class="hover_display">
-                            <span class="batchtxt">Next batch</span>
-                            <span class="nextbatch">
-                                <span class="value">Today</span>
-                            <span class="text">- 7th December</span>
-                            </span>
-                            <span class="learnlist">What will I learn?</span>
-                            <ul>
-                                <li>Introduction to AWS</li>
-                                <li>Security Management in AWS</li>
-                                <li>Object Storage Options</li>
-                            </ul>
-                            <span class="seemorebtn">View Details</span>
-                        </div> -->
-                    </div>
-                </a>
-            </div>
-              {% endif %}
-            
-              {% endfor %}
-            {% endifequal %}
-          </div>
-          {% endfor %}
-        {% endif %} {% endfor %}
-
-      </div>
-
-      <footer>
+        <table class="table table-striped table-dark" id="table">
+            <thead>
+              <tr class="titlerow">
+                <th scope="col">STT</th>
+                <th scope="col">Loại</th>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Xóa</th>
+              </tr>
+            </thead>
+            {% for key,value in request.session.cart.items  %}
+            <tbody>
+              <tr>
+                <th scope="row">{{key}}</th>
+                <td>{{value.subject}}</td>
+                <td><img src="../../media/{{value.image}}" alt="" width="60px"></td>
+                <td>{{value.name}}</td>
+                <td>{{value.num}}</td>
+                <td class="colPrice">{{value.price}}</td>
+                <td><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></td>
+            </tr>
+            </tbody>
+            {% endfor %}
+            <tr class="titlerow">
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">Tổng: </th>
+                <th scope="col" id="sum"></th>
+                <th scope="col"></th>
+              </tr>
+          </table>
+          <a href="{% url 'detailCart' %}">
+            <button type="button" class="btn btn-outline-warning" >Đặt hàng</button>
+          </a>
+          
+    </div>
+    
+    <footer>
         <div class="container">
           <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
           
@@ -248,19 +196,18 @@
           </div>
         </div>
       </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
       <script>
-        $(document).ready(function(){
+         $(document).ready(function(){
+        var $dataRows=$("#table tr:not('.titlerow')");
+        var col1Total = 0;
 
+        $dataRows.each(function() {
+            var colPrice = $(this).find('.colPrice'); 
+            col1Total += parseInt(colPrice.html());
         });
-        function addCart(id){
-          num=1;
-          $.post('/GTEAMS/courses/addCart/', {'id':id,'num':num , 'csrfmiddlewaretoken':'{{csrf_token}}'}, function(data)
-          {
-            alert("Ban vua mua san pham")
-          });
-        }
-      </script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
-      
-    </body>
+        document.getElementById("sum").innerHTML=col1Total;
+    });
+    </script>
+</body>
 </html>

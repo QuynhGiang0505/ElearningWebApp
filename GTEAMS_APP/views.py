@@ -96,10 +96,43 @@ def showcourses_detail_demo(request,subject):
 #trang mua 
 def seeCourse(request,title):
     a=Courses.objects.all()
-    context= {'title':title,'a':a}
+    allSubjects=subjects.objects.all()
+    context= {'title':title,'a':a, 'allSubjects':allSubjects}
     return render(request,'pages/seeCourse.html',context)
 
+cart ={}
+def addCart(request):
+    if request.is_ajax():
+        id=request.POST.get('id')
+        num=request.POST.get('num')
+        coDetail = Courses.objects.get(id=id)
+        if id in cart.keys():
+            itemCart={
+                'name':coDetail.title,
+                'price':int(coDetail.costReal),
+                'image':str(coDetail.image),
+                'num': int(cart[id]['num']) +1,
+            }
+        else:
+            itemCart={
+                'name':coDetail.title,
+                'price':int(coDetail.costReal),
+                'image':str(coDetail.image), 
+                'num': num,
+            }
+        cart[id]=itemCart
+        request.session['cart']=cart
+        cartInfo=request.session['cart']
+        context= {'cart':cartInfo}
+        return render(request,'pages/addCart.html', context)
+    else:
+        return render(request,'pages/addCart.html')
 
+def cartShopping(request):
+    return render(request,'pages/cart.html')
+
+def detailCart(request):
+    return render(request,'pages/detailCart.html')
 #------------------------------------------------------------------------------
 # def home(request):
 #     allposts = Post.objects.all()
