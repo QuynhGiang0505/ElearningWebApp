@@ -52,11 +52,12 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Hỏi đáp</a>
+                        <a class="nav-link" href="{% url 'quizs' %}">Hỏi đáp</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
+                    
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -79,7 +80,7 @@
                     </li>
                     {% endif %}
                 </ul>
-
+                
             </div>
         </nav>
     </header>

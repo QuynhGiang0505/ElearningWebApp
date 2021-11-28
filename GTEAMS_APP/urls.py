@@ -28,6 +28,8 @@ urlpatterns = [
 
     path('blog/', views.blogHome, name='blogs'),
     path('blog/<str:slug>', views.blogPost, name='blogspost'),
+    path('quiz/', views.quizHome, name='quizs'),
+    path('quiz/<str:slug>', views.quizPost, name='quizspost'),
     path('login/', views.PageLogin,name='login'),
     path('register/', views.PageRegister,name='register'),
     path('practice/',views.ShowQuestions, name='practice'),

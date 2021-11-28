@@ -12,3 +12,5 @@ class CreateNewContact(forms.ModelForm):
             'content'
         )
 
+
+

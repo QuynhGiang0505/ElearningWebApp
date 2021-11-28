@@ -51,11 +51,12 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Hỏi đáp</a>
+                        <a class="nav-link" href="{% url 'quizs' %}">Hỏi đáp</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
+                    
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -78,14 +79,14 @@
                     </li>
                     {% endif %}
                 </ul>
-
+                
             </div>
         </nav>
     </header>
 
     <div class="container my-3">
-        <h2>Hỏi đáp</h2>
-        <p>Chia sẻ kiến thức, cùng nhau phát triển</p>
+        <h2>Bài viết</h2>
+        <p>Kho tài liệu và bài viết được chia sẻ, đánh giá bởi cộng đồng</p>
         {% for post in allPosts %}
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
             <div class="col p-4 d-flex flex-column position-static">

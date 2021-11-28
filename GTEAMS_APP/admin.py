@@ -1,5 +1,6 @@
 from django.contrib import admin
 from GTEAMS_APP.models import *
+from  django.contrib.admin.widgets import AdminTextareaWidget
 # Register your models here.
 
 class ContactAdmin(admin.ModelAdmin):
@@ -15,4 +16,6 @@ admin.site.register(Courses)
 admin.site.register(subjects)
 admin.site.register(typeCourse)
 admin.site.register(Post)
-admin.site.register(article)
+admin.site.register(article_quiz)
+admin.site.register(article_blog)
+
