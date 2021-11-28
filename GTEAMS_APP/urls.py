@@ -26,7 +26,8 @@ urlpatterns = [
     path('courses/cart/', views.cartShopping, name="shopping"),
     path('courses/detailCart/', views.detailCart, name="detailCart"),
 
-    path('blog/', views.PageBlogs, name='blogs'),
+    path('blog/', views.blogHome, name='blogs'),
+    path('blog/<str:slug>', views.blogPost, name='blogspost'),
     path('login/', views.PageLogin,name='login'),
     path('register/', views.PageRegister,name='register'),
     path('practice/',views.ShowQuestions, name='practice'),

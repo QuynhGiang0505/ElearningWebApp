@@ -141,4 +141,15 @@ def detailCart(request):
 #     return render(request, 'pages/HomePage.html', context)
 
 
+def blogHome(request): 
+    allPosts= article.objects.all()
+    context={'allPosts': allPosts}
+    return render(request, 'pages/blogHome.html', context)
+
+def blogPost(request, slug): 
+    post=article.objects.filter(slug=slug).first()
+    context={"post":post}
+    return render(request, "pages/blogPost.html", context)
+
+
 
