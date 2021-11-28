@@ -200,4 +200,25 @@ def detailCart(request):
 #     return render(request, 'pages/HomePage.html', context)
 
 
+def blogHome(request): 
+    allPosts= article_blog.objects.all()
+    context={'allPosts': allPosts}
+    return render(request, 'pages/blogHome.html', context)
+
+def blogPost(request, slug): 
+    post=article_blog.objects.filter(slug=slug).first()
+    context={"post":post}
+    return render(request, "pages/blogPost.html", context)
+
+def quizHome(request): 
+    allPosts= article_quiz.objects.all()
+    context={'allPosts': allPosts}
+    return render(request, 'pages/quizsHome.html', context)
+
+def quizPost(request, slug): 
+    post=article_quiz.objects.filter(slug=slug).first()
+    context={"post":post}
+    return render(request, "pages/quizsPost.html", context)
+
+
 
