@@ -56,7 +56,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -79,37 +79,46 @@
                     </li>
                     {% endif %}
                 </ul>
-                
+
             </div>
         </nav>
     </header>
 
     <div class="container my-3">
-        <h2>Hỏi đáp</h2>
-        <p>Chia sẻ kiến thức, cùng nhau phát triển</p>
+        <h2>Bài viết</h2>
+        <p>Kho tài liệu và bài viết được chia sẻ, đánh giá bởi cộng đồng</p>
         <div id="content-nav-container" style=" margin-bottom: 30px;">
             <i class="fas fa-home"></i>
             <i class="fas fa-angle-right"></i> Bài viết
         </div>
-        <form method="get" action="{% url 'searchquiz' %}" class="form-inline my-2 my-lg-0 mx-3">
+        <form method="get" action="{% url 'searchblog' %}" class="form-inline my-2 my-lg-0 mx-3">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
             <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
         </form>
+        {% if allPosts|length < 1 %}
+        <aside class="col-md-5 blog-sidebar" style="margin:10px;">
+            Truy vấn tìm kiếm của bạn:  <b>{{query}}</b> không khớp với bất kỳ tài liệu nào. <br> Gợi ý:
+            <ul>
+                <li>Kiểm tra chính tả.</li>
+                <li>Thử những từ khóa thông thường hơn.</li>
+                <li>Hãy thử ít từ khóa hơn.</li>
+                <li>Hãy thử các từ khóa khác nhau.</li>
+                </li>
+            </ul>
+        </aside>
+        {% endif %} 
         {% for post in allPosts %}
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}}</strong>
-                <h3 class="mb-0">{{post.title}}</h3>
-                <div class="mb-1 text-muted">{{post.datetime}}</div>
-                <p class="card-text mb-auto">{{post.content|safe| truncatechars:500}}</p>
-                <div class="my-2">
-                    <a href="{% url 'quizspost' post.slug %}" role="button" class="btn btn-danger">Continue reading</a>
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}}</strong>
+                    <h3 class="mb-0">{{post.title}}</h3>
+                    <div class="mb-1 text-muted">{{post.datetime}}</div>
+                    <p class="card-text mb-auto">{{post.content|safe| truncatechars:500}}</p>
+                    <div class="my-2">
+                        <a href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Continue reading</a>
+                    </div>
                 </div>
-
             </div>
-            
-        </div>
-
         {% endfor %}
     </div>
 

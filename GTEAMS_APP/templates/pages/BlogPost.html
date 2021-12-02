@@ -57,7 +57,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -80,20 +80,41 @@
                     </li>
                     {% endif %}
                 </ul>
-                
+
             </div>
         </nav>
     </header>
 
-    <div class="container my-3">
-        <div class="blog-post">
-            <h2 class="blog-post-title text-warning">{{post.title}}</h2>
-            <p class="blog-post-meta text-danger">{{post.timeStamp}} by <a href="#">{{post.author}}</a></p>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-8 blog-main">
+                <div class="blog-post">
+                    <h2 class="blog-post-title text-warning">{{post.title}}</h2>
+                    <p class="blog-post-meta text-danger">{{post.timeStamp}} by <a href="#">{{post.author}}</a></p>
 
-            <p>{{post.content}}</p>
-            <hr>
+                    <p>{{post.content}}</p>
+                    <hr>
+                </div>
+            </div>
+            <aside class="col-md-4 blog-sidebar">
+                <div class="col p-4 d-flex flex-column position-static" class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+                    <h4 class="font-italic">About</h4>
+                    <p class="mb-0">My Awesome Cart <em>started tarted out as a small project and is now</em> the fastest growing e-commerce stores of all times in india and abroad.out as a small project and is now</em> the fastest growing e-commerce stores of all times
+                        in india and abroad." "*200</p>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-italic">Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>
+            </aside>
+            <!-- /.blog-sidebar -->
         </div>
     </div>
+
 
     <footer>
         <div class="container">
