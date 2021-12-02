@@ -102,8 +102,8 @@ class article_blog(models.Model):
     def __str__(self):
         return self.title + " by " + self.author
 
-# cart ---------------------------------------------------------------------------------
 
+# cart ---------------------------------------------------------------------------------
 class Cart(models.Model):
     title=models.ForeignKey(Courses, on_delete=models.CASCADE)        
     user = models.ForeignKey(User, on_delete=models.CASCADE)

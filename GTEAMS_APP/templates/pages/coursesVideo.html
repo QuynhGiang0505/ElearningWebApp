@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
-    <link rel="stylesheet" href="{% static 'css/course.css'%}">
+    <link rel="stylesheet" href="{% static 'css/cours.css'%}">
     <title>{{title}}</title>
 </head>
 
@@ -116,7 +116,57 @@
 
         <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
         <hr style="border-top: 2px solid #FFD700; width: 60px;">
-
+        {% for item in a %} {% if item.title == title %}
+        
+          {% for subject in allSubjects %}
+          <div class="portfolio-item row">
+            {% ifequal subject|slugify item.subject|slugify %}
+              {% for course in subject.courses_set.all %}
+              
+              {% if forloop.counter <= 8 %}
+              
+              <div class="item col-lg-3 col-md-4 mt-4">
+                <a href="{% url 'seeCourse' course.title%}" style="color: white;">
+                    <div class="main-hover-div">
+                        <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
+                            <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
+                    
+                            <div class="user-data">
+                                <h3 class="titleCourses">{{course.title}}</h3>
+                            </div>
+                            <div>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>4.4 (5500)</span>
+                            </div>
+                        </div>
+                        <!-- <div class="hover_display">
+                            <span class="batchtxt">Next batch</span>
+                            <span class="nextbatch">
+                                <span class="value">Today</span>
+                            <span class="text">- 7th December</span>
+                            </span>
+                            <span class="learnlist">What will I learn?</span>
+                            <ul>
+                                <li>Introduction to AWS</li>
+                                <li>Security Management in AWS</li>
+                                <li>Object Storage Options</li>
+                            </ul>
+                            <span class="seemorebtn">View Details</span>
+                        </div> -->
+                    </div>
+                </a>
+            </div>
+              {% endif %}
+            
+              {% endfor %}
+            {% endifequal %}
+          </div>
+          {% endfor %}
+        {% endif %} {% endfor %}
         
 
       </div>
