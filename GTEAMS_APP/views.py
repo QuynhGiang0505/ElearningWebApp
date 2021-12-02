@@ -165,6 +165,7 @@ def addCart(request):
         id=request.POST.get('id')
         num=request.POST.get('num')
         coDetail = Courses.objects.get(id=id)
+        user=request.user
         if id in cart.keys():
             itemCart={
                 'name':coDetail.title,
@@ -183,6 +184,8 @@ def addCart(request):
         request.session['cart']=cart
         cartInfo=request.session['cart']
         context= {'cart':cartInfo}
+        Cart.objects.create(title=coDetail, user=user, paid=False)
+        
         return render(request,'pages/addCart.html', context)
     else:
         return render(request,'pages/addCart.html')

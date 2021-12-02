@@ -1,8 +1,8 @@
-
-{% load static %}
+ {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,129 +14,131 @@
     <link rel="stylesheet" href="{% static 'css/cours.css'%}">
     <title>Giỏ hàng của bạn</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
-          <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav" style="background-color: black">
-              <!-- Links -->
-          <ul class="navbar-nav">
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color: black">
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     HTML and CSS
                   </a>
-                  <div class="dropdown-menu" >
-                      <a class="dropdown-item" href="#">Link 1</a>
-                      <a class="dropdown-item" href="#">Link 2</a>
-                      <a class="dropdown-item" href="#">Link 3</a>
-                  </div>
-              </li>
-  
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Python
                   </a> {% for i in allCourses %}
-  
-                  <div class="dropdown-menu">
-  
-                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
-                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
-                      <a class="dropdown-item" href="#">Bài tập luyện tập</a>
-                  </div>
-                  {% endfor %}
-              </li>
-  
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+
+                        <div class="dropdown-menu">
+
+                            <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
+                            <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
+                            <a class="dropdown-item" href="#">Bài tập luyện tập</a>
+                        </div>
+                        {% endfor %}
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     SQL
                   </a>
-                  <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Link 1</a>
-                      <a class="dropdown-item" href="#">Link 2</a>
-                      <a class="dropdown-item" href="#">Link 3</a>
-                  </div>
-              </li>
-  
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     C C++
                   </a>
-                  <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Link 1</a>
-                      <a class="dropdown-item" href="#">Link 2</a>
-                      <a class="dropdown-item" href="#">Link 3</a>
-                  </div>
-              </li>
-              <!-- Dropdown -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Java
                   </a>
-                  <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Link 1</a>
-                      <a class="dropdown-item" href="#">Link 2</a>
-                      <a class="dropdown-item" href="#">Link 3</a>
-                  </div>
-              </li>
-          </ul>
-              <ul class="navbar-nav ml-auto" style="background-color: #121212;">
-                  
-                  {% if user.is_authenticated %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart"></i>Giỏ hàng của bạn</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
-                  </li>
-                  {% else %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
-                  </li>
-                  {% endif %}
-              </ul>
-              
-          </div>
-      </nav>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto" style="background-color: #121212;">
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart"></i>Giỏ hàng của bạn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </nav>
     </header>
-    
+
     <div class="container" style="text-align: center;">
-        
+
         <table class="table table-striped table-dark" id="table">
             <thead>
-              <tr class="titlerow">
-                <th scope="col">STT</th>
-                <th scope="col">Loại</th>
-                <th scope="col">Ảnh</th>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Số lượng</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Xóa</th>
-              </tr>
+                <tr class="titlerow">
+                    <th scope="col">STT</th>
+                    <th scope="col">Loại</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Xóa</th>
+
+                </tr>
             </thead>
-            {% for key,value in request.session.cart.items  %}
+            {% for key,value in request.session.cart.items %}
             <tbody>
-              <tr>
-                <th scope="row">{{key}}</th>
-                <td>{{value.subject}}</td>
-                <td><img src="../../media/{{value.image}}" alt="" width="60px"></td>
-                <td>{{value.name}}</td>
-                <td>{{value.num}}</td>
-                <td class="colPrice">{{value.price}}</td>
-                <td><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></td>
-            </tr>
+                <tr>
+                    <th scope="row">{{key}}</th>
+                    <td>{{value.subject}}</td>
+                    <td><img src="../../media/{{value.image}}" alt="" width="60px"></td>
+                    <td>{{value.name}}</td>
+                    <td>{{value.num}}</td>
+                    <td class="colPrice">{{value.price}}</td>
+                    <td><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></td>
+                </tr>
             </tbody>
             {% endfor %}
             <tr class="titlerow">
@@ -147,67 +149,67 @@
                 <th scope="col">Tổng: </th>
                 <th scope="col" id="sum"></th>
                 <th scope="col"></th>
-              </tr>
-          </table>
-          <a href="{% url 'detailCart' %}">
-            <button type="button" class="btn btn-outline-warning" >Đặt hàng</button>
-          </a>
-          
+            </tr>
+        </table>
+        <a href="{% url 'detailCart' %}">
+            <button type="button" class="btn btn-outline-warning">Đặt hàng</button>
+        </a>
     </div>
-    
+
     <footer>
         <div class="container">
-          <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
-          
-          <div class="row text-center">
-            <div class="col-md-4 box">
-              <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
-              </span>
-            </div>
-            <div class="col-md-4 box">
-              <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4 box">
-              <ul class="list-inline quick-links">
-                <li class="list-inline-item">
-                  <a href="#">Privacy Policy</a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">Terms of Use</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
-      <script>
-         $(document).ready(function(){
-        var $dataRows=$("#table tr:not('.titlerow')");
-        var col1Total = 0;
+            <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
 
-        $dataRows.each(function() {
-            var colPrice = $(this).find('.colPrice'); 
-            col1Total += parseInt(colPrice.html());
+            <div class="row text-center">
+                <div class="col-md-4 box">
+                    <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+              </span>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline quick-links">
+                        <li class="list-inline-item">
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            var $dataRows = $("#table tr:not('.titlerow')");
+            var col1Total = 0;
+
+            $dataRows.each(function() {
+                var colPrice = $(this).find('.colPrice');
+                col1Total += parseInt(colPrice.html());
+            });
+            document.getElementById("sum").innerHTML = col1Total;
         });
-        document.getElementById("sum").innerHTML=col1Total;
-    });
     </script>
 </body>
+
 </html>

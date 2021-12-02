@@ -2,6 +2,7 @@ import django
 from django.db import models
 from django.db.models.base import Model
 from django.contrib.auth.models import User
+# Contact ----------------------------------------------------------------------------------
 class Contact(models.Model):
  
     name = models.CharField(max_length=200)
@@ -11,7 +12,7 @@ class Contact(models.Model):
     content=models.CharField(max_length=1000)
     def __str__(self):
         return self.title
-
+# Practice ---------------------------------------------------------------------------------
 
 class Quiz(models.Model):
     name=models.CharField(max_length=50)
@@ -37,19 +38,18 @@ class Question(models.Model):
 class Answer(models.Model):
     text=models.CharField(max_length=200)
     correct=models.BooleanField(default=False)
-    question=models.ForeignKey(Question,on_delete=models.CASCADE,)
+    question=models.ForeignKey(Question,on_delete=models.CASCADE)
     created=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"question: {self.question}, answer:{self.text},correct:{self.correct}"
 class Result(models.Model):
-    quiz=models.ForeignKey(Quiz, on_delete=models.CASCADE)        
-    """ user la foreinkey cuar class user """
+    quiz=models.ForeignKey(Quiz, on_delete=models.CASCADE)  
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     score=models.FloatField()
     def __str__(self):
         return str(self.pk)
+# Courses ---------------------------------------------------------------------------------
 
-#Courses
 class typeCourse(models.Model):
     Type=models.CharField(max_length=10)
     def __str__(self):
@@ -80,26 +80,6 @@ class Courses(models.Model):
 
 
     
-
-
-class Post(models.Model):
-    title = models.CharField(max_length=500)
-    meta_tags = models.CharField(max_length=2000, blank=True)
-    meta_desc = models.TextField(max_length=2000, blank=True)
-
-    #image = models.ImageField(upload_to='media/post')
-    image_alt_name = models.CharField(max_length=200, blank=True)
-    #desc = RichTextField(blank=True, null=True)
-
-    youtube = models.URLField(max_length=500, default='' )
-    author = models.CharField(max_length=20, default="admin" )
-    date = models.DateTimeField(auto_now_add=True)
-    cost = models.IntegerField()
-    
-
-    def __str__(self):
-       return self.title
-
 class article_quiz(models.Model):
     sno=models.AutoField(primary_key=True)
     title=models.CharField(max_length=255)
@@ -122,16 +102,12 @@ class article_blog(models.Model):
     def __str__(self):
         return self.title + " by " + self.author
 
-#-------------------------------------------------------------
-class cartUser(models.Model):
-    username=models.ForeignKey(subjects, on_delete=models.CASCADE)
-    masp=models.IntegerField(default=0)
-    subject=models.CharField(max_length=100)
-    name=models.CharField(max_length=100)
-    costReal = models.CharField(max_length=20, null=True, blank=True)
+
+# cart ---------------------------------------------------------------------------------
+class Cart(models.Model):
+    title=models.ForeignKey(Courses, on_delete=models.CASCADE)        
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    paid=models.BooleanField(default=False)
     def __str__(self):
-        return self.username
-    
-
-
+        return str(self.title) 
 
