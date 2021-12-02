@@ -22,7 +22,7 @@
     <!-- header -->
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
-            <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" style="background-color: #121212;">
                     <ul class="navbar-nav" style="background-color: #121212;">
                         {% if user.is_authenticated %}

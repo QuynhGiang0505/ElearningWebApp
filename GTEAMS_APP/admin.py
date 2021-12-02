@@ -23,4 +23,5 @@ admin.site.register(typeCourse)
 admin.site.register(Post)
 admin.site.register(article_quiz)
 admin.site.register(article_blog)
+admin.site.register(cartUser)
 
