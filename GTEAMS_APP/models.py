@@ -122,6 +122,16 @@ class article_blog(models.Model):
     def __str__(self):
         return self.title + " by " + self.author
 
+#-------------------------------------------------------------
+class cartUser(models.Model):
+    username=models.ForeignKey(subjects, on_delete=models.CASCADE)
+    masp=models.IntegerField(default=0)
+    subject=models.CharField(max_length=100)
+    name=models.CharField(max_length=100)
+    costReal = models.CharField(max_length=20, null=True, blank=True)
+    def __str__(self):
+        return self.username
+    
 
 
 
