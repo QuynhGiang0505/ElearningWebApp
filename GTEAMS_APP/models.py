@@ -61,6 +61,7 @@ class subjects(models.Model):
         return self.subjectName 
 
 from embed_video.fields import EmbedVideoField
+
 class Courses(models.Model):
     title=models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
@@ -75,8 +76,11 @@ class Courses(models.Model):
     image = models.FileField(upload_to='images/', blank=True, null=True)
     def __str__(self):
         return self.title
+    def get_cart(seft):
+        return seft.cart_set.all()
     class Meta:
         ordering = ['-added'] 
+    
 
 
     

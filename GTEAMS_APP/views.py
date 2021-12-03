@@ -191,7 +191,10 @@ def addCart(request):
         return render(request,'pages/addCart.html')
 
 def cartShopping(request):
-    return render(request,'pages/cart.html')
+    user=request.user
+    cart2=Cart.objects.filter(user=user)
+    context= {'cart':cart2}
+    return render(request,'pages/cart.html',context)
 
 def detailCart(request):
     return render(request,'pages/detailCart.html')
