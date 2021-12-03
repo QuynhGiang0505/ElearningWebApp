@@ -56,7 +56,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -79,7 +79,7 @@
                     </li>
                     {% endif %}
                 </ul>
-                
+
             </div>
         </nav>
     </header>
@@ -95,8 +95,20 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
             <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
         </form>
+        {% if allPosts|length < 1 %}
+        <aside class="col-md-5 blog-sidebar" style="margin:10px;">
+            Truy vấn tìm kiếm của bạn:  <b>{{query}}</b> không khớp với bất kỳ tài liệu nào. <br> Gợi ý:
+            <ul>
+                <li>Kiểm tra chính tả.</li>
+                <li>Thử những từ khóa thông thường hơn.</li>
+                <li>Hãy thử ít từ khóa hơn.</li>
+                <li>Hãy thử các từ khóa khác nhau.</li>
+                </li>
+            </ul>
+        </aside>
+        {% endif %} 
         {% for post in allPosts %}
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+       
             <div class="col p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}}</strong>
                 <h3 class="mb-0">{{post.title}}</h3>
@@ -105,11 +117,8 @@
                 <div class="my-2">
                     <a href="{% url 'quizspost' post.slug %}" role="button" class="btn btn-danger">Continue reading</a>
                 </div>
-
             </div>
-            
-        </div>
-
+    
         {% endfor %}
     </div>
 

@@ -56,7 +56,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -79,7 +79,7 @@
                     </li>
                     {% endif %}
                 </ul>
-                
+
             </div>
         </nav>
     </header>
@@ -87,6 +87,14 @@
     <div class="container my-3">
         <h2>Bài viết</h2>
         <p>Kho tài liệu và bài viết được chia sẻ, đánh giá bởi cộng đồng</p>
+        <div id="content-nav-container" style=" margin-bottom: 30px;">
+            <i class="fas fa-home"></i>
+            <i class="fas fa-angle-right"></i> Bài viết
+        </div>
+        <form method="get" action="{% url 'searchblog' %}" class="form-inline my-2 my-lg-0 mx-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
+            <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
+        </form>
         {% for post in allPosts %}
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
@@ -99,7 +107,7 @@
                 </div>
 
             </div>
-            
+
         </div>
 
         {% endfor %}

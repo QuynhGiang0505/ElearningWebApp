@@ -226,5 +226,16 @@ def quizPost(request, slug):
     context={"post":post}
     return render(request, "pages/quizsPost.html", context)
 
+def search_blog(request):
+    query=request.GET['query']
+    allPosts= article_blog.objects.filter(title__icontains=query)
+    params={'allPosts': allPosts, 'query': query}
+    return render(request, 'pages/searchblog.html', params)
+
+def search_quiz(request):
+    query=request.GET['query']
+    allPosts= article_quiz.objects.filter(title__icontains=query)
+    params={'allPosts': allPosts, 'query': query}
+    return render(request, 'pages/searchquiz.html', params)
 
 

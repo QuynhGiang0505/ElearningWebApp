@@ -93,7 +93,7 @@
             <h2 class="blog-post-title text-warning">{{post.title}}</h2>
             <p class="blog-post-meta text-danger">{{post.timeStamp}} by <a href="#">{{post.author}}</a></p>
 
-            <p>{{post.content}}</p>
+            <p>{{post.content|safe}}</p>
             <hr>
         </div>
     </div>
