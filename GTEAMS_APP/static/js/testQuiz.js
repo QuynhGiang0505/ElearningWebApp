@@ -5,7 +5,8 @@ const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
 const timerBox = document.getElementById('timer-box')
 const header = document.getElementById('col1')
-
+var a = false
+console.log(a)
 const activateTimer = (time) => {
     if (time.toString().length < 2) {
         timerBox.innerHTML = `<b>0${time}:00</b>`
@@ -34,11 +35,16 @@ const activateTimer = (time) => {
         } else {
             displaySeconds = seconds
         }
+        if (a == true) {
+            setTimeout(() => {
+                clearInterval(timer)
+            }, 500)
+        }
         if (minutes === 0 && seconds === 0) {
             timerBox.innerHTML = "<b>00:00</b>"
             setTimeout(() => {
                 clearInterval(timer)
-                alert('Time over')
+                alert('Đã hết thời gian, bài làm của bạn sẽ được tự động nộp')
                 sendData()
             }, 500)
         }
@@ -104,7 +110,7 @@ const sendData = () => {
         success: function(response) {
             const results = response.results
             quizForm.classList.add('not-visible')
-            scoreBox.innerHTML = `${response.passed} ? 'Congratulations! ' : 'Ups..:( '}Your result is ${response.score}%`
+            scoreBox.innerHTML = `Điểm số của bạn là: ${response.score}%`
 
             results.forEach(res => {
                 const resDiv = document.createElement("div")
@@ -142,6 +148,11 @@ const sendData = () => {
 
 quizForm.addEventListener('submit', e => {
     e.preventDefault()
-
+    a = true
+    console.log(a)
     sendData()
+})
+quizForm.addEventListener('reset', e => {
+    e.preventDefault()
+    window.location.href = url
 })
