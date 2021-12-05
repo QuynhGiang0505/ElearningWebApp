@@ -161,11 +161,16 @@
                         </div>
                     </div>
                     <!-- END MODAL-->
-                    
-                    <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
-                        class="btn btn-primary">
+                    {% if user.is_authenticated == False %}
+                        <div class="alert alert-dark" role="alert" style="background-color: #121212; color: #b3b3b3; border: none;">
+                            Bạn cần phải đăng nhập để sử dụng được tính năng này.
+                        </div>
+                    {% else %}
+                        <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
+                            class="btn btn-primary">
                                 Thêm vào giỏ hàng
-                    </button>
+                        </button>
+                    {% endif %}
                 </div>
 
                 {% endifequal %} {% endif %} {% endfor %}
