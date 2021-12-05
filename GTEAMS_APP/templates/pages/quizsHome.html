@@ -98,7 +98,27 @@
         {% for post in allPosts %}
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}}</strong>
+            <div class="info">
+                    <span class="info-detail"></span>
+
+                    <img class="user" src="{% static 'imgs/user.png'%}">
+                    <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}} </strong>
+                    <br>
+                    <p class="blog-post-meta text-danger">{{post.timeStamp}}</p>
+                    <span class="info-detail">
+                        <i class="fas fa-caret-up"></i>0
+                        </span>
+                    <span class="info-detail">
+                    <i class="fas fa-caret-down"></i>0
+                </span>
+                    <span class="info-detail">
+                    <i class="fas fa-comment"></i>0
+                </span>
+                    <span class="info-detail">
+                    <i class="fas fa-eye"></i>0
+                </span>
+                </div>
+                <br>
                 <h3 class="mb-0">{{post.title}}</h3>
                 <div class="mb-1 text-muted">{{post.datetime}}</div>
                 <p class="card-text mb-auto">{{post.content|safe| truncatechars:500}}</p>
