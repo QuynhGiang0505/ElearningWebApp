@@ -20,7 +20,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
-            <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -126,26 +126,40 @@
                     <th scope="col">Tên sản phẩm</th>
                     <th scope="col">Số lượng</th>
                     <th scope="col">Giá</th>
+                    <th scope="col">Trạng thái</th>
                     <th scope="col">Xóa</th>
 
                 </tr>
-            </thead>
-            {% for roww in cart %}
-
+            </thead> 
+            {% comment %} {% for course in subject.courses_set.all %} {% endcomment %}
+            {% for course in allCourses %}
+            {% for roww in course.cart_set.all %}
+            {% ifequal roww.user|slugify user.username|slugify %} 
             <tbody class="tbody1">
                 <tr>
-
-                    <th scope="row">stt</th>
-                    <td></td>
-                    <td><img src="ảnh" alt="" width="60px"></td>
+                    <th scope="row">{{roww.id}}</th>
+                    <td>{{course.subject}}</td>
+                    <td><img src="../../media/{{courses.image}}" alt="" width="60px"></td>
                     <td>{{roww.title}}</td>
-                    <td>số lượng</td>
-                    <td class="colPrice"></td>
-                    <td><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></td>
+                    <td>{{roww.num}}</td>
+                    <td class="colPrice">{{course.costReal}}</td>
+                    <td class="colPrice">
+                        {% if roww.paid == False %}
+                        Chưa thanh toán
+                        {% else %}
+                        Đã thanh toán
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'del' roww.id %}"><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></a>
+                    </td>
 
                 </tr>
             </tbody>
+            {% endifequal %}
             {% endfor %}
+            {% endfor %}
+            
             <!-- {% for key,value in request.session.cart.items %}
             <tbody>
                 <tr>

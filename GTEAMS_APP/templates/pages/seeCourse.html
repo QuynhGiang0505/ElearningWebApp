@@ -20,7 +20,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
-            <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -161,10 +161,11 @@
                         </div>
                     </div>
                     <!-- END MODAL-->
+                    
                     <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
                         class="btn btn-primary">
                                 Thêm vào giỏ hàng
-                            </button>
+                    </button>
                 </div>
 
                 {% endifequal %} {% endif %} {% endfor %}
@@ -199,20 +200,6 @@
                                 <span>4.4 (5500)</span>
                             </div>
                         </div>
-                        <div class="hover_display">
-                            <span class="batchtxt">Next batch</span>
-                            <span class="nextbatch">
-                                <span class="value">Today</span>
-                            <span class="text">- 7th December</span>
-                            </span>
-                            <span class="learnlist">What will I learn?</span>
-                            <ul>
-                                <li>Introduction to AWS</li>
-                                <li>Security Management in AWS</li>
-                                <li>Object Storage Options</li>
-                            </ul>
-                            <span class="seemorebtn">View Details</span>
-                        </div> 
                     </div>
                 </a>
         </div>

@@ -8,102 +8,130 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/course.css'%}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
+    <link rel="stylesheet" href="{% static 'css/cours.css'%}">
     <title>BaseCoursessss</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm badge-blue navbar-dark">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">Logo</a>
-
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              HTML and CSS
-            </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Python
-            </a> {% for i in allCourses %}
-
-                <div class="dropdown-menu">
-
-                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
-                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
-                    <a class="dropdown-item" href="#">Bài tập luyện tập</a>
-                </div>
-                {% endfor %}
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              SQL
-            </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              C C++
-            </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Java
-            </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <div style="padding: 3rem;">
-        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">{{subject}}</h2>
-        <div class="portfolio-item row">
-            {% for setSubject in allSubjects %}
-                
-                {% for item in setSubject.courses_set.all %}
-                {% if item.subject|slugify == subject|slugify %} 
-                <div class="item col-lg-3 col-md-4 mt-4">
-                <a href="{% url '123' item.title %}" style="color: white;">
-                    <div class="main-hover-div">
-                        <div class="user-profile-2">
-                            <div class="">
-                                <img src="{% static 'imgs/Python.jpg'%}" alt="demo" style="width:255px; height:130px;">
-                            </div>
-                            <div class="user-main">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav" style="background-color: black">
+              <!-- Links -->
+          <ul class="navbar-nav">
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    HTML and CSS
+                  </a>
+                  <div class="dropdown-menu" >
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Python
+                  </a> {% for i in allCourses %}
+  
+                  <div class="dropdown-menu">
+  
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
+                      <a class="dropdown-item" href="#">Bài tập luyện tập</a>
+                  </div>
+                  {% endfor %}
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    SQL
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    C C++
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Java
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                  </div>
+              </li>
+          </ul>
+              <ul class="navbar-nav ml-auto" style="background-color: #121212;">
+                 <li class="nav-item">
+                      <a class="nav-link" href="{% url 'buy'%}"><i class="fas fa-shopping-cart"></i>Giỏ hàng của bạn</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                  </li>
+                  {% endif %}
+  
+                  
+              </ul>
+              
+          </div>
+      </nav>
+      </header>
+   
+    <div class="container">
+        <div style="padding: 3rem;">
+            <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">{{subject}}</h2>
+            <div class="portfolio-item row">
+                {% for setSubject in allSubjects %}
+                    {% for item in setSubject.courses_set.all %}
+                    {% if item.subject|slugify == subject|slugify %} 
+                    <div class="item col-lg-3 col-md-4 mt-4">
+                        <a href="{% url 'seeCourse' item.title%}" style="color: white;">
+                        <div class="main-hover-div">
+                            <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
+                                <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
+                        
                                 <div class="user-data">
-                                    <h3>{{item.title}}</h3>
+                                    <h3 class="titleCourses">{{item.title}}</h3>
                                 </div>
-                                <div class="star">
+                                <div>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -113,14 +141,55 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                {% endif %}
+               {% endfor %}
+                {% endfor %}
             </div>
-            {% endif %}
-           {% endfor %}
-            {% endfor %}
         </div>
     </div>
+    <footer>
+        <div class="container">
+            <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+
+            <div class="row text-center">
+                <div class="col-md-4 box">
+                    <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+              </span>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline quick-links">
+                        <li class="list-inline-item">
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
