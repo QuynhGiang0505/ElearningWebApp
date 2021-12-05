@@ -96,7 +96,7 @@
                         <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart"></i>Giỏ hàng của bạn</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
@@ -161,9 +161,9 @@
                         </div>
                     </div>
                     <!-- END MODAL-->
-                    
-                    <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
-                        class="btn btn-primary">
+
+                    <button style="color:yellow;" type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal"
+                        data-bs-target="#addCartModal" class="btn btn-primary">
                                 Thêm vào giỏ hàng
                     </button>
                 </div>
@@ -179,10 +179,8 @@
         <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
         <hr style="border-top: 2px solid #FFD700; width: 60px;"> {% for item in a %} {% if item.title == title %} {% for subject in allSubjects %}
         <div class="portfolio-item row">
-            {% ifequal subject|slugify item.subject|slugify %} 
-              {% for course in subject.courses_set.all %} 
-                {% if forloop.counter <= 8 %}
-                <div class="item col-lg-3 col-md-4 mt-4">
+            {% ifequal subject|slugify item.subject|slugify %} {% for course in subject.courses_set.all %} {% if forloop.counter
+            <=8 %} <div class="item col-lg-3 col-md-4 mt-4">
                 <a href="{% url 'seeCourse' course.title%}" style="color: white;">
                     <div class="main-hover-div">
                         <div class="user-profile-2" style=" width: 255px; margin: 15px;">
@@ -261,8 +259,7 @@
                 'id': id,
                 'num': num,
                 'csrfmiddlewaretoken': '{{csrf_token}}'
-            }, function(data) {
-            });
+            }, function(data) {});
         }
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>

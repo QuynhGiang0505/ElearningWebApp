@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,13 @@
     <link rel="stylesheet" href="{% static 'css/blogStyle.css'%}">
     <title>Blogs</title>
 </head>
+
 <body>
     <header id="header">
         <div id="header1">
             <div id="content-header1-left">
-                <div >
-                    <a href="#"  >
+                <div>
+                    <a href="#">
                         <img src="{% static 'images/rm37.png'%}" id="logo" alt="logo">
                     </a>
                 </div>
@@ -25,25 +27,25 @@
                 </div>
 
             </div>
-                            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" style="background-color: #121212;">
-                    <ul class="navbar-nav" style="background-color: #121212;">
-                        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" style="background-color: #121212;">
+                <ul class="navbar-nav" style="background-color: #121212;">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
         <div id="container-header2">
             <div id="content">
@@ -56,20 +58,19 @@
     <div id="container">
         <div id="content-nav-container">
             <i class="fas fa-home"></i>
-            <i class="fas fa-angle-right"></i>
-            Bài viết
+            <i class="fas fa-angle-right"></i> Bài viết
         </div>
         <div id="filter">
             <u>Bài viết</u>
             <div id="filter-right">
-                 Sắp xếp
+                Sắp xếp
                 <div class="dropdown">
-                <select name="" class="dropdown-list">
+                    <select name="" class="dropdown-list">
                     <option  value="1">Mới nhất</option>
                     <option  value="2">Hoạt động</option>
                     <option value="3"> Lượt xem</option>
                 </select>
-            </div>
+                </div>
             </div>
         </div>
         <div id="posts">
@@ -85,7 +86,7 @@
                             <span>Thanh Ngan</span>
                             <p class="title">DEMO</p>
                             <p class="text-intro">
-                               Bản demo code trang BÀI VIẾT
+                                Bản demo code trang BÀI VIẾT
                             </p>
                             <div class="info">
                                 <span class="info-detail">
@@ -120,4 +121,5 @@
     </footer>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>

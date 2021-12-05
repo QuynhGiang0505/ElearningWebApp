@@ -91,7 +91,7 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                    <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
@@ -140,20 +140,6 @@
                                         <span>4.4 (5500)</span>
                                     </div>
                                 </div>
-                                <!-- <div class="hover_display">
-                                    <span class="batchtxt">Next batch</span>
-                                    <span class="nextbatch">
-                                        <span class="value">Today</span>
-                                    <span class="text">- 7th December</span>
-                                    </span>
-                                    <span class="learnlist">What will I learn?</span>
-                                    <ul>
-                                        <li>Introduction to AWS</li>
-                                        <li>Security Management in AWS</li>
-                                        <li>Object Storage Options</li>
-                                    </ul>
-                                    <span class="seemorebtn">View Details</span>
-                                </div> -->
                             </div>
                         </a>
                     </div>
