@@ -23,118 +23,118 @@
     <header id="header">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
             <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" style="background-color: #121212;">
-                    <ul class="navbar-nav" style="background-color: #121212;">
-                        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" style="background-color: #121212;">
+                <ul class="navbar-nav" style="background-color: #121212;">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
             </div>
         </nav>
     </header>
 
     <!-- <main class="container"> -->
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Gửi thông tin liên hệ - góp ý</h2>
-                    <div class=block_content>
-                        <form action="" id="contactForm" method="post">
-                            <label for="Name">{% csrf_token %} {{ form.as_p}}</label>
-                            <input type="submit" class="form-control"value="Gửi" style="background-color:rgba(57, 57, 57, 0.503); color: rgb(247, 60, 138);">
-                        </form>
-                        {% if form.is_valid %}
-                        <script>
-                            alert("Thank you for contacting us ")
-                        </script>
-                        {% endif %} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
-                        <div class="alert alert-danger">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                        {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                        {% endfor %} {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Gửi thông tin liên hệ - góp ý</h2>
+                <div class=block_content>
+                    <form action="" id="contactForm" method="post">
+                        <label for="Name">{% csrf_token %} {{ form.as_p}}</label>
+                        <input type="submit" class="form-control" value="Gửi" style="background-color:rgba(57, 57, 57, 0.503); color: rgb(247, 60, 138);">
+                    </form>
+                    {% if form.is_valid %}
+                    <script>
+                        alert("Thank you for contacting us ")
+                    </script>
+                    {% endif %} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
                     </div>
+                    {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %} {% endif %}
                 </div>
-                <div class="col">
-                    <div class=block_title>
-                        <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Thông tin liên hệ GTEAMS</h2>
-                    </div>
-                    <div style="text-align: center;">
-                        <span>Mọi thông tin đóng góp ý kiến hoặc hỗ trợ có thể liên hệ trực tiếp qua các kênh sau</span>
-                        <ul id="ul_content">
-                            <li>
-                                <label for="phone"><i class="fas fa-phone" style="font-size: 25px;"></i></label><br>
-                                <p>+84 326565659 (VN)</p>
-                            </li>
-                            <li>
-                                <label for="github"><i class="fab fa-github" style="font-size: 25px;"></i></label><br>
-                                <a href="#">Github</a>
-                            </li>
-                            <i class="far fa-envelope" style="font-size: 25px;"></i>
-                            <p>mailll</p>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col">
+                <div class=block_title>
+                    <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Thông tin liên hệ GTEAMS</h2>
+                </div>
+                <div style="text-align: center;">
+                    <span>Mọi thông tin đóng góp ý kiến hoặc hỗ trợ có thể liên hệ trực tiếp qua các kênh sau</span>
+                    <ul id="ul_content">
+                        <li>
+                            <label for="phone"><i class="fas fa-phone" style="font-size: 25px;"></i></label><br>
+                            <p>+84 326565659 (VN)</p>
+                        </li>
+                        <li>
+                            <label for="github"><i class="fab fa-github" style="font-size: 25px;"></i></label><br>
+                            <a href="#">Github</a>
+                        </li>
+                        <i class="far fa-envelope" style="font-size: 25px;"></i>
+                        <p>mailll</p>
+                    </ul>
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="container" style="align-items: center;">
-    
-                <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
-    
-                <div class="row text-center">
-                    <div class="col-md-4 box">
-                        <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+    </div>
+    <footer>
+        <div class="container" style="align-items: center;">
+
+            <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+
+            <div class="row text-center">
+                <div class="col-md-4 box">
+                    <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
                   </span>
-                    </div>
-                    <div class="col-md-4 box">
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 box">
-                        <ul class="list-inline quick-links">
-                            <li class="list-inline-item">
-                                <a href="#">Privacy Policy</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">Terms of Use</a>
-                            </li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline quick-links">
+                        <li class="list-inline-item">
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 </body>
 
 </html>

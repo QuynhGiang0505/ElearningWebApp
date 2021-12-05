@@ -91,7 +91,7 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                    <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
