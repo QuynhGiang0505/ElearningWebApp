@@ -95,7 +95,7 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
             <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
         </form>
-        {% for post in allPosts %}
+        {% for post in pages %}
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                 <div class="info">
@@ -118,20 +118,24 @@
 
         </div>
 
-        {% endfor %}
-    </div>
-
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}          
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endfor %} {% if pages.has_other_pages %}
+        <ul class="pagination" style="background-color: #dc3545;; border-color: #dc3545;">
+            {% if pages.has_previous %}
+            <li><a href="?page={{ employees.previous_page_number }}" style="">«</a></li>
+            {% else %}
+            <li class="disabled" class="page-link"><span>«</span></li>
+            {% endif %} {% for i in pages.paginator.page_range %} {% if pages.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+            </li>
+            {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %} {% endfor %} {% if pages.has_next %}
+            <li><a href="?page={{ pages.next_page_number }}">»</a></li>
+            {% else %}
+            <li class="disabled"><span>»</span></li>
             {% endif %}
-    
-            <span class="current">
-              {{ page_obj.number }}
-            </span> {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">next</a> {% endif %}
-        </span>
+        </ul>
+        {% endif %}
     </div>
 
     <footer>

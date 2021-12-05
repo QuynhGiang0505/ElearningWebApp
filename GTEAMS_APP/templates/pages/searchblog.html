@@ -95,8 +95,8 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
             <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
         </form>
-        {% if allPosts|length
-        < 1 %} <aside class="col-md-5 blog-sidebar" style="margin:10px;">
+        {% if allPosts|length < 1 %} 
+        <aside class="col-md-5 blog-sidebar" style="margin:10px;">
             Truy vấn tìm kiếm của bạn: <b>{{query}}</b> không khớp với bất kỳ tài liệu nào. <br> Gợi ý:
             <ul>
                 <li>Kiểm tra chính tả.</li>
@@ -105,8 +105,9 @@
                 <li>Hãy thử các từ khóa khác nhau.</li>
                 </li>
             </ul>
-            </aside>
-            {% endif %} {% for post in allPosts %}
+        </aside>
+        {% endif %} 
+        {% for post in allPosts %}
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}}</strong>

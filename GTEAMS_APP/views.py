@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from GTEAMS_APP.templatetags import extras
 from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 @login_required(login_url='../../accounts/login')
 def PageContact(request):
@@ -225,10 +226,17 @@ def detailCart(request):
 #     context = {'allposts':allposts, 'totalposts':totalposts}
 #     return render(request, 'pages/HomePage.html', context)
 
-
 def blogHome(request): 
     allPosts= article_blog.objects.all()
-    context={'allPosts': allPosts}
+    page = request.GET.get('page',1)
+    paginator = Paginator(allPosts,3)
+    try:
+        pages = paginator.page(page)
+    except PageNotAnInteger:
+        pages=paginator.page(1)
+    except EmptyPage:
+        pages=paginator.page(paginator.num_pages)
+    context={'allPosts': allPosts, 'pages':pages}
     return render(request, 'pages/blogHome.html',  context)
 
 def blogPost(request, slug): 
