@@ -1,4 +1,4 @@
-console.log('hello world quiz')
+console.log(' world quiz')
 const url = window.location.href
 const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')

@@ -26,12 +26,11 @@
             <!-- Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  HTML and CSS
+                  C/C++
                 </a>
                 <div class="dropdown-menu" >
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'C, C++ cơ bản' %}">C/C++ cơ bản</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'C, C++ nâng cao' %}">C/C++ nâng cao</a>
                 </div>
             </li>
 
@@ -45,7 +44,7 @@
 
                     <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
                     <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
-                    <a class="dropdown-item" href="#">Bài tập luyện tập</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Python luyện tập' %}">Bài tập luyện tập</a>
                 </div>
                 {% endfor %}
             </li>
@@ -53,23 +52,23 @@
             <!-- Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  SQL
+                  C#
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'C# Cơ bản' %}">C# Cơ bản</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'C# Winform' %}">C# Winform</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Lập trình ASP.NET MVC' %}">Lập trình ASP.NET MVC</a>
                 </div>
             </li>
 
             <!-- Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  C C++
+                  CSS và SASS
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'CSS và SASS cơ bản' %}">CSS và SASS cơ bản</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'CSS và SASS nâng cao' %}">CSS và SASS nâng cao</a>
                     <a class="dropdown-item" href="#">Link 3</a>
                 </div>
             </li>
@@ -79,9 +78,9 @@
                   Java
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Java căn bản' %}">Java căn bản</a>
+                    <a class="dropdown-item" href="{% url 'coursesVideo' 'Khóa học lập trình Android Cơ bản' %}">Khóa học lập trình Android Cơ bản</a>
+                    
                 </div>
             </li>
         </ul>
@@ -121,22 +120,22 @@
                 <div class="portfolio-item row">
                     {% for course in subject.courses_set.all %}
                     
-                    {% if forloop.counter <= 12 %}
+                    {% if forloop.counter <= 8 %}
                     <div class="item col-lg-3 col-md-4 mt-4">
                         <a href="{% url 'seeCourse' course.title%}" style="color: white;">
                             <div class="main-hover-div">
                                 <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
-                                    <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
-                            
+                                    <img src="../media/{{course.image}}" alt="demo" style="width:255px; height:130px;">
+                                    {{course.image}}
                                     <div class="user-data">
                                         <h3 class="titleCourses">{{course.title}}</h3>
                                     </div>
                                     <div>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true" style="color: yellow;"></i>
+                                        <i class="fa fa-star" aria-hidden="true" style="color: yellow;"></i>
+                                        <i class="fa fa-star" aria-hidden="true" style="color: yellow;"></i>
+                                        <i class="fa fa-star" aria-hidden="true" style="color: yellow;"></i>
+                                        <i class="fa fa-star" aria-hidden="true" style="color: yellow;"></i>
                                         <span>4.4 (5500)</span>
                                     </div>
                                 </div>
