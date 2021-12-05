@@ -1,3 +1,4 @@
+from django.core import paginator
 from django.db.models.query import QuerySet
 from django.http.response import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
@@ -10,6 +11,7 @@ from GTEAMS_APP.form import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from GTEAMS_APP.templatetags import extras
 from django.core.paginator import Paginator
 
@@ -141,7 +143,15 @@ def error(request, exception):
 def showCourses(request):
     allCourses=Courses.objects.all().order_by("-date")
     allSubjects=subjects.objects.all()
-    context = {'allCourses':allCourses, 'allSubjects':allSubjects}
+    page = request.GET.get('page',1)
+    paginator = Paginator(allSubjects,4)
+    try:
+        pages = paginator.page(page)
+    except PageNotAnInteger:
+        pages=paginator.page(1)
+    except EmptyPage:
+        pages=paginator.page(paginator.num_pages)
+    context = {'allCourses':allCourses, 'allSubjects':allSubjects,'pages':pages}
     return render(request,'pages/courses.html',context)
 
 # hiện thị video cho user

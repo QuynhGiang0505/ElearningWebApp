@@ -7,9 +7,13 @@
     <title>Courses</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
     <link rel="stylesheet" href="{% static 'css/cours.css'%}">
 </head>
@@ -114,7 +118,7 @@
     <div class="container">
         <div id="posts">
             <div id="posts1">
-            {% for subject in allSubjects %}
+            {% for subject in pages %}
             <h2 style="color: #FFD700; font-size: 15px;">{{subject.subjectName}}</h2>
 
                 <div class="portfolio-item row">
@@ -144,9 +148,32 @@
                     </div>
                    {% endif %}
                     {% endfor %}
-                   
                 </div>
                 {% endfor %}
+               {% if pages.has_other_pages %}
+                  <ul class="pagination">
+                    {% if pages.has_previous %}
+                    <li><a href="?page={{ employees.previous_page_number }}">«</a></li>
+                    {% else %}
+                    <li class="disabled" class="page-link" ><span>«</span></li>
+                    {% endif %}
+
+                    {% for i in pages.paginator.page_range %}
+
+                       {% if pages.number == i %}
+                       <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                       {% else %}
+                       <li><a href="?page={{ i }}">{{ i }}</a></li>
+                       {% endif %}
+                       {% endfor %}
+
+                       {% if pages.has_next %}
+                       <li><a href="?page={{ pages.next_page_number }}">»</a></li>
+                       {% else %}
+                       <li class="disabled"><span>»</span></li>
+                       {% endif %}
+                  </ul>
+                {% endif %} 
             </div>
         </div>
     </div>
