@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github', 
     'allauth.socialaccount.providers.facebook', 
     'social_django',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,10 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
+            # 'libraries':{
+            # 'my_templatetag': 'app.templatetags.my_templatetag',
+            
+            # }
         },
     },
 ]
@@ -208,4 +213,6 @@ EMAIL_HOST_PASSWORD = '123456@@'
 EMAIL_PORT = 587  
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,  "static"),
+]
