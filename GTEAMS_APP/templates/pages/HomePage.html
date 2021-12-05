@@ -65,7 +65,7 @@
                 <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
@@ -117,10 +117,10 @@
             <h1 style="color: #FFD700; font-size: 15px;">Hot Courses</h1>
             <div class="row" style="color: white;">
                 {% for course in allCourses %}  {% if forloop.counter <= 4 %} <div class=".col-6 .col-sm-3">
-                    <a href="{% url 'show_detail_MainPage' course.title %}" style="color: white;">
+                    <a href="{% url 'seeCourse' course.title%}" style="color: white;">
                         <div class="main-hover-div">
                             <div class="user-profile-2" style=" width: 255px; margin: 15px;">
-                                <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
+                                <img src="media/{{course.image}}" alt="demo" style="width:255px; height:130px;">
 
                                 <div class="user-data">
                                     <h3 style="font-size: 13px;">{{course.title}}</h3>

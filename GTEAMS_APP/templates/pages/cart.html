@@ -96,7 +96,7 @@
                         <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart"></i>Giỏ hàng của bạn</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
@@ -130,11 +130,8 @@
                     <th scope="col">Xóa</th>
 
                 </tr>
-            </thead> 
-            {% comment %} {% for course in subject.courses_set.all %} {% endcomment %}
-            {% for course in allCourses %}
-            {% for roww in course.cart_set.all %}
-            {% ifequal roww.user|slugify user.username|slugify %} 
+            </thead>
+            {% comment %} {% for course in subject.courses_set.all %} {% endcomment %} {% for course in allCourses %} {% for roww in course.cart_set.all %} {% ifequal roww.user|slugify user.username|slugify %}
             <tbody class="tbody1">
                 <tr>
                     <th scope="row">{{roww.id}}</th>
@@ -144,11 +141,7 @@
                     <td>{{roww.num}}</td>
                     <td class="colPrice">{{course.costReal}}</td>
                     <td class="colPrice">
-                        {% if roww.paid == False %}
-                        Chưa thanh toán
-                        {% else %}
-                        Đã thanh toán
-                        {% endif %}
+                        {% if roww.paid == False %} Chưa thanh toán {% else %} Đã thanh toán {% endif %}
                     </td>
                     <td>
                         <a href="{% url 'del' roww.id %}"><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></a>
@@ -156,10 +149,8 @@
 
                 </tr>
             </tbody>
-            {% endifequal %}
-            {% endfor %}
-            {% endfor %}
-            
+            {% endifequal %} {% endfor %} {% endfor %}
+
             <!-- {% for key,value in request.session.cart.items %}
             <tbody>
                 <tr>

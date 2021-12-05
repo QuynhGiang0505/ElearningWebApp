@@ -31,6 +31,10 @@ def PageRegister(request):
     return render(request,'pages/register.html')
 def PageCourses(request):
     return render(request,'pages/courses.html')
+def PageProfilee(request):
+    user=request.user
+    context= {'user':user}
+    return render(request,'pages/Profile.html',context)
 
 # HOME
 def showCoursesMainPage(request):

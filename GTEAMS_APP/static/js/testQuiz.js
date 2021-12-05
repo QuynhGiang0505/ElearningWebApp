@@ -1,11 +1,12 @@
-console.log('hello world quiz')
+console.log(' world quiz')
 const url = window.location.href
 const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
 const timerBox = document.getElementById('timer-box')
 const header = document.getElementById('col1')
-
+var a = false
+console.log(a)
 const activateTimer = (time) => {
     if (time.toString().length < 2) {
         timerBox.innerHTML = `<b>0${time}:00</b>`
@@ -34,11 +35,16 @@ const activateTimer = (time) => {
         } else {
             displaySeconds = seconds
         }
+        if (a == true) {
+            setTimeout(() => {
+                clearInterval(timer)
+            }, 500)
+        }
         if (minutes === 0 && seconds === 0) {
             timerBox.innerHTML = "<b>00:00</b>"
             setTimeout(() => {
                 clearInterval(timer)
-                alert('Time over')
+                alert('Đã hết thời gian, bài làm của bạn sẽ được tự động nộp')
                 sendData()
             }, 500)
         }
@@ -56,17 +62,20 @@ $.ajax({
         data.forEach(el => {
 
             for (const [question, answers] of Object.entries(el)) {
+                q = question.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
+
                 quizBox.innerHTML += `
                     <hr>
                     <div style="color:white;" class="mb-2">
-                        <b >${question}</b>
+                        <b >${q}</b>
                     </div>
                 `
                 answers.forEach(answer => {
+                    a = answer.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
                     quizBox.innerHTML += `
                         <div >
-                            <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
-                            <label for="${question}">${answer}</label>
+                            <input type="radio" class="ans" id="${q}-${a}" name="${q}" value="${a}">
+                            <label for="${q}">${a}</label>
                         </div>
                     `
                 })
@@ -104,7 +113,7 @@ const sendData = () => {
         success: function(response) {
             const results = response.results
             quizForm.classList.add('not-visible')
-            scoreBox.innerHTML = `${response.passed} ? 'Congratulations! ' : 'Ups..:( '}Your result is ${response.score}%`
+            scoreBox.innerHTML = `Điểm số của bạn là: ${response.score}%`
 
             results.forEach(res => {
                 const resDiv = document.createElement("div")
@@ -142,6 +151,11 @@ const sendData = () => {
 
 quizForm.addEventListener('submit', e => {
     e.preventDefault()
-
+    a = true
+    console.log(a)
     sendData()
+})
+quizForm.addEventListener('reset', e => {
+    e.preventDefault()
+    window.location.href = url
 })
