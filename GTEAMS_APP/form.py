@@ -13,6 +13,18 @@ class CreateNewContact(forms.ModelForm):
             'title',
             'content'
         )
+        
+class formBlog(forms.ModelForm):
+    class Meta:
+        model=article_blog
+        fields=(
+            'title',
+            'author',
+            'slug',
+            'content'
+        )
+
+
 
 
 
