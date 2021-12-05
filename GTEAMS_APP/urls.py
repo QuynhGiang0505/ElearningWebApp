@@ -28,9 +28,8 @@ urlpatterns = [
     path('searchblog/', views.search_blog, name="searchblog"),
     path('searchquiz/', views.search_quiz, name="searchquiz"),
     path('register/', views.PageRegister,name='register'),
-    path('profilee/',views.PageProfilee, name='profile'),
-    path('courses/<str:title>/', views.seeCourse, name='seeCourse'),
-    path('courses/<subject>/', views.showcourses_detail_demo, name='coursesVideo'),
+    path('courses/<title>/', views.seeCourse, name='seeCourse'),
+    path('courses/subject/<subject>/', views.showcourses_detail_demo, name='coursesVideo'),
     path('<str:title>/', views.show_detail_course, name='123'),
     path('courses/cart/delete/<id>/', views.delItem, name="del"),
     path('blog/<str:slug>', views.blogPost, name='blogspost'),
@@ -38,7 +37,7 @@ urlpatterns = [
     path('practice/<topic>/',views.ShowQuiz, name='practiceID'),
     path('practice/<topic>/data/',views.ShowQuizID, name='QuizID'),
     path('practice/<topic>/save/',views.save_quiz_view, name='QuizSave'),
-    path('courses/<subject>/<title>/', views.showcourses_detail_demo),
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
