@@ -111,6 +111,7 @@ class article_blog(models.Model):
 class Cart(models.Model):
     title=models.ForeignKey(Courses, on_delete=models.CASCADE)        
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    num=models.IntegerField(default=1)
     paid=models.BooleanField(default=False)
     def __str__(self):
         return str(self.title) 

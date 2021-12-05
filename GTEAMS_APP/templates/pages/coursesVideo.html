@@ -112,9 +112,7 @@
         </div>
         
         <hr>
-
-
-        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
+        {% comment %} <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
         <hr style="border-top: 2px solid #FFD700; width: 60px;">
         {% for item in a %} {% if item.title == title %}
         
@@ -166,11 +164,40 @@
             {% endifequal %}
           </div>
           {% endfor %}
-        {% endif %} {% endfor %}
-        
+        {% endif %} {% endfor %} {% endcomment %}
+        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
+        <hr style="border-top: 2px solid #FFD700; width: 60px;"> 
+        {% for item in a %} {% if item.title == title %} {% for subject in allSubjects %}
+        <div class="portfolio-item row">
+            {% ifequal subject|slugify item.subject|slugify %} 
+              {% for course in subject.courses_set.all %} 
+                {% if forloop.counter <= 8 %}
+                <div class="item col-lg-3 col-md-4 mt-4">
+                <a href="{% url 'seeCourse' course.title%}" style="color: white;">
+                    <div class="main-hover-div">
+                        <div class="user-profile-2" style=" width: 255px; margin: 15px;">
+                            <img src="{% static 'imgs/python.png'%}" alt="demo" style="width:255px; height:130px;">
 
+                            <div class="user-data">
+                                <h3 class="titleCourses">{{course.title}}</h3>
+                            </div>
+                            <div>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>4.4 (5500)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+        </div>
+        {% endif %} {% endfor %} {% endifequal %}
+    </div>
+    {% endfor %} {% endif %} {% endfor %}
+    </div>
       </div>
-      
 
       <footer>
         <div class="container">

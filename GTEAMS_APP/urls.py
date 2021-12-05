@@ -18,13 +18,15 @@ urlpatterns = [
     path('contact/', views.create_contact, name='contact'),
 
     path('courses/', views.showCourses, name='courses'),
-    path('courses/<str:title>', views.seeCourse, name='seeCourse'),
-    path('courses/<subject>', views.showcourses_detail_demo, name='coursesVideo'),
-    path('courses/<subject>/<title>', views.showcourses_detail_demo),
-    path('<str:title>', views.show_detail_course, name='123'),
+    path('courses/yourCart/', views.cartShopping, name="shopping"),
     path('courses/addCart/', views.addCart, name="buy"),
-    path('courses/cart/', views.cartShopping, name="shopping"),
     path('courses/detailCart/', views.detailCart, name="detailCart"),
+    path('courses/<str:title>/', views.seeCourse, name='seeCourse'),
+    path('courses/<subject>/', views.showcourses_detail_demo, name='coursesVideo'),
+    path('courses/<subject>/<title>/', views.showcourses_detail_demo),
+    path('<str:title>/', views.show_detail_course, name='123'),
+    
+    path('courses/cart/delete/<id>/', views.delItem, name="del"),
 
     path('blog/', views.blogHome, name='blogs'),
     path('blog/<str:slug>', views.blogPost, name='blogspost'),

@@ -138,13 +138,11 @@ def showCourses(request):
 
 # hiện thị video cho user
 def show_detail_course(request,title):
-    try:
-        Content=Courses.objects.filter(title=title)
-    except Courses.DoesNotExist:
-        raise Http404("Practice doesnot exist")
     a=Courses.objects.all()
-    context= {'title':title,'question':Content,'a':a}
+    allSubjects=subjects.objects.all()
+    context= {'title':title,'a':a, 'allSubjects':allSubjects}
     return render(request,'pages/coursesVideo.html',context)
+    
 
 # trang hiện thi video cho từng khóa học
 def showcourses_detail_demo(request,subject):
@@ -154,9 +152,11 @@ def showcourses_detail_demo(request,subject):
     return render(request,'pages/basecourses.html',context)
 #trang mua 
 def seeCourse(request,title):
+    user=request.user
+    cart=Cart.objects.filter(user=user)
     a=Courses.objects.all()
     allSubjects=subjects.objects.all()
-    context= {'title':title,'a':a, 'allSubjects':allSubjects}
+    context= {'title':title,'a':a, 'allSubjects':allSubjects,'cart':cart}
     return render(request,'pages/seeCourse.html',context)
 
 cart ={}
@@ -192,8 +192,19 @@ def addCart(request):
 
 def cartShopping(request):
     user=request.user
+    allCourses=Courses.objects.all()
+    allUser=User.objects.all()
     cart2=Cart.objects.filter(user=user)
-    context= {'cart':cart2}
+    context= {'cart':cart2, 'allCourses':allCourses, 'allUser':allUser}
+    return render(request,'pages/cart.html',context)
+
+
+
+def delItem(request, id):
+    allCourses=Courses.objects.all()
+    allUser=User.objects.all()
+    cart=Cart.objects.filter(id=id).delete()
+    context= {'cart':cart, 'allCourses':allCourses, 'allUser':allUser}
     return render(request,'pages/cart.html',context)
 
 def detailCart(request):
