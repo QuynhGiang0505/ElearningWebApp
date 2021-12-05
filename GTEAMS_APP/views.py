@@ -152,8 +152,9 @@ def showcourses_detail_demo(request,subject):
     return render(request,'pages/basecourses.html',context)
 #trang mua 
 def seeCourse(request,title):
-    user=request.user
-    cart=Cart.objects.filter(user=user)
+    #user=request.user
+    #cart=Cart.objects.filter(user=user)
+    cart=Cart.objects.all()
     a=Courses.objects.all()
     allSubjects=subjects.objects.all()
     context= {'title':title,'a':a, 'allSubjects':allSubjects,'cart':cart}
