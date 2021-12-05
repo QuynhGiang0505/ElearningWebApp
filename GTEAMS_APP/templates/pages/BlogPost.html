@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load humanize %} {% load extras %}
 <!doctype html>
 <html lang="en">
 
@@ -91,7 +91,6 @@
                 <div class="blog-post">
                     <h2 class="blog-post-title text-warning">{{post.title}}</h2>
                     <p class="blog-post-meta text-danger">{{post.timeStamp}} by <a href="#">{{post.author}}</a></p>
-
                     <p>{{post.content}}</p>
                     <hr>
                 </div>
@@ -113,45 +112,115 @@
             </aside>
             <!-- /.blog-sidebar -->
         </div>
+        <div class="container">
+            <h2>Bình luận({{comments.count}}) </h2>
+            <div class="my-2">
+                {% if user.is_authenticated %}
+                <form action="{% url 'postComment' post.slug %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Viết bình luận</label>
+                        <input type="text" class="form-control" name="comment" placeholder="Nhập " style="width:65%;">
+                    </div>
+                    <input type="hidden" name="postSno" value="{{post.sno}}">
+                    <input type="hidden" name="parentSno" value="">
+                    <button type="submit" class="btn btn-danger">Gửi</button>
+                </form>
+                {% else %} Đăng nhập để bình luận {% endif %}
+            </div>
+            {% for comment in comments %}
+            <div class="row my-3">
+                <div class="col-md-1  ">
+                    <img class="img-fluid" class="rounded mx-auto d-block w-100 border border-dark p-2" src="{% static 'imgs/user.png'%}" alt="user">
+                </div>
+                <div class="col-md-11 ">
+                    <b> {{comment.user.username}} </b> <span class="badge badge-secondary ">{{comment.timestamp| naturaltime}}</span>
+                    <div>{{comment.comment}}</div>
+                    <div class="reply mx-0">
+                        {% if user.is_authenticated %}
+                        <button class="btn btn-sm btn-danger" type="button" data-toggle="collapse" data-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
+                            Trả lời
+                        </button>
+                        <br>
+                        <div class="collapse" id="replyBox{{comment.sno}}">
+
+                            <form action="/blog/postComment" method="post">
+                                {% csrf_token %}
+                                <div style="width:40%;" class="form-group">
+                                    <label for="comment"><i>Viết câu trả lời</i></label>
+                                    <input type="text" class="form-control" name="comment" placeholder="Nhập ">
+                                    <input type="hidden" name="parentSno" value="{{comment.sno}}">
+                                    <input type="hidden" name="postSno" value="{{post.sno}}">
+                                    <button type="submit" class="btn btn-danger">Gửi</button>
+                            </form>
+                            </div>
+                        </div>
+                        {% else %}
+                        <button class="btn btn-sm btn-danger" type="button" data-toggle="collapse" data-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
+                            <a href="{% url 'log' %}">Login to reply </a>
+                        </button> {% endif %}
+                        <br>
+                        <div class="replies my-2 ">
+                            {% for reply in replyDict|get_val:comment.sno %}
+                            <div class="row my-2">
+                                <div class="col-md-1 ">
+                                    <img class="img-fluid" class="rounded mx-auto d-block w-75 my-2 border border-dark p-2" src="{% static 'imgs/user.png'%}" alt="user">
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="col-md-11 ">
+                                        <b> {{reply.user.username}} </b> <span class="badge badge-secondary ">{{reply.timestamp| naturaltime}}</span>
+                                        <div>{{reply.comment}}</div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
-
     <footer>
-        <div class="container">
+        <div class="container ">
 
-            <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+            <div class="text-center "><i class="fas fa-ellipsis-h "></i></div>
 
-            <div class="row text-center">
-                <div class="col-md-4 box">
-                    <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+            <div class="row text-center ">
+                <div class="col-md-4 box ">
+                    <span class="copyright quick-links ">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
               </span>
                 </div>
-                <div class="col-md-4 box">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
+                <div class="col-md-4 box ">
+                    <ul class="list-inline social-buttons ">
+                        <li class="list-inline-item ">
+                            <a href="# ">
+                                <i class="fab fa-twitter "></i>
                             </a>
                         </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
+                        <li class="list-inline-item ">
+                            <a href="# ">
+                                <i class="fab fa-facebook-f "></i>
                             </a>
                         </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
+                        <li class="list-inline-item ">
+                            <a href="# ">
+                                <i class="fab fa-linkedin-in "></i>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4 box">
-                    <ul class="list-inline quick-links">
-                        <li class="list-inline-item">
-                            <a href="#">Privacy Policy</a>
+                <div class="col-md-4 box ">
+                    <ul class="list-inline quick-links ">
+                        <li class="list-inline-item ">
+                            <a href="# ">Privacy Policy</a>
                         </li>
-                        <li class="list-inline-item">
-                            <a href="#">Terms of Use</a>
+                        <li class="list-inline-item ">
+                            <a href="# ">Terms of Use</a>
                         </li>
                     </ul>
                 </div>
@@ -159,9 +228,9 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js " integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js " integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV " crossorigin="anonymous "></script>
 </body>
 
 </html>

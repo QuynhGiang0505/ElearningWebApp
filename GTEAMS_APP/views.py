@@ -8,6 +8,10 @@ import GTEAMS_APP
 from GTEAMS_APP.models import *
 from GTEAMS_APP.form import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.models import User
+from GTEAMS_APP.templatetags import extras
+from django.core.paginator import Paginator
 
 @login_required(login_url='../../accounts/login')
 def PageContact(request):
@@ -221,11 +225,21 @@ def detailCart(request):
 def blogHome(request): 
     allPosts= article_blog.objects.all()
     context={'allPosts': allPosts}
-    return render(request, 'pages/blogHome.html', context)
+    return render(request, 'pages/blogHome.html',  context)
 
 def blogPost(request, slug): 
     post=article_blog.objects.filter(slug=slug).first()
-    context={"post":post}
+    post.views= post.views +1
+    post.save()
+    comments= BlogComment.objects.filter(post=post, parent=None)
+    replies= BlogComment.objects.filter(post=post).exclude(parent=None)
+    replyDict={}
+    for reply in replies:
+        if reply.parent.sno not in replyDict.keys():
+            replyDict[reply.parent.sno]=[reply]
+        else:
+            replyDict[reply.parent.sno].append(reply)
+    context={'post':post, 'comments': comments, 'user': request.user, 'replyDict': replyDict}
     return render(request, "pages/blogPost.html", context)
 
 def quizHome(request): 
@@ -249,5 +263,33 @@ def search_quiz(request):
     allPosts= article_quiz.objects.filter(title__icontains=query)
     params={'allPosts': allPosts, 'query': query}
     return render(request, 'pages/searchquiz.html', params)
+
+def postComment(request,slug):
+    if request.method == "POST":
+        comment=request.POST.get('comment')
+        user=request.user
+        postSno =request.POST.get('postSno')
+        post= article_blog.objects.get(sno=postSno)
+        parentSno= request.POST.get('parentSno')
+        if parentSno=="":
+            comment=BlogComment(comment= comment, user=user, post=post)
+            comment.save()
+            messages.success(request, "Your reply has been posted successfully")
+        else:
+            parent= BlogComment.objects.get(sno=parentSno)
+            comment=BlogComment(comment= comment, user=user, post=post , parent=parent)
+            comment.save()
+            messages.success(request, "Your reply has been posted successfully")
+    post=article_blog.objects.filter(slug=slug).first()
+    comments= BlogComment.objects.filter(post=post, parent=None)
+    replies= BlogComment.objects.filter(post=post).exclude(parent=None)
+    replyDict={}
+    for reply in replies:
+        if reply.parent.sno not in replyDict.keys():
+            replyDict[reply.parent.sno]=[reply]
+        else:
+            replyDict[reply.parent.sno].append(reply)
+    context={'post':post, 'comments': comments, 'user': request.user, 'replyDict': replyDict}
+    return render(request, "pages/blogPost.html", context)
 
 

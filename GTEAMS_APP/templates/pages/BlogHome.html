@@ -98,7 +98,15 @@
         {% for post in allPosts %}
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}}</strong>
+                <div class="info">
+                    <span class="info-detail"></span>
+
+                    <img class="user" src="{% static 'imgs/user.png'%}">
+                    <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}} (<span class="d-inline-block mb-2 text-warning"> {{post.views}} lượt xem</span>)</p></strong>
+                    <p class="blog-post-meta text-danger">{{post.timeStamp}}</p>
+
+                </div>
+
                 <h3 class="mb-0">{{post.title}}</h3>
                 <div class="mb-1 text-muted">{{post.datetime}}</div>
                 <p class="card-text mb-auto">{{post.content| truncatechars:500}}</p>
@@ -111,6 +119,19 @@
         </div>
 
         {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}          
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+              {{ page_obj.number }}
+            </span> {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a> {% endif %}
+        </span>
     </div>
 
     <footer>

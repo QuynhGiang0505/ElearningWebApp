@@ -39,6 +39,7 @@ urlpatterns = [
     path('practice/<topic>/data/',views.ShowQuizID, name='QuizID'),
     path('practice/<topic>/save/',views.save_quiz_view, name='QuizSave'),
     path('courses/<subject>/<title>/', views.showcourses_detail_demo),
+    path('blog/postComment/<str:slug>', views.postComment,name="postComment"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
