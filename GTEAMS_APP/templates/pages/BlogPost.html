@@ -113,14 +113,13 @@
             <!-- /.blog-sidebar -->
         </div>
         <div class="container">
-            <h2>Bình luận({{comments.count}}) </h2>
+            <h2>Bình luận </h2>
             <div class="my-2">
                 {% if user.is_authenticated %}
                 <form action="{% url 'postComment' post.slug %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Viết bình luận</label>
-                        <input type="text" class="form-control" name="comment" placeholder="Nhập " style="width:65%;">
+                        <input type="text" class="form-control" name="comment" placeholder="Nhập bình luận" style="width:65%;">
                     </div>
                     <input type="hidden" name="postSno" value="{{post.sno}}">
                     <input type="hidden" name="parentSno" value="">
@@ -144,11 +143,11 @@
                         <br>
                         <div class="collapse" id="replyBox{{comment.sno}}">
 
-                            <form action="/blog/postComment" method="post">
+                            <form action="{% url 'postComment' post.slug %}" method="post">
                                 {% csrf_token %}
                                 <div style="width:40%;" class="form-group">
                                     <label for="comment"><i>Viết câu trả lời</i></label>
-                                    <input type="text" class="form-control" name="comment" placeholder="Nhập ">
+                                    <input type="text" class="form-control" name="comment" placeholder="Nhập bình luận">
                                     <input type="hidden" name="parentSno" value="{{comment.sno}}">
                                     <input type="hidden" name="postSno" value="{{post.sno}}">
                                     <button type="submit" class="btn btn-danger">Gửi</button>
@@ -157,7 +156,7 @@
                         </div>
                         {% else %}
                         <button class="btn btn-sm btn-danger" type="button" data-toggle="collapse" data-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
-                            <a href="{% url 'log' %}">Login to reply </a>
+                            <a href="{% url 'log' %}">Đăng nhập để trả lời </a>
                         </button> {% endif %}
                         <br>
                         <div class="replies my-2 ">

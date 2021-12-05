@@ -91,9 +91,12 @@
             <i class="fas fa-home"></i>
             <i class="fas fa-angle-right"></i> Bài viết
         </div>
+
+        <a href="#" role="button" class="btn btn-danger">Viết bài</a>
+
         <form method="get" action="{% url 'searchblog' %}" class="form-inline my-2 my-lg-0 mx-3">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
-            <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
+            <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Tìm kiếm</button>
         </form>
         {% for post in pages %}
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
@@ -102,7 +105,7 @@
                     <span class="info-detail"></span>
 
                     <img class="user" src="{% static 'imgs/user.png'%}">
-                    <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}} (<span class="d-inline-block mb-2 text-warning"> {{post.views}} lượt xem</span>)</p></strong>
+                    <strong class="d-inline-block mb-2 text-warning">Đăng bởi {{post.author}} (<span class="d-inline-block mb-2 text-warning"> {{post.views}} lượt xem</span>)</p></strong>
                     <p class="blog-post-meta text-danger">{{post.timeStamp}}</p>
 
                 </div>
@@ -111,7 +114,7 @@
                 <div class="mb-1 text-muted">{{post.datetime}}</div>
                 <p class="card-text mb-auto">{{post.content| truncatechars:500}}</p>
                 <div class="my-2">
-                    <a href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Continue reading</a>
+                    <a href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Xem thêm</a>
                 </div>
 
             </div>

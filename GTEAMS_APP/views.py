@@ -256,7 +256,15 @@ def blogPost(request, slug):
 
 def quizHome(request): 
     allPosts= article_quiz.objects.all()
-    context={'allPosts': allPosts}
+    page = request.GET.get('page',1)
+    paginator = Paginator(allPosts,3)
+    try:
+        pages = paginator.page(page)
+    except PageNotAnInteger:
+        pages=paginator.page(1)
+    except EmptyPage:
+        pages=paginator.page(paginator.num_pages)
+    context={'allPosts': allPosts, 'pages':pages}
     return render(request, 'pages/quizsHome.html', context)
 
 def quizPost(request, slug): 
