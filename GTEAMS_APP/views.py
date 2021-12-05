@@ -305,5 +305,12 @@ def postComment(request,slug):
             replyDict[reply.parent.sno].append(reply)
     context={'post':post, 'comments': comments, 'user': request.user, 'replyDict': replyDict}
     return render(request, "pages/blogPost.html", context)
-
+def form_blog(request):
+    if request.method == 'GET':
+        form=formBlog()
+    if request.method == 'POST':
+        form=formBlog(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request,'pages/formBlog.html',{'form':form})
 
