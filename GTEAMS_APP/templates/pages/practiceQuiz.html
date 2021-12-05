@@ -18,36 +18,53 @@
 <body>
     <!-- header -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212">
-            <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-            <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212">
-                <!-- Links -->
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212;">
                 <ul class="navbar-nav">
-                    <!-- Dropdown -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'intro' %}">Giới thiệu<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'courses' %}">Khóa học</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
+                    </li>
 
-                    <ul class="navbar-nav ml-auto" style="background-color: #121212;">
-                        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'buy'%}"><i class="fas fa-shopping-cart"></i>Giỏ hàng của bạn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
-                        </li>
-                        {% endif %}
-                    </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'quizs' %}">Hỏi đáp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
+                    </li>
+                    
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                
             </div>
         </nav>
     </header>
@@ -62,8 +79,8 @@
         <form id="quiz-form" class="mt-3 mb-3">
             {% csrf_token %}
             <div id="quiz-box"></div>
-            <button type="submit" class="btn btn-primary mt-3">Save</button>
-            <button id="buttonReset" type="reset" class="btn btn-primary">Reset</button>
+            <button type="submit" class="btn btn-warning mt-3" style="margin: 0 5px 5px 5px;" >Save</button>
+            <button id="buttonReset" type="reset" class="btn btn-warning" style="margin: 22px 15px 15px 15px;">Reset</button>
         </form>
         <div id="score-box"></div>
         <div id="result-box"></div>
