@@ -91,18 +91,21 @@
             <i class="fas fa-home"></i>
             <i class="fas fa-angle-right"></i> Bài viết
         </div>
+
+        <a href="#" role="button" class="btn btn-danger">Viết bài</a>
+
         <form method="get" action="{% url 'searchblog' %}" class="form-inline my-2 my-lg-0 mx-3">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
-            <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
+            <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Tìm kiếm</button>
         </form>
-        {% for post in allPosts %}
+        {% for post in pages %}
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                 <div class="info">
                     <span class="info-detail"></span>
 
                     <img class="user" src="{% static 'imgs/user.png'%}">
-                    <strong class="d-inline-block mb-2 text-warning">Article  by {{post.author}} (<span class="d-inline-block mb-2 text-warning"> {{post.views}} lượt xem</span>)</p></strong>
+                    <strong class="d-inline-block mb-2 text-warning">Đăng bởi {{post.author}} (<span class="d-inline-block mb-2 text-warning"> {{post.views}} lượt xem</span>)</p></strong>
                     <p class="blog-post-meta text-danger">{{post.timeStamp}}</p>
 
                 </div>
@@ -111,27 +114,31 @@
                 <div class="mb-1 text-muted">{{post.datetime}}</div>
                 <p class="card-text mb-auto">{{post.content| truncatechars:500}}</p>
                 <div class="my-2">
-                    <a href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Continue reading</a>
+                    <a href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Xem thêm</a>
                 </div>
 
             </div>
 
         </div>
 
-        {% endfor %}
-    </div>
-
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}          
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endfor %} {% if pages.has_other_pages %}
+        <ul class="pagination" style="background-color: #dc3545;; border-color: #dc3545;">
+            {% if pages.has_previous %}
+            <li><a href="?page={{ employees.previous_page_number }}" style="">«</a></li>
+            {% else %}
+            <li class="disabled" class="page-link"><span>«</span></li>
+            {% endif %} {% for i in pages.paginator.page_range %} {% if pages.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+            </li>
+            {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %} {% endfor %} {% if pages.has_next %}
+            <li><a href="?page={{ pages.next_page_number }}">»</a></li>
+            {% else %}
+            <li class="disabled"><span>»</span></li>
             {% endif %}
-    
-            <span class="current">
-              {{ page_obj.number }}
-            </span> {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">next</a> {% endif %}
-        </span>
+        </ul>
+        {% endif %}
     </div>
 
     <footer>
