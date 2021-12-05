@@ -62,17 +62,20 @@ $.ajax({
         data.forEach(el => {
 
             for (const [question, answers] of Object.entries(el)) {
+                q = question.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
+
                 quizBox.innerHTML += `
                     <hr>
                     <div style="color:white;" class="mb-2">
-                        <b >${question}</b>
+                        <b >${q}</b>
                     </div>
                 `
                 answers.forEach(answer => {
+                    a = answer.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
                     quizBox.innerHTML += `
                         <div >
-                            <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
-                            <label for="${question}">${answer}</label>
+                            <input type="radio" class="ans" id="${q}-${a}" name="${q}" value="${a}">
+                            <label for="${q}">${a}</label>
                         </div>
                     `
                 })
