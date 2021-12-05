@@ -214,8 +214,8 @@
         <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
         <hr style="border-top: 2px solid #FFD700; width: 60px;"> {% for item in a %} {% if item.title == title %} {% for subject in allSubjects %}
         <div class="portfolio-item row">
-            {% ifequal subject|slugify item.subject|slugify %} {% for course in subject.courses_set.all %} {% if forloop.counter
-            <=8 %} <div class="item col-lg-3 col-md-4 mt-4">
+            {% ifequal subject|slugify item.subject|slugify %} {% for course in subject.courses_set.all %} 
+            {% if forloop.counter <= 8 %} <div class="item col-lg-3 col-md-4 mt-4">
                 <a href="{% url 'seeCourse' course.title%}" style="color: white;">
                     <div class="main-hover-div">
                         <div class="user-profile-2" style=" width: 255px; margin: 15px;">

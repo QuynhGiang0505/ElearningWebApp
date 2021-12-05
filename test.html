@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -24,89 +24,17 @@
  
     
     <div class="container">
-        <!-- Modal -->
-        <div class="modal fade" id="quizStartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="quizStartModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="quizStartModalLabel">Start</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        </button><span aria-hidden="=true">&times;</span>
-                    </div>
-                    <div class="modal-body" id="modal-body-confirm">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                        <button type="button" id="start-button" class="btn btn-success">Yes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END MODAL-->
-        <div id="Subject">
-            <h1 style="color: #FFD700; font-size: 15px;">Luyện tập theo từng chủ đề</h1>
-            <!-- Query database ở đây -->
-        </div>
-        <div class="block_query">
-            <div id="questions">
-                {% if question %}
-                {% for q in question %}
-                <div class="card flex-row" style="padding:10px 0 10px 0; background-color: #121212; ">
-                    <img src="..." alt="...">
-                    <div class="card-body">
-                        <p><a href=#>{{q.title_Content}}</a></p>
-                        <p>Thời gian:</p>
-                        <p>Số câu:</p>
-                        <button class="btn btn-link modal-button" data-topic="{{q.topic}}" data-quiz="{{q.name}}" data-question="{{q.numberOfQuestions}}" data-time="{{q.time}}" data-pass="{{q.requiredScoreToPass}}" data-bs-toggle="modal" data-bs-target="#quizStartModal">
-                            {{q.name}}
-                          </button> 
-                    </div>
-                </div>
-                {% endfor %} {% endif %}
-            </div>
-        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
     </div>
     
-    <footer>
-        <div class="container">
-            <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
-
-            <div class="row text-center">
-                <div class="col-md-4 box">
-                    <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
-              </span>
-                </div>
-                <div class="col-md-4 box">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4 box">
-                    <ul class="list-inline quick-links">
-                        <li class="list-inline-item">
-                            <a href="#">Privacy Policy</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
 </body>
 </html>
