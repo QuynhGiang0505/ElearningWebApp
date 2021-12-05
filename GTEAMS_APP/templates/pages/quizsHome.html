@@ -56,7 +56,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -65,7 +65,7 @@
                 <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
+                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
@@ -79,7 +79,7 @@
                     </li>
                     {% endif %}
                 </ul>
-                
+
             </div>
         </nav>
     </header>
@@ -107,7 +107,7 @@
                 </div>
 
             </div>
-            
+
         </div>
 
         {% endfor %}

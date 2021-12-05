@@ -8,7 +8,7 @@ import GTEAMS_APP
 from GTEAMS_APP.models import *
 from GTEAMS_APP.form import *
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
 @login_required(login_url='../../accounts/login')
 def PageContact(request):
     return render(request,'pages/contact.html')
@@ -27,6 +27,10 @@ def PageRegister(request):
     return render(request,'pages/register.html')
 def PageCourses(request):
     return render(request,'pages/courses.html')
+def PageProfilee(request):
+    user=request.user
+    context= {'user':user}
+    return render(request,'pages/Profile.html',context)
 
 # HOME
 def showCoursesMainPage(request):

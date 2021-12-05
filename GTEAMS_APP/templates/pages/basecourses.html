@@ -19,10 +19,11 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
-          <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarNav" style="background-color: black">
               <!-- Links -->
           <ul class="navbar-nav">
@@ -116,17 +117,18 @@
    
     
       <div class="container">
+
         <div style="padding: 3rem;">
             <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">{{subject}}</h2>
             <div class="portfolio-item row">
-                {% for setSubject in allSubjects %}
-                    {% for item in setSubject.courses_set.all %}
-                    {% if item.subject|slugify == subject|slugify %} 
-                    <div class="item col-lg-3 col-md-4 mt-4">
-                        <a href="{% url 'seeCourse' item.title%}" style="color: white;">
+                {% for setSubject in allSubjects %} {% for item in setSubject.courses_set.all %} {% if item.subject|slugify == subject|slugify %}
+                <div class="item col-lg-3 col-md-4 mt-4">
+                    <a href="{% url 'seeCourse' item.title%}" style="color: white;">
                         <div class="main-hover-div">
+
                             <div class="user-profile-2" style=" width: 255px; margin: 15px;" >
                                 <img src="../../../media/{{item.image}}" alt="demo" style="width:255px; height:130px;">
+
                                 <div class="user-data">
                                     <h3 class="titleCourses">{{item.title}}</h3>
                                 </div>
@@ -142,9 +144,7 @@
                         </div>
                     </a>
                 </div>
-                {% endif %}
-               {% endfor %}
-                {% endfor %}
+                {% endif %} {% endfor %} {% endfor %}
             </div>
         </div>
     </div>

@@ -81,6 +81,7 @@
                   <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Java
                   </a>
+
                   <div class="dropdown-menu">
                       <a class="dropdown-item" href="{% url 'coursesVideo' 'Java căn bản' %}">Java căn bản</a>
                       <a class="dropdown-item" href="{% url 'coursesVideo' 'Khóa học lập trình Android Cơ bản' %}">Khóa học lập trình Android Cơ bản</a>
@@ -114,6 +115,7 @@
           </div>
       </nav>
       </header>
+
     <div class="container">
         {% for item in a %} {% if item.title == title %}
         <div class="row" style="padding: 50px 0 50px 0;">
@@ -162,6 +164,7 @@
                         </div>
                     </div>
                     <!-- END MODAL-->
+
                     {% if user.is_authenticated == False %}
                         <div class="alert alert-dark" role="alert" style="background-color: #121212; color: #b3b3b3; border: none;">
                             Bạn cần phải đăng nhập để sử dụng được tính năng này.
@@ -187,6 +190,7 @@
                         {% if forloop.counter == cart|length %}
                             <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
                             class="btn btn-primary">
+
                                 Thêm vào giỏ hàng
                             </button>
                         {% endif %}
@@ -210,10 +214,8 @@
         <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
         <hr style="border-top: 2px solid #FFD700; width: 60px;"> {% for item in a %} {% if item.title == title %} {% for subject in allSubjects %}
         <div class="portfolio-item row">
-            {% ifequal subject|slugify item.subject|slugify %} 
-              {% for course in subject.courses_set.all %} 
-                {% if forloop.counter <= 8 %}
-                <div class="item col-lg-3 col-md-4 mt-4">
+            {% ifequal subject|slugify item.subject|slugify %} {% for course in subject.courses_set.all %} {% if forloop.counter
+            <=8 %} <div class="item col-lg-3 col-md-4 mt-4">
                 <a href="{% url 'seeCourse' course.title%}" style="color: white;">
                     <div class="main-hover-div">
                         <div class="user-profile-2" style=" width: 255px; margin: 15px;">
@@ -292,8 +294,7 @@
                 'id': id,
                 'num': num,
                 'csrfmiddlewaretoken': '{{csrf_token}}'
-            }, function(data) {
-            });
+            }, function(data) {});
         }
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>

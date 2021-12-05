@@ -28,11 +28,8 @@ urlpatterns = [
     path('searchblog/', views.search_blog, name="searchblog"),
     path('searchquiz/', views.search_quiz, name="searchquiz"),
     path('register/', views.PageRegister,name='register'),
-
     path('courses/<title>/', views.seeCourse, name='seeCourse'),
     path('courses/subject/<subject>/', views.showcourses_detail_demo, name='coursesVideo'),
-    
-    # path('courses/<subject>/<title>/', views.showcourses_detail_demo),
     path('<str:title>/', views.show_detail_course, name='123'),
     path('courses/cart/delete/<id>/', views.delItem, name="del"),
     path('blog/<str:slug>', views.blogPost, name='blogspost'),
