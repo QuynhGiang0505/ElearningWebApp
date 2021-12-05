@@ -1,0 +1,5 @@
+pip install django-allauth
+pip install django-utils-six
+pip install darksky
+pip install pillow
+pip install django-crispy-forms
