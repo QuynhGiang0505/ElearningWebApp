@@ -14,9 +14,9 @@ modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
     <div class="h5 mb-3">Bạn có muốn bắt đầu ngay bây giờ "<b>${name}</b>"
     <div class="text-muted">
         <ul>
-            <li>number of question: <b>${numQuestions}</b></li>
-            <li>thời gian làm bài: <b>${time}</b></li>
-            <li>điểm để hoàn thành bài kiểm tra: <b>${scoreToPass}</b></li>
+            <li>Number of question: <b>${numQuestions}</b></li>
+            <li>Thời gian làm bài: <b>${time} phút </b></li> 
+            <li>Điểm để hoàn thành bài kiểm tra: <b>${scoreToPass}</b></li>
         </ul>
     </div>
     `

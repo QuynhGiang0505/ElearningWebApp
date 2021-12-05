@@ -21,6 +21,7 @@ class Quiz(models.Model):
     numberOfQuestions=models.IntegerField()
     time=models.IntegerField(help_text="thời gian làm bài tính bằng phút")
     requiredScoreToPass=models.IntegerField(help_text="điểm số cần để hoàn thành bài kiểm tra")
+    Ds=models.CharField(max_length=200)
     def __str__(self):
         return f"{self.name}-{self.topic}"
     def get_questions(seft):
