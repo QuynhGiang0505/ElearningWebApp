@@ -27,7 +27,8 @@ admin.site.register(Courses)
 admin.site.register(subjects)
 admin.site.register(typeCourse)
 admin.site.register(article_quiz)
-admin.site.register(article_blog,article_blogAdmin)
+admin.site.register(article_blog)
+# admin.site.register(article_blog,article_blogAdmin)
 admin.site.register(BlogComment)
 
 
