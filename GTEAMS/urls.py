@@ -8,4 +8,5 @@ urlpatterns = [
     path('GTEAMS/', include("GTEAMS_APP.urls")),
     path('accounts/',include("accounts.urls")),
     path('accounts/', include('allauth.urls')),
+    path('tinymce/',include('tinymce.urls'))
 ]

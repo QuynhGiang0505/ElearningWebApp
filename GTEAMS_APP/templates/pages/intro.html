@@ -16,7 +16,7 @@
 <body>
 
     <!-- header -->
-    <header>
+     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
             <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,18 +34,17 @@
                         <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Hỏi đáp</a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
+                    
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav" id="navbar-nav-right" style="background-color: #121212; float: right !important;">
+                <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
@@ -62,26 +61,18 @@
                     </li>
                     {% endif %}
                 </ul>
-
+                
             </div>
         </nav>
     </header>
     <div class="container">
-        <div style="text-align: center;">
+        <div style="text-align: center;margin-top: 6%; margin-bottom: 7%;">
             <h1>Giới thiệu</h1>
             <p>Vì một nền giáo dục thân thiện với bất cứ ai, ở bất cứ nơi nào.</p>
         </div>
 
-        <div style="text-align: center;">
-            <h2>Tầm nhìn</h2>
-            <br>
-            <p>Với mong muốn mang đến kiến thức chất lượng, miễn phí cho mọi người, với tâm huyết phá bỏ rào cản kiến thức từ việc giáo dục thu phí. Chúng tôi - Gteam đã lập nên trang website này để thế giới phẳng hơn.
-                <br> Bất cứ ai có mong muốn khai phá thế giới. Phá bỏ mọi thứ ngăn cản sự phát triển tất yếu bền vững của xã hội đều là Gter (Thành viên của Gteam).
-                <br> GIÁO DỤC LÀ MIỄN PHÍ!</p>
-        </div>
+        <div class="row" style="margin-top: 5%; margin-bottom: 7%; margin-left:5px;">
 
-        <div class="row">
-            <!-- <h2>Người sáng lập</h2> -->
             <div class="col">
                 <h3>Lâm Thanh Ngân</h3>
                 <p>Founder</p>
@@ -129,6 +120,17 @@
             </div>
         </div>
 
+
+        <div style="text-align: center;margin-top: 5%; margin-bottom: 7%;">
+            <h2>Tầm nhìn</h2>
+            <br>
+            <p>Với mong muốn mang đến kiến thức chất lượng, miễn phí cho mọi người, với tâm huyết phá bỏ rào cản kiến thức từ việc giáo dục thu phí. Chúng tôi - Gteam đã lập nên trang website này để thế giới phẳng hơn.
+                <br> Bất cứ ai có mong muốn khai phá thế giới. Phá bỏ mọi thứ ngăn cản sự phát triển tất yếu bền vững của xã hội đều là Gter (Thành viên của Gteam).
+                <br> GIÁO DỤC LÀ MIỄN PHÍ!</p>
+        </div>
+
+        
+        <div style="text-align: center;margin-top: 5%; margin-bottom: 7%;">
         <h2>Dịch vụ</h2>
         <div style="text-align: center;">
             <div class="service__first">
@@ -145,11 +147,12 @@
                     <p>Thảo luận trao đổi kiến thức.</p>
                 </div>
             </div>
-        </div>
-        <div style="text-align: center;">
+        </div></div>
+        
+        <div style="text-align: center;margin-top: 5%; margin-bottom: 7%;">
             <h2>Tài trợ</h2>
             <p>Hỗ trợ chúng tôi để cùng xây dựng một nền GIÁO DỤC MIỄN PHÍ cho bất cứ ai, ở bất cứ nơi nào.<br> Hoặc tham gia vào đội ngủ giảng viên, công tác viên, tình nguyện viên của chúng tôi.</p>
-            <button>Tài trợ</button>
+            <a href="{% url 'contact' %}"><button>Tài trợ</button></a>
         </div>
         <div>
         </div>

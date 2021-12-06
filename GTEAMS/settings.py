@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook', 
     'social_django',
     'django.contrib.humanize',
+    'tinymce'
 ]
 
 MIDDLEWARE = [

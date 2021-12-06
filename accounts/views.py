@@ -29,17 +29,7 @@ def registerPage(request):
 		form = CreateUserForm()
 		if request.method == 'POST':
 			form = CreateUserForm(request.POST)
-			# mail=request.POST.get('email')
-			# if User.objects.filter(email=mail).exists():
-			# 	# messages.add_message(request, messages.INFO, 'Email is already exists!')
-			# 	# messages.warning(request,'Email is already exists!')
-			# 	return render(
-			# 		request, 
-			# 		'accounts/register.html', 
-			# 		{
-			# 			'form':form
-			# 		}
-        	# 	)
+			
 			if form.is_valid():
 				# save form in the memory not in database  
 				user = form.save(commit=False)  
@@ -47,7 +37,7 @@ def registerPage(request):
 				user.save()  
 				# to get the domain of the current site  
 				current_site = get_current_site(request)  
-				mail_subject = 'Activation link has been sent to your email id'  
+				mail_subject = 'Liên kết kích hoạt đã được gửi đến id email của bạn'  
 				message = render_to_string('accounts/acc_active_email.html', {  
 					'user': user,  
 					'domain': current_site.domain,  
@@ -59,7 +49,7 @@ def registerPage(request):
 							mail_subject, message, to=[to_email]  
 				)  
 				email.send()  
-				return HttpResponse('Please confirm your email address to complete the registration') 
+				return HttpResponse('Vui lòng xác nhận địa chỉ email của bạn để hoàn tất đăng ký') 
 				# form.save()
 				# user = form.cleaned_data.get('username')
 				# messages.success(request, 'Account was created for ' + user)
@@ -85,7 +75,7 @@ def loginPage(request):
 				login(request, user)
 				return redirect('../../GTEAMS')
 			else:
-				messages.info(request, 'Username OR password is incorrect')
+				messages.info(request, 'Username hoặc mật khẩu không đúng!')
 
 		context = {}
 		return render(request, 'accounts/login.html', context)
@@ -104,6 +94,6 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):  
         user.is_active = True  
         user.save()  
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')  
+        return HttpResponse('Cảm ơn bạn đã xác nhận email của bạn. Bây giờ bạn có thể đăng nhập tài khoản của mình.')  
     else:  
-        return HttpResponse('Activation link is invalid!')  
+        return HttpResponse('Liên kết kích hoạt không hợp lệ!')  
