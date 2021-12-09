@@ -1,4 +1,4 @@
-console.log(' world quiz')
+console.log(' world quiz ádá')
 const url = window.location.href
 const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
@@ -77,8 +77,14 @@ $.ajax({
                             <input type="radio" class="ans" id="${q}-${a}" name="${q}" value="${a}">
                             <label for="${q}">${a}</label>
                         </div>
+                        
                     `
                 })
+                quizBox.innerHTML += `
+                <div class="result${question}" id="${question}"></div>
+                <hr>
+                
+            `
             }
         });
         activateTimer(response.time)
@@ -117,30 +123,36 @@ const sendData = () => {
 
             results.forEach(res => {
                 const resDiv = document.createElement("div")
-                for (const [question, resp] of Object.entries(res)) {
 
+                for (const [question, resp] of Object.entries(res)) {
+                    const aaaa = "result" + question
+                    const b = document.getElementById(question)
                     resDiv.innerHTML += question
                     const cls = ['container', 'p-3', 'text-light', 'h6']
                     resDiv.classList.add(...cls)
-
                     if (resp == 'not answered') {
-                        resDiv.innerHTML += '- not answered'
-                        resDiv.classList.add('bg-danger')
+
+                        b.innerHTML += `
+                        <div class="bg-danger">not answered</div>
+                        
+                    `
                     } else {
                         const answer = resp['answered']
                         const correct = resp['correct_answer']
 
                         if (answer == correct) {
-                            resDiv.classList.add('bg-success')
-                            resDiv.innerHTML += ` answered: ${answer}`
+
+                            b.innerHTML += `
+                            <div class="bg-success">${answer}</div>
+                            `
                         } else {
-                            resDiv.classList.add('bg-danger')
-                            resDiv.innerHTML += ` | correct answer: ${correct}`
-                            resDiv.innerHTML += ` | answered: ${answer}`
+
+                            b.innerHTML += `
+                            <div class="bg-danger">${answer}</div>
+                            `
                         }
                     }
                 }
-                resultBox.append(resDiv)
             })
         },
         error: function(error) {

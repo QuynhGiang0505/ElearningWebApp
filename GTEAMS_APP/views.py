@@ -214,7 +214,7 @@ def cartShopping(request):
     user=request.user
     allCourses=Courses.objects.all()
     allUser=User.objects.all()
-    cart2=Cart.objects.filter(user=user)
+    cart2=Cart.objects.all()
     context= {'cart':cart2, 'allCourses':allCourses, 'allUser':allUser}
     return render(request,'pages/cart.html',context)
 
