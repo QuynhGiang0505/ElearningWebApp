@@ -3,3 +3,4 @@ pip install django-utils-six
 pip install darksky
 pip install pillow
 pip install django-crispy-forms
+pip install django-tinymce4-lite
