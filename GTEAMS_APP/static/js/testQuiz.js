@@ -133,7 +133,7 @@ const sendData = () => {
                     if (resp == 'not answered') {
 
                         b.innerHTML += `
-                        <div class="bg-danger">not answered</div>
+                        <div class="bg-danger">Bạn chưa chọn câu trả lời nào</div>
                         
                     `
                     } else {
@@ -143,12 +143,14 @@ const sendData = () => {
                         if (answer == correct) {
 
                             b.innerHTML += `
-                            <div class="bg-success">${answer}</div>
+                            <div class="bg-success">Câu trả lời ĐÚNG</div>
                             `
                         } else {
 
                             b.innerHTML += `
-                            <div class="bg-danger">${answer}</div>
+                            <div class="bg-danger">Câu trả lời SAI</div>
+                            <div class="bg-danger">Đáp án: ${correct}</div>
+
                             `
                         }
                     }
