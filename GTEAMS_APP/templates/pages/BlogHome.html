@@ -119,59 +119,59 @@
         {% endfor %} {% if pages.has_other_pages %}
         <ul class="pagination">
             {% if pages.has_previous %}
-            <li><a href="?page={{ employees.previous_page_number }}" style="">«</a></li>
+            <li><a style="color:#dc3545" href="?page={{ employees.previous_page_number }}">«</a></li>
             {% else %}
             <li class="disabled" class="page-link"><span>«</span></li>
             {% endif %} {% for i in pages.paginator.page_range %} {% if pages.number == i %}
-            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+            <li class="active"><span style="background-color:#dc3545; border-color: #dc3545;">{{ i }} <span class="sr-only ">(current)</span></span>
             </li>
             {% else %}
-            <li><a href="?page={{ i }}">{{ i }}</a></li>
+            <li><a style="color:#dc3545 " href="?page={{ i }} ">{{ i }}</a></li>
             {% endif %} {% endfor %} {% if pages.has_next %}
-            <li><a href="?page={{ pages.next_page_number }}">»</a></li>
+            <li><a style="color:#dc3545 " href="?page={{ pages.next_page_number }} ">»</a></li>
             {% else %}
-            <li class="disabled"><span>»</span></li>
+            <li class="disabled "><span>»</span></li>
             {% endif %}
         </ul>
         {% endif %}
     </div>
 
     <footer>
-        <div style="margin-top:10px;" class="container">
+        <div style="margin-top:10px; " class="container ">
 
-            <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+            <div class="text-center "><i class="fas fa-ellipsis-h "></i></div>
 
-            <div class="row text-center">
-                <div class="col-md-4 box">
-                    <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+            <div class="row text-center ">
+                <div class="col-md-4 box ">
+                    <span class="copyright quick-links ">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
               </span>
                 </div>
-                <div class="col-md-4 box">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
+                <div class="col-md-4 box ">
+                    <ul class="list-inline social-buttons ">
+                        <li class="list-inline-item ">
+                            <a href="# ">
+                                <i class="fab fa-twitter "></i>
                             </a>
                         </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
+                        <li class="list-inline-item ">
+                            <a href="# ">
+                                <i class="fab fa-facebook-f "></i>
                             </a>
                         </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
+                        <li class="list-inline-item ">
+                            <a href="# ">
+                                <i class="fab fa-linkedin-in "></i>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4 box">
-                    <ul class="list-inline quick-links">
-                        <li class="list-inline-item">
-                            <a href="#">Privacy Policy</a>
+                <div class="col-md-4 box ">
+                    <ul class="list-inline quick-links ">
+                        <li class="list-inline-item ">
+                            <a href="# ">Privacy Policy</a>
                         </li>
-                        <li class="list-inline-item">
-                            <a href="#">Terms of Use</a>
+                        <li class="list-inline-item ">
+                            <a href="# ">Terms of Use</a>
                         </li>
                     </ul>
                 </div>
@@ -179,9 +179,9 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js " integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js " integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV " crossorigin="anonymous "></script>
 </body>
 
 </html>

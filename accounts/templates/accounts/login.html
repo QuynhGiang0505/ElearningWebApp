@@ -58,9 +58,13 @@
 
                 </div>
 
+                {% if messages %}
+                <ul class="messages">
                 {% for message in messages %}
-                <p id="messages">{{message}}</p>
+                <li  {% if message. %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
                 {% endfor %}
+                </ul>
+                {% endif %}
 
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links">
