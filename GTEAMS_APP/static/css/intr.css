@@ -7,40 +7,36 @@
     color: rgb(255, 255, 255);
     box-sizing: border-box;
     font-size: 13px;
-    background-color: #121212 ;
+    background-color: #121212;
 }
-body{
+
+body {
     background-color: #121212 !important;
 }
-a{
+
+a {
     text-decoration: none;
     color: white;
 }
+
 .navbar-dark .navbar-nav .nav-link {
     color: rgb(250, 14, 112);
     background-color: #121212;
 }
-h1, h2{
+
+h1,
+h2 {
     color: rgb(250, 14, 112);
     text-align: center;
 }
-h3{
-    color: rgba(250, 124, 176, 0.891) ;
+
+h3 {
+    color: rgba(250, 124, 176, 0.891);
     font-size: 15px;
 }
+
 @media screen and (max-device-width: 736px) {
-    h1{
-        font-size: 25px;
-    }
-    h2{
-        font-size: 20px;
-    }
-    h3{
-        font-size: 13px;
-        height: 40px;
-    }
-   .navbar-nav #navbar-nav-right{
+    .navbar-nav #navbar-nav-right {
         float: left !important;
     }
-    
 }

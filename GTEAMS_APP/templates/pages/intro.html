@@ -16,7 +16,7 @@
 <body>
 
     <!-- header -->
-     <header>
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
             <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,11 +34,11 @@
                         <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
                     </li>
 
-                   
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
@@ -61,65 +61,74 @@
                     </li>
                     {% endif %}
                 </ul>
-                
+
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container my-3">
         <div style="text-align: center;margin-top: 6%; margin-bottom: 7%;">
             <h1>Giới thiệu</h1>
             <p>Vì một nền giáo dục thân thiện với bất cứ ai, ở bất cứ nơi nào.</p>
         </div>
+        <div class="row d-flex justify-content-center ">
+            <div class="col-md-4 ">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Lâm Thanh Ngân</h5>
+                        <p class="card-text">Founder</p>
+                        <div class="contact-info">
+                            <div class="contact-info-detail">
+                                <img src="{% static 'imgs/facebook-intro.png'%}" class="imgfont" alt="facebook-intro">
+                                <a class="a1" href="https://fb.com/lamthanhngan2705">fb.com/lamthanhngan2705</a>
+                            </div>
+                            <div class="contact-info-detail">
+                                <img src="{% static 'imgs/phone.png'%}" alt="phone" class="imgfont">+84 326098634
 
-        <div class="row" style="margin-top: 5%; margin-bottom: 7%; margin-left:5px;">
-
-            <div class="col">
-                <h3>Lâm Thanh Ngân</h3>
-                <p>Founder</p>
-
-                <div class="contact-info">
-                    <div class="contact-info-detail">
-                        <img src="{% static 'imgs/facebook-intro.png'%}" class="imgfont" alt="facebook-intro">
-                        <a class="a1" href="fb.com/lamthanhngan2705">fb.com/lamthanhngan2705</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="contact-info-detail">
-                        <img src="{% static 'imgs/phone.png'%}" alt="phone" class="imgfont">+84 326098634
+                </div>
+            </div>
 
+            <div class="col-md-4 ">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nguyễn Mỹ Quỳnh</h5>
+                        <p class="card-text">Founder</p>
+                        <div class="contact-info">
+                            <div class="contact-info-detail">
+                                <img src="{% static 'imgs/facebook-intro.png'%}" class="imgfont" alt="facebook-intro">
+                                <a class="a1" href="https://fb.com/phapha0405">fb.com/phapha0405</a>
+                            </div>
+                            <div class="contact-info-detail">
+                                <img src="{% static 'imgs/phone.png'%}" alt="phone" class="imgfont">+84 326098634
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col">
-                <h3>Nguyễn Mỹ Quỳnh</h3>
-                <p>Founder</p>
-                <div class="contact-info">
-                    <div class="contact-info-detail">
-                        <img src="{% static 'imgs/facebook-intro.png'%}" class="imgfont" alt="facebook-intro">
-                        <a class="a2" href="fb.com/phapha0405">fb.com/phapha0405</a>
-                    </div>
-                    <div class="contact-info-detail">
-                        <img src="{% static 'imgs/phone.png'%}" class="imgfont" alt="phone">+84 932883682
 
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <h3>Nguyễn Ngọc Quỳnh Giang</h3>
-                <p>Founder</p>
+            <div class="col-md-4 ">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nguyễn Ngọc Quỳnh Giang</h5>
+                        <p class="card-text">Founder</p>
+                        <div class="contact-info">
+                            <div class="contact-info-detail">
+                                <img src="{% static 'imgs/facebook-intro.png'%}" class="imgfont" alt="facebook-intro">
+                                <a class="a2" href="https://fb.com/qg0212">fb.com/qg0212</a>
+                            </div>
+                            <div class="contact-info-detail">
+                                <img src="{% static 'imgs/phone.png'%}" class="imgfont" alt="phone">+84 932883682
 
-                <div class="contact-info">
-                    <div class="contact-info-detail">
-                        <img src="{% static 'imgs/facebook-intro.png'%}" class="imgfont" alt="facebook-intro">
-                        <a class="a3" href="fb.com/qg0212">fb.com/qg0212</a>
-                    </div>
-                    <div class="contact-info-detail">
-                        <img src="{% static 'imgs/phone.png'%}" class="imgfont" alt="phone">+84 583119863
-
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div style="text-align: center;margin-top: 5%; margin-bottom: 7%;">
             <h2>Tầm nhìn</h2>
@@ -129,33 +138,33 @@
                 <br> GIÁO DỤC LÀ MIỄN PHÍ!</p>
         </div>
 
-        
-        <div style="text-align: center;margin-top: 5%; margin-bottom: 7%;">
-        <h2>Dịch vụ</h2>
-        <div style="text-align: center;">
-            <div class="service__first">
 
+        <div style="text-align: center;margin-top: 6%; margin-bottom: 7%;">
+            <h2>Dịch vụ</h2>
+            <div style="text-align: center;">
+                <div class="service__first">
+
+                </div>
+                <div class="service__second">
+                    <div class="service__second-one">
+                        <p>Hệ thống học lập trình thân thiện.</p>
+                    </div>
+                    <div class="service__second-two">
+                        <p>Nội dung dễ hiểu và chi tiết.</p>
+                    </div>
+                    <div class="service__second-three">
+                        <p>Thảo luận trao đổi kiến thức.</p>
+                    </div>
+                </div>
             </div>
-            <div class="service__second">
-                <div class="service__second-one">
-                    <p>Hệ thống học lập trình thân thiện.</p>
-                </div>
-                <div class="service__second-two">
-                    <p>Nội dung dễ hiểu và chi tiết.</p>
-                </div>
-                <div class="service__second-three">
-                    <p>Thảo luận trao đổi kiến thức.</p>
-                </div>
-            </div>
-        </div></div>
-        
+        </div>
+
         <div style="text-align: center;margin-top: 5%; margin-bottom: 7%;">
             <h2>Tài trợ</h2>
             <p>Hỗ trợ chúng tôi để cùng xây dựng một nền GIÁO DỤC MIỄN PHÍ cho bất cứ ai, ở bất cứ nơi nào.<br> Hoặc tham gia vào đội ngủ giảng viên, công tác viên, tình nguyện viên của chúng tôi.</p>
             <a href="{% url 'contact' %}"><button>Tài trợ</button></a>
         </div>
-        <div>
-        </div>
+
 
         <!-- footer -->
         <footer>
