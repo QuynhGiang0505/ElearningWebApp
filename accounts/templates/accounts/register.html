@@ -64,9 +64,16 @@
 
                 </div>
 
-                {% for message in messages %}
-                <p id="messages">{{message}}</p>
-                {% endfor %}
+                {% if form.is_valid %}
+                    {% endif %} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+                    <div class="alert ">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+                    <div class="alert">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %} {% endif %}
 
                 <div class="mt-4">
                     <div class="d-flex justify-content-center links">

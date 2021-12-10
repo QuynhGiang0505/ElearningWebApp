@@ -12,9 +12,11 @@
     <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" id="fontawesome-css">
     <!-- link cho thanh truoc -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -23,11 +25,14 @@
         <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}"> -->
 
     <!-- <link rel="stylesheet" href="{% static 'css/HomePageStyl.css'%}"> -->
-    <link rel="stylesheet" href="{% static 'css/HomePag.css'%}">
+
     <!-- tác giả nha -->
+    <link rel="stylesheet" href="{% static 'css/HomePag.css'%}">
     <meta name='author' content="G-Team" />
     <!-- này search từ khóa tại gg thì dựa vào này -->
     <meta name='description' content="Tham gia các khóa học online" />
+
+
 </head>
 
 <body>
@@ -84,11 +89,21 @@
 
     <div class="container my-3">
         <h2>Bài viết</h2>
-        <p>Kho tài liệu và bài viết được chia sẻ, đánh giá bởi cộng đồng</p>
-        <div id="content-nav-container" style=" margin-bottom: 30px;">
-            <i class="fas fa-home"></i>
-            <i class="fas fa-angle-right"></i> Bài viết
+        <div class="portfolio-item row">
+
+            <div class="item col-md-11 mt-4">
+
+                <p>Kho tài liệu và bài viết được chia sẻ, đánh giá bởi cộng đồng</p>
+                <div id="content-nav-container" style=" margin-bottom: 30px;">
+                    <i class="fas fa-home"></i>
+                    <i class="fas fa-angle-right"></i> Bài viết
+                </div>
+            </div>
+            <div class="item col-md-1 mt-4">
+                <a style="box-shadow:  5px 5px #888888;" href="{% url 'submitBlog'  %}" role="button" class="btn btn-danger">VIẾT BÀI</a>
+            </div>
         </div>
+
 
         <form method="get" action="{% url 'searchblog' %}" class="form-inline my-2 my-lg-0 mx-3">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
@@ -110,16 +125,15 @@
                 <div class="mb-1 text-muted">{{post.datetime}}</div>
                 <p class="card-text mb-auto">{{post.content| safe|truncatechars:200}}</p>
                 <div class="my-2">
-                    <a href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Xem thêm</a>
+                    <a style="box-shadow:  3px 3px 5px #888888;" href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Xem thêm</a>
                 </div>
 
             </div>
         </div>
-
         {% endfor %} {% if pages.has_other_pages %}
         <ul class="pagination">
             {% if pages.has_previous %}
-            <li><a style="color:#dc3545" href="?page={{ employees.previous_page_number }}">«</a></li>
+            <li><a style="color:#dc3545" href="?page={{ pages.previous_page_number }}">«</a></li>
             {% else %}
             <li class="disabled" class="page-link"><span>«</span></li>
             {% endif %} {% for i in pages.paginator.page_range %} {% if pages.number == i %}

@@ -99,7 +99,7 @@ class article_blog(models.Model):
     title=models.CharField(max_length=255)
     author=models.CharField(max_length=14)
     slug=models.CharField(max_length=130)
-    timeStamp=models.DateTimeField(blank=True)
+    timeStamp=models.DateTimeField(default=now, blank=True, null=True)
     content=models.TextField()
     views= models.IntegerField(default=0)
 
