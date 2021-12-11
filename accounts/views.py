@@ -35,6 +35,7 @@ def registerPage(request):
 				user = form.save(commit=False)  
 				user.is_active = False  
 				user.save()  
+							
 				# to get the domain of the current site  
 				current_site = get_current_site(request)  
 				mail_subject = 'Liên kết kích hoạt đã được gửi đến id email của bạn'  
@@ -50,9 +51,7 @@ def registerPage(request):
 				)  
 				email.send()  
 				return HttpResponse('Vui lòng xác nhận địa chỉ email của bạn để hoàn tất đăng ký') 
-				# form.save()
-				# user = form.cleaned_data.get('username')
-				# messages.success(request, 'Account was created for ' + user)
+				
 		return render(
             request, 
             'accounts/register.html', 
@@ -65,6 +64,7 @@ def loginPage(request):
 	if request.user.is_authenticated:
 		return redirect("../../GTEAMS")
 	else:
+		redirect("../../")
 		if request.method == 'POST':
 			username = request.POST.get('username')
 			password =request.POST.get('password')
@@ -76,6 +76,7 @@ def loginPage(request):
 				return redirect('../../GTEAMS')
 			else:
 				messages.info(request, 'Username hoặc mật khẩu không đúng!')
+				
 
 		context = {}
 		return render(request, 'accounts/login.html', context)

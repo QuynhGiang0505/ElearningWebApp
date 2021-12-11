@@ -15,12 +15,14 @@
     <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css "> <link rel="stylesheet " href="{% static 'css/HomePag.css'%} ">
     <meta name='author' content="G-Team " />
     <meta name='description' content="Tham gia các khóa học online " />
+    <link rel="stylesheet" href="{% static 'css/HomePag.css'%}">
 </head>
 
 <body>
 
     <!-- header -->
     <header>
+
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #121212;">
                 <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
@@ -49,6 +51,7 @@
                             <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
                         </li>
 
+
                         {% if user.is_authenticated %}
                         <li class="nav-item active"  >
                             <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
@@ -74,7 +77,13 @@
         </div>
     </header>
 
+    
+
     <div class="container my-3 ">
+        <div id="content-nav-container" style=" margin-bottom: 30px;">
+            <i class="fas fa-home"></i>
+            <i class="fas fa-angle-right"></i> Profile 
+        </div>
         <h2 style=" text-align:center; ">Thông tin cá nhân của bạn</h2>
         <!--  -->
         <div class="container mt-5 ">
@@ -83,7 +92,7 @@
                     <div style=" text-align:center; "class="card " style="width: 11rem; ">
                         <div class="text-center "style="padding-top:20px "> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScdHD-KQQkMQdJcXTSALcRVFp7chjRbA0e-w&usqp=CAU " width="100 " class="rounded-circle "> </div>
                         <div class="card-body ">
-                            <p>Tên đăng nhập: {{user}}</p>
+                            <p>Tên đăng nhập: {{user.username}}</p>
                             <div class="px-4 mt-1 ">
                                 <p class="fonts ">Email: {{user.email}}</p>
                                 <p class="fonts ">Họ: {{user.first_name}}</p>
@@ -92,17 +101,13 @@
                         </div>
                     </div>
                 </div>
-</div>
-</div>
-    <!--  -->
-    <div id="content-nav-container " style=" margin-bottom: 30px; ">
-        <i class="fas fa-home "></i>
-        <i class="fas fa-angle-right "></i> Profile
+            </div>
+        </div>
     </div>
+    
 
-
-    <footer>
-        <div class="container ">
+ <footer>
+        <div style="margin-top:50px; " class="container ">
 
             <div class="text-center "><i class="fas fa-ellipsis-h "></i></div>
 

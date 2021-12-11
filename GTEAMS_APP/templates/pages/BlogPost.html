@@ -1,6 +1,6 @@
 {% load static %} {% load humanize %} {% load extras %}
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -12,9 +12,11 @@
     <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" id="fontawesome-css">
     <!-- link cho thanh truoc -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -29,13 +31,15 @@
     <meta name='author' content="G-Team" />
     <!-- này search từ khóa tại gg thì dựa vào này -->
     <meta name='description' content="Tham gia các khóa học online" />
+
+
 </head>
 
 <body>
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
-            <a class="navbar-brand" href="#"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -88,7 +92,11 @@
             <div class="col-md-8 blog-main">
                 <div class="blog-post">
                     <h2 class="blog-post-title text-warning">{{post.title}}</h2>
-                    <p class="blog-post-meta text-danger">{{post.timeStamp}} by <a href="#">{{post.author}}</a></p>
+                    <p class="blog-post-meta text-danger">{{post.timeStamp}} bởi <a href="#">{{post.author}}</a></p>
+
+                    <div class="fb-like" data-href="http://127.0.0.1:8000/GTEAMS/blog/post.slug" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+                    <br>
+                    <br>
                     <p>{{post.content|safe}}</p>
                     <hr>
                 </div>
@@ -99,6 +107,8 @@
                     <p class="mb-0">Vì một nền giáo dục thân thiện với bất cứ ai, ở bất cứ nơi nào. Với mong muốn mang đến kiến thức chất lượng, miễn phí cho mọi người, với tâm huyết phá bỏ rào cản kiến thức từ việc giáo dục thu phí. Chúng tôi - Gteam đã lập nên trang
                         website này để thế giới phẳng hơn. Bất cứ ai có mong muốn khai phá thế giới. Phá bỏ mọi thứ ngăn cản sự phát triển tất yếu bền vững của xã hội đều là Gter (Thành viên của Gteam).
                     </p>
+
+                    <div class="fb-share-button" data-href="http://127.0.0.1:8000/GTEAMS/blog/post.slug" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2FGTEAMS%2Fblog%2Fpost.slug&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                 </div>
                 <div class="p-4">
                     <h4 class="font-italic">Liên hệ</h4>
