@@ -22,7 +22,6 @@ modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
 
     startBtn.addEventListener('click', () => {
         addCart(id)
-        console.log("success")
         window.location.href = url
     })
 }))

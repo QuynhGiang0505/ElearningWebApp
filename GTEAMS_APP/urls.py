@@ -12,6 +12,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     # path('', views.PageHome, name='home'),
+    
     path('', views.showCoursesMainPage, name='home'),
     path('<str:title>', views.show_detail_MainPage, name='show_detail_MainPage'),
     path('intro/',views.PageIntro,name="intro"),
@@ -19,6 +20,7 @@ urlpatterns = [
     path('practice/',views.ShowListQuiz, name='practice'),
     path('courses/', views.showCourses, name='courses'),
     path('courses/yourCart/', views.cartShopping, name="shopping"),
+    path('courses/yourCart/payment/', views.payment, name="payment"),
     path('courses/addCart/', views.addCart, name="buy"),
     path('courses/detailCart/', views.detailCart, name="detailCart"),
     path('blog/', views.blogHome, name='blogs'),

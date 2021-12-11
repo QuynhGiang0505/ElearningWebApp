@@ -220,8 +220,6 @@ def cartShopping(request):
     context= {'cart':cart2, 'allCourses':allCourses, 'allUser':allUser}
     return render(request,'pages/cart.html',context)
 
-
-
 def delItem(request, id):
     allCourses=Courses.objects.all()
     allUser=User.objects.all()
@@ -231,6 +229,18 @@ def delItem(request, id):
 
 def detailCart(request):
     return render(request,'pages/detailCart.html')
+
+def payment(request):
+    if request.is_ajax():
+        user=request.POST.get('user')
+        courses=request.POST.get('course')
+        for c in courses:
+            for r in c:
+                if(r.user==user):
+                    r.paid=True
+        return render(request,'pages/a.html')
+    else:
+        return render(request,'pages/a.html')
 #------------------------------------------------------------------------------
 # def home(request):
 #     allposts = Post.objects.all()
