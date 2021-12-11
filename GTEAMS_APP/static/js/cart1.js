@@ -21,23 +21,9 @@ modalBtns.forEach(modalBtn => modalBtn.addEventListener('click', () => {
     </form>
     </div>
     `
-    const url1 = url + "payment/"
-    console.log(url1)
-    console.log("r")
     const startBtn = document.getElementById("btnSubmit")
     startBtn.addEventListener('click', () => {
-        $.ajax({
-            type: 'POST',
-            url: `${url}payment/`,
-            user: user,
-            course: course,
-            success: function() {
-                console.log("mmmmmmmmmmmmmmmmmmmmmmmmm")
-            },
-            error: function(error) {
-                console.log(error)
-            }
-        });
+        paymenttt(user)
 
     })
 }))
