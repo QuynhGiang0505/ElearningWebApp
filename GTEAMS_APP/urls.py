@@ -20,7 +20,7 @@ urlpatterns = [
     path('practice/',views.ShowListQuiz, name='practice'),
     path('courses/', views.showCourses, name='courses'),
     path('courses/yourCart/', views.cartShopping, name="shopping"),
-    path('courses/yourCart/payment/', views.payment, name="payment"),
+    path('courses/qg/payment/', views.payment, name="payment"),
     path('courses/addCart/', views.addCart, name="buy"),
     path('courses/detailCart/', views.detailCart, name="detailCart"),
     path('blog/', views.blogHome, name='blogs'),
@@ -43,6 +43,7 @@ urlpatterns = [
     path('courses/<subject>/<title>/', views.showcourses_detail_demo),
     path('blog/postComment/<str:slug>', views.postComment,name="postComment"),
     path('blog/submitBlog/', views.submitBlog,name="submitBlog"),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

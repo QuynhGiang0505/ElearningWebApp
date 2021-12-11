@@ -17,7 +17,8 @@ from django.core.paginator import Paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.sites.shortcuts import get_current_site  
 from django.db.models import Q
-
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_protect
 @login_required(login_url='../../accounts/login')
 def PageContact(request):
     return render(request,'pages/contact.html')
@@ -233,14 +234,13 @@ def detailCart(request):
 def payment(request):
     if request.is_ajax():
         user=request.POST.get('user')
-        courses=request.POST.get('course')
-        for c in courses:
-            for r in c:
-                if(r.user==user):
-                    r.paid=True
-        return render(request,'pages/a.html')
-    else:
-        return render(request,'pages/a.html')
+        cart1=Cart.objects.all()
+        for c in cart1:
+            if (str(c.user)==str(user)):
+                c.num=int(5)
+                c.paid=True
+                c.save()
+    return render(request,'pages/a.html')
 #------------------------------------------------------------------------------
 # def home(request):
 #     allposts = Post.objects.all()
