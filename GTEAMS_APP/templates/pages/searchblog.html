@@ -82,14 +82,21 @@
 
     <div class="container my-3">
         <h2>Bài viết</h2>
-        <p>Kho tài liệu và bài viết được chia sẻ, đánh giá bởi cộng đồng</p>
-        <div id="content-nav-container" style=" margin-bottom: 30px;">
-            <i class="fas fa-home"></i>
-            <i class="fas fa-angle-right"></i> Bài viết
+        <div class="portfolio-item row">
+            <div class="item col-md-11 mt-4">
+                <p>Kho tài liệu và bài viết được chia sẻ, đánh giá bởi cộng đồng</p>
+                <div id="content-nav-container" style=" margin-bottom: 30px;">
+                    <i class="fas fa-home"></i>
+                    <i class="fas fa-angle-right"></i> Bài viết
+                </div>
+            </div>
+            <div class="item col-md-1 mt-4">
+                <a style="box-shadow:  5px 5px #888888;" href="{% url 'submitBlog'  %}" role="button" class="btn btn-danger">VIẾT BÀI</a>
+            </div>
         </div>
         <form method="get" action="{% url 'searchblog' %}" class="form-inline my-2 my-lg-0 mx-3">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width:230px;">
-            <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Search</button>
+            <button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">Tìm kiếm</button>
         </form>
         {% if allPosts|length < 1 %} 
         <aside class="col-md-5 blog-sidebar" style="margin:10px;">
@@ -119,13 +126,30 @@
                 <div class="mb-1 text-muted">{{post.datetime}}</div>
                 <p class="card-text mb-auto">{{post.content| safe|truncatechars:200}}</p>
                 <div class="my-2">
-                    <a href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Xem thêm</a>
+                    <a style="box-shadow:  3px 3px 5px #888888;" href="{% url 'blogspost' post.slug %}" role="button" class="btn btn-danger">Xem thêm</a>
                 </div>
 
             </div>
         </div>
-
         {% endfor %} 
+        {% comment %} {% endfor %} {% if pages.has_other_pages %}
+        <ul class="pagination">
+            {% if pages.has_previous %}
+            <li><a style="color:#dc3545" href="?page={{ pages.previous_page_number }}{% if request.GET.q  %}&q={{ request.GET.q }}{% endif %}">«</a></li>
+            {% else %}
+            <li class="disabled" class="page-link"><span>«</span></li>
+            {% endif %} {% for i in pages.paginator.page_range %} {% if pages.number == i %}
+            <li class="active"><span style="background-color:#dc3545; border-color: #dc3545;">{{ i }} <span class="sr-only ">(current)</span></span>
+            </li>
+            {% else %}
+            <li><a style="color:#dc3545 " href="?page={{ i }} ">{{ i }}</a></li>
+            {% endif %} {% endfor %} {% if pages.has_next %}
+            <li><a style="color:#dc3545 " href="?page={{ pages.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">»</a></li>
+            {% else %}
+            <li class="disabled "><span>»</span></li>
+            {% endif %}
+        </ul>
+        {% endif %} {% endcomment %}
     </div>
 
     <footer>

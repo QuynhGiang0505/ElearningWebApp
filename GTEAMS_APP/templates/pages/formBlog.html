@@ -19,12 +19,35 @@
 </head>
 
 <body>
-    <!-- header -->
-    <header id="header">
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
             <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" style="background-color: #121212;">
-                <ul class="navbar-nav" style="background-color: #121212;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212;">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'intro' %}">Giới thiệu<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'courses' %}">Khóa học</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
@@ -41,58 +64,57 @@
                     </li>
                     {% endif %}
                 </ul>
-            </div>
+
             </div>
         </nav>
     </header>
 
     <!-- <main class="container"> -->
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Gửi thông tin liên hệ - góp ý</h2>
-                <div class=block_content>
-                    <form action="" id="contactForm" method="post">
-                        <label for="Name">{% csrf_token %} {{ form.as_p}}</label>
-                        <input type="submit" class="form-control" value="Gửi" style="background-color:rgba(57, 57, 57, 0.503); color: rgb(247, 60, 138);">
-                    </form>
-                    {% if form.is_valid %}
-                    <script>
-                        alert("Thank you for contacting us ")
-                    </script>
-                    {% endif %} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
-                    <div class="alert alert-danger">
-                        <strong>{{ error|escape }}</strong>
+    <div class="container my-3">
+        <div class="row no-gutters  rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Viết bài</h2>
+                <form action="" id="contactForm" method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span><strong >Tiêu đề:</strong></span>
+                        </div>
+                        {{form.title}}
                     </div>
-                    {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
-                    <div class="alert alert-danger">
-                        <strong>{{ error|escape }}</strong>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span><strong >Tác giả:</strong></span>
+                        </div>
+                        {{form.author}}
                     </div>
-                    {% endfor %} {% endif %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span><strong >Nội dung:</strong></span>
+                        </div>
+                        {{form.content}}
+                    </div>
+                    <input type="submit" class="form-control" value="Gửi" style="background-color:rgba(57, 57, 57, 0.503); color: rgb(247, 60, 138); width: 30%; margin-left: 35%;">
+                </form>
+                {% if form.is_valid %}
+                <script>
+                    alert("Bạn đã gởi bài thành công và đang chờ xét duyệt.")
+                </script>
+                {% endif %} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
                 </div>
+                {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %} {% endif %}
             </div>
-            <div class="col">
-                <div class=block_title>
-                    <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Thông tin liên hệ GTEAMS</h2>
-                </div>
-                <div style="text-align: center;">
-                    <span>Mọi thông tin đóng góp ý kiến hoặc hỗ trợ có thể liên hệ trực tiếp qua các kênh sau</span>
-                    <ul id="ul_content">
-                        <li>
-                            <label for="phone"><i class="fas fa-phone" style="font-size: 25px;"></i></label><br>
-                            <p>+84 326565659 (VN)</p>
-                        </li>
-                        <li>
-                            <label for="github"><i class="fab fa-github" style="font-size: 25px;"></i></label><br>
-                            <a href="#">Github</a>
-                        </li>
-                        <i class="far fa-envelope" style="font-size: 25px;"></i>
-                        <p>mailll</p>
-                    </ul>
-                </div>
-            </div>
+
         </div>
     </div>
+
+
     <footer>
         <div class="container" style="align-items: center;">
 

@@ -20,9 +20,11 @@ class formBlog(forms.ModelForm):
         fields=(
             'title',
             'author',
-            'slug',
             'content'
         )
+        widgets = {
+          'content': forms.Textarea(attrs={'rows':15, 'cols':350}),
+        }
 
 
 

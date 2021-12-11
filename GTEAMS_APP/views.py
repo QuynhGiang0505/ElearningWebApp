@@ -15,6 +15,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from GTEAMS_APP.templatetags import extras
 from django.core.paginator import Paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.sites.shortcuts import get_current_site  
+from django.db.models import Q
 
 @login_required(login_url='../../accounts/login')
 def PageContact(request):
@@ -237,7 +239,7 @@ def detailCart(request):
 #     return render(request, 'pages/HomePage.html', context)
 
 def blogHome(request): 
-    allPosts= article_blog.objects.all()
+    allPosts= article_blog.objects.all().exclude(slug="")
     page = request.GET.get('page',1)
     paginator = Paginator(allPosts,3)
     try:
@@ -246,7 +248,7 @@ def blogHome(request):
         pages=paginator.page(1)
     except EmptyPage:
         pages=paginator.page(paginator.num_pages)
-    context={'allPosts': allPosts, 'pages':pages}
+    context={'allPosts': allPosts, 'pages': pages}
     return render(request, 'pages/blogHome.html',  context)
 
 def blogPost(request, slug): 
@@ -281,6 +283,20 @@ def quizPost(request, slug):
     post=article_quiz.objects.filter(slug=slug).first()
     context={"post":post}
     return render(request, "pages/quizsPost.html", context)
+
+# def search_blog(request):
+#     query=request.GET['query']
+#     allPosts= article_blog.objects.filter(title__icontains=query)
+#     page = request.GET.get('page',1)
+#     paginator = Paginator(allPosts,3)
+#     try:
+#         pages = paginator.page(page)
+#     except PageNotAnInteger:
+#         pages=paginator.page(1)
+#     except EmptyPage:
+#         pages=paginator.page(paginator.num_pages)
+#     params={'allPosts': allPosts, 'pages': pages}
+#     return render(request, 'pages/searchblog.html', params)
 
 def search_blog(request):
     query=request.GET['query']
@@ -321,7 +337,8 @@ def postComment(request,slug):
             replyDict[reply.parent.sno].append(reply)
     context={'post':post, 'comments': comments, 'user': request.user, 'replyDict': replyDict}
     return render(request, "pages/blogPost.html", context)
-def form_blog(request):
+
+def submitBlog(request):
     if request.method == 'GET':
         form=formBlog()
     if request.method == 'POST':

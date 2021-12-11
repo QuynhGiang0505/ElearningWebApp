@@ -40,7 +40,7 @@ urlpatterns = [
     path('practice/<topic>/save/',views.save_quiz_view, name='QuizSave'),
     path('courses/<subject>/<title>/', views.showcourses_detail_demo),
     path('blog/postComment/<str:slug>', views.postComment,name="postComment"),
-
+    path('blog/submitBlog/', views.submitBlog,name="submitBlog"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
