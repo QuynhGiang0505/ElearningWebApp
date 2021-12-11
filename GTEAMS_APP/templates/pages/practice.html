@@ -23,55 +23,59 @@
 </head>
 
 <body>
-    <!-- header -->
+   <!-- header -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
-            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212;">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'intro' %}">Giới thiệu<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'courses' %}">Khóa học</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
-                    </li>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #121212;">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212;">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'intro' %}">Giới thiệu<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'courses' %}">Khóa học</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
+                        </li>
+    
+                     
+                       <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
+                        </li>
+                        
+    
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
+                        </li>
 
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
-                    </li>
-                    {% endif %}
-                </ul>
-
-            </div>
-        </nav>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item active"  >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart" style="color: #FFD700 !important;"></i></a>
+                          </li>
+                        <li class="nav-item active" >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'logout' %}">Đăng xuất</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item active" >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'log' %}">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'reg' %}">Đăng ký</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    
+                </div>
+            </nav>
+        </div>
     </header>
     <div class="container">
         <!-- Modal -->
@@ -106,25 +110,23 @@
                     {% if question %} {% for q in question %}
                     <div class="col-sm-4">
                         <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                            <div class="card-header">
+                            <div class="card-header" >
                                 <button type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-link modal-button" data-topic="{{q.topic}}" data-quiz="{{q.name}}" data-question="{{q.numberOfQuestions}}" data-time="{{q.time}}" data-pass="{{q.requiredScoreToPass}}"
                                     data-bs-toggle="modal" data-bs-target="#quizStartModal" class="btn btn-primary">
                                     {{q.name}}
                                 </button>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="height: 100px;">
                                 <p class="card-text">{{q.Ds}}</p>
                             </div>
 
                         </div>
                     </div>
-
                     {% endfor %} {% endif %}
                 </div>
             </div>
         </div>
     </div>
-
     <footer>
         <div class="container">
             <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
