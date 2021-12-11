@@ -33,53 +33,57 @@
 <body>
     <!-- header -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
-            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212;">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'intro' %}">Giới thiệu<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'courses' %}">Khóa học</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
-                    </li>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #121212;">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212;">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'intro' %}">Giới thiệu<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'courses' %}">Khóa học</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'practice' %}">Luyện tập</a>
+                        </li>
+    
+                     
+                       <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
+                        </li>
+                        
+    
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
+                        </li>
 
-                 
-                   <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
-                    </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item active"  >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart" style="color: #FFD700 !important;"></i></a>
+                          </li>
+                        <li class="nav-item active" >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'logout' %}">Đăng xuất</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item active" >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'log' %}">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'reg' %}">Đăng ký</a>
+                        </li>
+                        {% endif %}
+                    </ul>
                     
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto" id="navbar-nav-right" style="background-color: #121212; float: right !important; ">
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <div>
@@ -110,12 +114,13 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span class="sr-only">Nextttt</span>
             </a>
-        </div>
+    </div>
         <!-- main -->
         <div class="container">
             <h1 style="color: #FFD700; font-size: 15px;">Hot Courses</h1>
-            <div class="row" style="color: white;">
-                {% for course in allCourses %}  {% if forloop.counter <= 4 %} <div class=".col-6 .col-sm-3">
+            <div class="row" style="color: white; ">
+                {% for course in allCourses %}  {% if forloop.counter <= 4 %} 
+                <div class=".col-6 .col-sm-3" style="text-align: center;" >
                     <a href="{% url 'seeCourse' course.title%}" style="color: white;">
                         <div class="main-hover-div">
                             <div class="user-profile-2" style=" width: 255px; margin: 15px;">
@@ -140,6 +145,7 @@
             {% endif %} {% endfor %}
         </div>
     </div>
+
     </div>
     <!-- footer -->
     <footer>

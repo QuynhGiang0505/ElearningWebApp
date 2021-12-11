@@ -1,18 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    background-color: #000000;
     box-sizing: border-box;
     font-size: 13px;
+    background-color: #121212;
 }
-body{
-    background-color: black;
+
+body {
+    background-color: #121212 !important;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(250, 14, 112);
+    background-color: #121212;
+}
+
  h3{
     box-sizing: border-box;
     display: block;
@@ -137,7 +148,7 @@ a{
 }
 /*NAV*/
 .dropdown-menu{
-    background-color: black;
+    background-color: #121212;
     color: white !important;
 }
 .dropdown-item{
