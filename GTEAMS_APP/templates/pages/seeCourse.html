@@ -1,0 +1,312 @@
+{% load static %} {% load embed_video_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-free-5.15.4-web/css/all.css'%}">
+    <link rel="stylesheet" href="{% static 'css/cours.css'%}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{% static 'js/addCart.js'%}" defer></script>
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212">
+              <!-- Links -->
+          <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    C/C++
+                  </a>
+                  <div class="dropdown-menu" >
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'C, C++ cơ bản' %}">C/C++ cơ bản</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'C, C++ nâng cao' %}">C/C++ nâng cao</a>
+                  </div>
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Python
+                  </a> {% for i in allCourses %}
+  
+                  <div class="dropdown-menu">
+  
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python cơ bản' %}">Python cơ bản</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python nâng cao' %}">Python nâng cao</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Python luyện tập' %}">Bài tập luyện tập</a>
+                  </div>
+                  {% endfor %}
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    C#
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'C# Cơ bản' %}">C# Cơ bản</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'C# Winform' %}">C# Winform</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Lập trình ASP.NET MVC' %}">Lập trình ASP.NET MVC</a>
+                  </div>
+              </li>
+  
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    CSS và SASS
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'CSS và SASS cơ bản' %}">CSS và SASS cơ bản</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'CSS và SASS nâng cao' %}">CSS và SASS nâng cao</a>
+                  </div>
+              </li>
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Java
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Java căn bản' %}">Java căn bản</a>
+                      <a class="dropdown-item" href="{% url 'coursesVideo' 'Khóa học lập trình Android Cơ bản' %}">Khóa học lập trình Android Cơ bản</a>
+                      
+                  </div>
+              </li>
+            
+            {% if user.is_authenticated %}
+            
+            <li class="nav-item active"  >
+              <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart" style="color: #FFD700 !important;"></i></a>
+            </li>
+          <li class="nav-item active" >
+              <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'logout' %}">Đăng xuất</a>
+          </li>
+          {% else %}
+          <li class="nav-item active" >
+              <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'log' %}">Đăng nhập</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'reg' %}">Đăng ký</a>
+          </li>
+            {% endif %}
+          </ul>
+              
+          </div>
+      </nav>
+        </div>
+      </header>
+
+    <div class="container">
+        {% for item in a %} {% if item.title == title %}
+        <div class="row" style="padding: 50px 0 50px 0;">
+            <div class="col-sm" style="text-align: center;">
+                <img src="../../media/{{item.image}}" width="450px" />
+            </div>
+            <div class="col-sm">
+                
+                <!-- thông tin: free? style? date? -->
+                <div>
+                    <i class="fas fa-crown" style="color: #FFD700;"></i>
+                    <span style="color: #FFD700; font-size: 1rem;">{{item.Type}}</span><i class="fas fa-circle" style="color: #FFD700; font-size: 3px; margin: 5px;"></i>
+                    <span style="color: #b3b3b3; font-size: 0.9rem;">{{item.subject}}</span><i class="fas fa-circle" style="color: #b3b3b3; font-size: 3px; margin: 5px;"></i>
+                    <span style="color: #b3b3b3; font-size: 0.9rem;">{{item.date|date:"d-m-Y"}}</span><i class="fas fa-circle" style="color: #b3b3b3; font-size: 3px; margin: 5px;"></i>
+                </div>
+                <div>
+                    <h1 style="color: #FFD700; font-size: 1.2rem; background-color: #121212; ">
+                        {{title}}
+                    </h1>
+                </div>
+                {% ifequal item.Type|slugify 'Free'|slugify %}
+
+                <a href="{% url '123' item.title %}">
+                    <button type="button" class="btn btn-outline-warning">Học ngay</button>
+                </a>
+
+                {% else %} {% comment %} <button type="button" class="btn btn-outline-warning" onclick="addCart('{{item.id}}')">Thêm vào giỏ hàng</button> {% endcomment %}
+                <div class="container">
+                    <!-- Modal -->
+                    <div class="modal fade" id="addCartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addCartModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addCartModalLabel">Add course to cart</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button><span aria-hidden="=true">&times;</span>
+                                </div>
+                                <div class="modal-body" id="modal-body-confirm">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="start-button" class="btn btn-success">Yes</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MODAL-->
+
+                    {% if user.is_authenticated == False %}
+                        <div class="alert alert-dark" role="alert" style="background-color: #121212; color: #b3b3b3; border: none;">
+                            Bạn cần phải đăng nhập để sử dụng được tính năng này.
+                        </div>
+                    {% else %}
+                        
+                        {% for ItemInCart in cart %}
+                        {% ifequal ItemInCart.user|slugify  user.username|slugify %}
+                    
+                        {% ifequal ItemInCart.title|slugify title|slugify %}
+
+                            {% if ItemInCart.paid == False %}
+                                <div class="alert alert-dark" role="alert" style="background-color: #121212; color: #b3b3b3; border: none;">
+                                    Khoá học đã có trong giỏ hàng. Hãy thanh toán để có thể học.
+                                </div> 
+                            {% else %}
+                                <a href="{% url '123' item.title %}">
+                                <button type="button" class="btn btn-outline-warning">Học ngay</button>
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            {% if forloop.counter == cart|length%}
+                            {% ifequal ItemInCart.title|slugify title|slugify %}
+                                <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
+                                class="btn btn-primary">
+                                    Thêm vào giỏ hàng
+                                </button>
+                            {% endifequal %}
+                            {% endif %}
+                        {% endifequal %}
+                        {% else %}
+                        {% if forloop.counter == cart|length %}
+                        {% ifequal ItemInCart.title|slugify title|slugify %}
+                            <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
+                            class="btn btn-primary">
+                                Thêm vào giỏ hàng
+                            </button>
+                            {% endifequal %}
+                        {% endif %}
+                        {% endifequal %}
+                        <!--  -->
+                        {% endfor %}
+                        
+                    {% endif %}
+                </div>
+
+                {% endifequal %} {% endif %} {% endfor %}
+            </div>
+            <div class="w-100"></div>
+        </div>
+
+        <hr>
+
+
+        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: #121212; ">Liên quan</h2>
+        <hr style="border-top: 2px solid #FFD700; width: 60px;"> {% for item in a %} {% if item.title == title %} {% for subject in allSubjects %}
+        <div class="portfolio-item row">
+
+            {% ifequal subject|slugify item.subject|slugify %} {% for course in subject.courses_set.all %} 
+            {% if forloop.counter <= 8 %} <div class="item col-lg-3 col-md-4 mt-4">
+
+                <a href="{% url 'seeCourse' course.title%}" style="color: white;">
+                    <div class="main-hover-div">
+                        <div class="user-profile-2" style=" width: 255px; margin: 15px;">
+                            <img src="../../media/{{item.image}}" alt="demo" style="width:255px; height:130px;">
+
+                            <div class="user-data">
+                                <h3 class="titleCourses">{{course.title}}</h3>
+                            </div>
+                            <div>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <span>4.4 (5500)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+        </div>
+        {% endif %} {% endfor %} {% endifequal %}
+    </div>
+    {% endfor %} {% endif %} {% endfor %}
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+
+            <div class="row text-center">
+                <div class="col-md-4 box">
+                    <span class="copyright quick-links">GTEAMS &copy; Our Website <script>document.write(new Date().getFullYear())</script>
+              </span>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 box">
+                    <ul class="list-inline quick-links">
+                        <li class="list-inline-item">
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function() {
+
+        });
+
+        function addCart(id) {
+            num = 1;
+            $.post('/GTEAMS/courses/addCart/', {
+                'id': id,
+                'num': num,
+                'csrfmiddlewaretoken': '{{csrf_token}}'
+            }, function(data) {});
+        }
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
