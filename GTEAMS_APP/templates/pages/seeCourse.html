@@ -130,7 +130,7 @@
                     <span style="color: #b3b3b3; font-size: 0.9rem;">{{item.date|date:"d-m-Y"}}</span><i class="fas fa-circle" style="color: #b3b3b3; font-size: 3px; margin: 5px;"></i>
                 </div>
                 <div>
-                    <h1 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">
+                    <h1 style="color: #FFD700; font-size: 1.2rem; background-color: #121212; ">
                         {{title}}
                     </h1>
                 </div>
@@ -171,41 +171,30 @@
                         
                         {% for ItemInCart in cart %}
                         {% ifequal ItemInCart.user|slugify  user.username|slugify %}
-                    
-                        {% ifequal ItemInCart.title|slugify title|slugify %}
-
-                        {% if ItemInCart.paid == False %}
-                            <div class="alert alert-dark" role="alert" style="background-color: #121212; color: #b3b3b3; border: none;">
-                                Khoá học đã có trong giỏ hàng. Hãy thanh toán để có thể học.
-                            </div> 
-                        {% else %}
-                            <a href="{% url '123' item.title %}">
-                            <button type="button" class="btn btn-outline-warning">Học ngay</button>
-                            </a>
-                        {% endif %}
-                        {% else %}
-                            {% if forloop.counter == cart|length%}
-                                <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
-                                class="btn btn-primary">
-                                    Thêm vào giỏ hàng
-                                </button>
-                            {% endif %}
+                            {% ifequal ItemInCart.title|slugify title|slugify %}
+                                {% if ItemInCart.paid == False %}
+                                    <div class="alert alert-dark" role="alert" style="background-color: #121212; color: #b3b3b3; border: none;">
+                                        Khoá học đã có trong giỏ hàng. Hãy thanh toán để có thể học.
+                                    </div> 
+                                {% else %}
+                                    <a href="{% url '123' item.title %}">
+                                    <button type="button" class="btn btn-outline-warning">Học ngay</button>
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                {% if forloop.counter == cart|length %}
+                               
+                                    <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
+                                    class="btn btn-primary">
+                                        Thêm vào giỏ hàng
+                                    </button>
+                                
+                                {% endif %}
+                            {% endifequal %}
                         {% endifequal %}
-                        {% else %}
-                        {% if forloop.counter == cart|length %}
-                            <button style="color:yellow;"type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-id="{{item.id}}" data-title="{{item.title}}" data-subject="{{item.subject}}" data-cost="{{item.costReal}}" data-bs-toggle="modal" data-bs-target="#addCartModal"
-                            class="btn btn-primary">
-
-                                Thêm vào giỏ hàng
-                            </button>
-                        {% endif %}
-                        {% endifequal %}
-
                         <!--  -->
                         {% endfor %}
-                        
                     {% endif %}
-                    {{new_template_var}}
                 </div>
 
                 {% endifequal %} {% endif %} {% endfor %}

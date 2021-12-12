@@ -123,6 +123,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     num=models.IntegerField(default=1)
     paid=models.BooleanField(default=False)
+    isCart=models.BooleanField(default=False)
     def __str__(self):
         return str(self.title) 
 
