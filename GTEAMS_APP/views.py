@@ -237,7 +237,6 @@ def payment(request):
         cart1=Cart.objects.all()
         for c in cart1:
             if (str(c.user)==str(user)):
-                c.num=int(5)
                 c.paid=True
                 c.save()
     return render(request,'pages/a.html')
