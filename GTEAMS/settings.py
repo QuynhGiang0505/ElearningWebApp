@@ -68,7 +68,7 @@ MIDDLEWARE = [
 ]
      
 ROOT_URLCONF = 'GTEAMS.urls'
-
+     
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
