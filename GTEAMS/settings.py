@@ -66,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
-
+     
 ROOT_URLCONF = 'GTEAMS.urls'
 
 TEMPLATES = [
