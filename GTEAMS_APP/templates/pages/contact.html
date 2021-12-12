@@ -81,7 +81,31 @@
                 <h2 style="color: rgb(250, 14, 112); text-align: center; padding: 0 0 10px 0;">Gửi thông tin liên hệ - góp ý</h2>
                 <div class=block_content>
                     <form action="" id="contactForm" method="post">
-                        <label for="Name">{% csrf_token %} {{ form.as_p}}</label>
+                        {% csrf_token %} 
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span><strong >Tác giả:</strong></span>
+                            </div>
+                            {{form.name}}
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span><strong >Email:</strong></span>
+                            </div>
+                            {{form.email}}
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span><strong >Tiêu đề:</strong></span>
+                            </div>
+                            {{form.title}}
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span><strong >Nội dung:</strong></span>
+                            </div>
+                            {{form.content}}
+                        </div>
                         <input type="submit" class="form-control" value="Gửi" style="background-color:rgba(57, 57, 57, 0.503); color: rgb(247, 60, 138);">
                     </form>
                     {% if form.is_valid %}
