@@ -17,14 +17,15 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212;">
       <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'imgs/logo.png'%}" alt="Logo page" width="100" /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav" style="background-color: black">
+      <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212">
           <!-- Links -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto w-100 justify-content-end">
           <!-- Dropdown -->
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -71,7 +72,6 @@
               <div class="dropdown-menu">
                   <a class="dropdown-item" href="{% url 'coursesVideo' 'CSS và SASS cơ bản' %}">CSS và SASS cơ bản</a>
                   <a class="dropdown-item" href="{% url 'coursesVideo' 'CSS và SASS nâng cao' %}">CSS và SASS nâng cao</a>
-                  <a class="dropdown-item" href="#">Link 3</a>
               </div>
           </li>
           <!-- Dropdown -->
@@ -85,32 +85,31 @@
                   
               </div>
           </li>
+        
+        {% if user.is_authenticated %}
+        
+        <li class="nav-item active"  >
+          <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart" style="color: #FFD700 !important;"></i></a>
+        </li>
+      <li class="nav-item active" >
+          <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'logout' %}">Đăng xuất</a>
+      </li>
+      {% else %}
+      <li class="nav-item active" >
+          <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'log' %}">Đăng nhập</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'reg' %}">Đăng ký</a>
+      </li>
+        {% endif %}
       </ul>
-          <ul class="navbar-nav ml-auto" style="background-color: #121212;">
-             <li class="nav-item">
-                  <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart"></i>Giỏ hàng của bạn</a>
-              </li>
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Xin chào {{ user.username }}</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
-              </li>
-              {% endif %}
-
-              
-          </ul>
           
       </div>
   </nav>
+    </div>
   </header>
     <div class="container">
         <div class="row">
@@ -120,7 +119,7 @@
           </div>
           <div class="col-sm">
             <div>
-                <h1 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">
+                <h1 style="color: #FFD700; font-size: 1.2rem; background-color: #121212; ">
                     {{title}}
                 </h1>
             </div>
@@ -192,7 +191,7 @@
           </div>
           {% endfor %}
         {% endif %} {% endfor %} {% endcomment %}
-        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: black; ">Liên quan</h2>
+        <h2 style="color: #FFD700; font-size: 1.2rem; background-color: #121212; ">Liên quan</h2>
         <hr style="border-top: 2px solid #FFD700; width: 60px;"> 
         {% for item in a %} {% if item.title == title %} {% for subject in allSubjects %}
         <div class="portfolio-item row">
