@@ -33,7 +33,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #121212;">
                     <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'intro' %}">Giới thiệu<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
@@ -45,7 +45,7 @@
     
                      
                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'blogs' %}">Bài viết</a>
+                            <a class="nav-link nav-item active" href="{% url 'blogs' %}">Bài viết</a>
                         </li>
                         
     
@@ -53,19 +53,23 @@
                             <a class="nav-link" href="{% url 'contact' %}">Liên hệ</a>
                         </li>
 
+
                         {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
+                        <li class="nav-item active"  >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'profile' %}">Xin chào {{ user.username }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                            <a class="nav-link" href="{% url 'shopping'%}"><i class="fas fa-shopping-cart" style="color: #FFD700 !important;"></i></a>
+                          </li>
+                        <li class="nav-item active" >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'logout' %}">Đăng xuất</a>
                         </li>
                         {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'log' %}">Đăng nhập</a>
+                        <li class="nav-item active" >
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'log' %}">Đăng nhập</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'reg' %}">Đăng ký</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" style="color: #FFD700 !important;" href="{% url 'reg' %}">Đăng ký</a>
                         </li>
                         {% endif %}
                     </ul>
@@ -74,7 +78,6 @@
             </nav>
         </div>
     </header>
-
     <div class="container">
 
         <div style="text-align: center;margin-top: 6%; margin-bottom: 7%;">
