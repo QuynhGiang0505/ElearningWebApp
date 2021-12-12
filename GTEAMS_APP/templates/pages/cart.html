@@ -85,7 +85,8 @@
 
                 </tr>
             </thead>
-            {% comment %} {% for course in subject.courses_set.all %} {% endcomment %} {% for course in allCourses %} {% for roww in course.cart_set.all %} {% ifequal roww.user|slugify user.username|slugify %}
+            {% for course in allCourses %} {% for roww in course.cart_set.all %} {% ifequal roww.user|slugify user.username|slugify %}
+            {% if  roww.paid == False %}
             <tbody class="tbody1">
                 <tr>
                     <th scope="row">{{roww.id}}</th>
@@ -93,40 +94,29 @@
                     <td>{{roww.title}}</td>
                     <td>{{roww.num}}</td>
                     <td class="colPrice">{{course.costReal}}</td>
-                    <td class="colPrice">
-                        {% if roww.paid == False %} Chưa thanh toán {% else %} Đã thanh toán {% endif %}
+                    <td>
+                        {% if roww.paid == False %} Chưa thanh toán{% endif %}
                     </td>
                     <td>
                         <a href="{% url 'del' roww.id %}"><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></a>
                     </td>
-
                 </tr>
             </tbody>
+            {% endif %}
             {% endifequal %} {% endfor %} {% endfor %}
-
-            <!-- {% for key,value in request.session.cart.items %}
-            <tbody>
-                <tr>
-                    <th scope="row">{{key}}</th>
-                    <td>{{value.subject}}</td>
-                    <td><img src="../../media/{{value.image}}" alt="" width="60px"></td>
-                    <td>{{value.name}}</td>
-                    <td>{{value.num}}</td>
-                    <td class="colPrice">{{value.price}}</td>
-                    <td><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></td>
-                </tr>
-            </tbody>
-            {% endfor %} -->
             <tr class="titlerow">
-                <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col">Tổng: </th>
                 <th scope="col" id="sum"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </table>
+
+
+
         <!-- Modal -->
         <div class="modal fade" id="paymentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -144,6 +134,44 @@
         <!-- END MODAL                                                                                                                                                 allCourses course.cart_set.all-->
         <button style="color:yellow;" type="button" style="text-decoration: none; color: aliceblue;" class="btn btn-outline-warning modal-button" data-user="{{user.username}}" data-course="{{allCourses}}" data-bs-toggle="modal" data-bs-target="#paymentModal"
             class="btn btn-primary">Đặt hàng </button>
+
+        {% comment %} bảng đã thanh toán {% endcomment %}
+        <div style="margin-top:50px;">
+            <table class="table table-striped table-dark" id="table">
+                <thead>
+                    <tr class="titlerow">
+                        <th scope="col">STT</th>
+                        <th scope="col">Loại</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Xóa</th>
+    
+                    </tr>
+                </thead>
+                {% for course in allCourses %} {% for roww in course.cart_set.all %} {% ifequal roww.user|slugify user.username|slugify %}
+                {% if  roww.paid == True %}
+                <tbody class="tbody1">
+                    <tr>
+                        <th scope="row">{{roww.id}}</th>
+                        <td>{{course.subject}}</td>
+                        <td>{{roww.title}}</td>
+                        <td>{{roww.num}}</td>
+                        <td class="colPrice">{{course.costReal}}</td>
+                        <td>
+                            {% if roww.paid == True %}Đã thanh toán {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'del' roww.id %}"><i class="fa fa-trash" aria-hidden="true" style="color: #FFD700;"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endif %}
+                {% endifequal %} {% endfor %} {% endfor %}
+            </table>
+        </div>
+
     </div>
 
     <footer>
